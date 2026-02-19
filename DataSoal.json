@@ -244,6 +244,19 @@
           }
         ]
       }
+    },
+    {
+      "id": "exam_1771499220885",
+      "title": "Ujian: bahasa indonesia fiiska kimia (19/2/2026)",
+      "description": "",
+      "totalQuestions": 4,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
     }
   ]
 }
