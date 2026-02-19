@@ -93,7 +93,13 @@
         }
       ],
       "status": "scheduled",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "2wan",
+          "readyAt": 1771511884100,
+          "readyAtString": "19/2/2026, 22.38.04"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "savero",
