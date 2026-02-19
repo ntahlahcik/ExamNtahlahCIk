@@ -95,6 +95,26 @@
       "updatedAt": 1771500069330,
       "userStartTimes": {
         "tesuser": 1771500126236
+      },
+      "violations": [
+        {
+          "type": "PAGE_UNLOAD",
+          "description": "Mencoba meninggalkan halaman ujian",
+          "timestamp": 1771500150801,
+          "timeString": "19/2/2026, 18.22.30",
+          "username": "tesuser"
+        }
+      ],
+      "userViolations": {
+        "tesuser": [
+          {
+            "type": "PAGE_UNLOAD",
+            "description": "Mencoba meninggalkan halaman ujian",
+            "timestamp": 1771500150801,
+            "timeString": "19/2/2026, 18.22.30",
+            "username": "tesuser"
+          }
+        ]
       }
     }
   ]
