@@ -92,6 +92,13 @@
           "timestamp": 1771512918647,
           "timeString": "19/2/2026, 21.55.18",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "SCREEN_RESIZE",
+          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+          "timestamp": 1771512928975,
+          "timeString": "19/2/2026, 21.55.28",
+          "username": "Apip 76 apel"
         }
       ],
       "userViolations": {
@@ -122,6 +129,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771512918647,
             "timeString": "19/2/2026, 21.55.18",
+            "username": "Apip 76 apel"
+          },
+          {
+            "type": "SCREEN_RESIZE",
+            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+            "timestamp": 1771512928975,
+            "timeString": "19/2/2026, 21.55.28",
             "username": "Apip 76 apel"
           }
         ]
