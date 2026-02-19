@@ -114,7 +114,13 @@
         }
       ],
       "status": "scheduled",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "tesuser",
+          "readyAt": 1771500541538,
+          "readyAtString": "19/2/2026, 18.29.01"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "tesuser",
