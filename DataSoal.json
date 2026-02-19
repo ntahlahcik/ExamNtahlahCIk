@@ -221,6 +221,19 @@
       "readyUsers": [],
       "joinedUsers": [],
       "updatedAt": 1771498551595
+    },
+    {
+      "id": "exam_1771498809407",
+      "title": "Ujian: bahasa indonesia fisika (19/2/2026)",
+      "description": "",
+      "totalQuestions": 3,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
     }
   ]
 }
