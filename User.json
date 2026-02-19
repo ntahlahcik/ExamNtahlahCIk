@@ -24,7 +24,22 @@
     {
       "username": "Wongirengembuten691",
       "password": "          ",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771496925991",
+          "examTitle": "LITERASI WOI",
+          "actualScore": 0,
+          "finalScore": 0,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 1,
+          "actualAccuracy": 0,
+          "finalAccuracy": 0,
+          "timeSpent": 17,
+          "violations": [],
+          "timestamp": 1771497534048
+        }
+      ],
       "questionNumbers": []
     }
   ]
