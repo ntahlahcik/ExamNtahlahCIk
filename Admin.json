@@ -1,2 +1,9 @@
 {
+  "admins": [
+    {
+      "username": "tesadmin",
+      "password": "tesadmin",
+      "role": "admin"
+    }
+  ]
 }
