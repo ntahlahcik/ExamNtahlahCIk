@@ -94,7 +94,8 @@
             "D. -6"
           ],
           "correctAnswer": "A",
-          "explanation": "Langkah-langkah penyelesaian persamaan:\n1. Distribusikan angka 3 ke dalam tanda kurung:\n   3x + 6 - 5 = 2x + 7\n2. Gabungkan konstanta di sisi kiri:\n   3x + 1 = 2x + 7\n3. Pindahkan suku yang mengandung x ke satu sisi dan konstanta ke sisi lain:\n   3x - 2x = 7 - 1\n4. Sederhanakan:\n   x = 6\n\nJadi, nilai x yang memenuhi persamaan tersebut adalah 6."
+          "explanation": "Langkah-langkah penyelesaian persamaan:\n1. Distribusikan angka 3 ke dalam tanda kurung:\n   3x + 6 - 5 = 2x + 7\n2. Gabungkan konstanta di sisi kiri:\n   3x + 1 = 2x + 7\n3. Pindahkan suku yang mengandung x ke satu sisi dan konstanta ke sisi lain:\n   3x - 2x = 7 - 1\n4. Sederhanakan:\n   x = 6\n\nJadi, nilai x yang memenuhi persamaan tersebut adalah 6.",
+          "aiEvaluation": "Untuk menentukan nilai x, kita selesaikan persamaan langkah demi langkah:\n1. Distribusikan 3 ke dalam tanda kurung: 3x + 6 - 5 = 2x + 7\n2. Gabungkan konstanta di sisi kiri: 3x + 1 = 2x + 7\n3. Kurangkan 2x dari kedua sisi: 3x - 2x + 1 = 7\n4. Sederhanakan: x + 1 = 7\n5. Kurangkan 1 dari kedua sisi: x = 7 - 1\n6. Hasilnya adalah: x = 6\n\nJadi, kunci jawaban A (6) sudah benar."
         },
         {
           "question": "Hitunglah nilai dari ekspresi $ (\\frac{1}{2})^2 + \\frac{3}{4} - \\frac{1}{8} $.",
