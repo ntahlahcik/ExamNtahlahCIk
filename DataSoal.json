@@ -1,3 +1,17 @@
 {
-  "exams": []
+  "exams": [
+    {
+      "id": "exam_1771500497413",
+      "title": "Ujian: soal limit integral fisika literasi bahasa (19/2/2026)",
+      "description": "",
+      "totalQuestions": 6,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
+    }
+  ]
 }
