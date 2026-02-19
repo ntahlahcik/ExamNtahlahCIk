@@ -6,8 +6,8 @@
       "description": "Yatta",
       "totalQuestions": 1,
       "duration": 120,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771512886293,
+      "endTime": 1771513006293,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -35,7 +35,7 @@
           "explanation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "xaviero",
