@@ -219,7 +219,8 @@
       "questions": [],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "updatedAt": 1771498551595
     }
   ]
 }
