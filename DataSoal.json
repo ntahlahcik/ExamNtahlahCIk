@@ -136,7 +136,10 @@
           "joinedAtString": "19/2/2026, 17.41.51"
         }
       ],
-      "updatedAt": 1771497832157
+      "updatedAt": 1771497832157,
+      "userStartTimes": {
+        "Wongirengembuten691": 1771497835750
+      }
     },
     {
       "id": "exam_1771497169177",
