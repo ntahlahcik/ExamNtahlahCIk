@@ -333,7 +333,10 @@
           "joinedAtString": "19/2/2026, 18.07.44"
         }
       ],
-      "updatedAt": 1771499231759
+      "updatedAt": 1771499231759,
+      "userStartTimes": {
+        "tesuser": 1771499278458
+      }
     }
   ]
 }
