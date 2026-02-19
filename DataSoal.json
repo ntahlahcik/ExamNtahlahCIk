@@ -101,6 +101,19 @@
         "showAnswerKeyToUser": false
       },
       "updatedAt": 1771500956483
+    },
+    {
+      "id": "exam_1771511807647",
+      "title": "Literasi bro (ini yg baru)",
+      "description": "Yh intinya jgn literasi rendah",
+      "totalQuestions": 15,
+      "duration": 1500,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
     }
   ]
 }
