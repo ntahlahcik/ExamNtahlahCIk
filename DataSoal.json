@@ -1,3 +1,17 @@
 {
-  "exams": []
+  "exams": [
+    {
+      "id": "exam_1771512272612",
+      "title": "Literasi bro (ini yg baru)",
+      "description": "Yatta",
+      "totalQuestions": 1,
+      "duration": 120,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
+    }
+  ]
 }
