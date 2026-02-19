@@ -7,7 +7,7 @@
       "totalQuestions": 10,
       "duration": 1200,
       "startTime": 1771497456040,
-      "endTime": 1771498656040,
+      "endTime": 1771497537421,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -36,7 +36,7 @@
           "aiEvaluation": ""
         }
       ],
-      "status": "active",
+      "status": "stopped",
       "readyUsers": [],
       "joinedUsers": [],
       "updatedAt": 1771497337854,
@@ -57,7 +57,8 @@
           "violations": [],
           "timestamp": 1771497535186
         }
-      ]
+      ],
+      "stoppedAt": 1771497537421
     },
     {
       "id": "exam_1771497038332",
