@@ -6,8 +6,8 @@
       "description": "",
       "totalQuestions": 6,
       "duration": 1800,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771500545244,
+      "endTime": 1771502345244,
       "questions": [
         {
           "type": "Checklist",
@@ -113,7 +113,7 @@
           "explanation": "Soal cadangan otomatis: opsi A dianggap sebagai pernyataan yang paling sesuai dengan materi."
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "tesuser",
