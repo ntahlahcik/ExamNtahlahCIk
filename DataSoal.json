@@ -66,8 +66,8 @@
       "description": "Baca jgn skip² yh syg, nanti skor kecil aku marah nih",
       "totalQuestions": 10,
       "duration": 1200,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771497792431,
+      "endTime": 1771498992431,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -96,7 +96,7 @@
           "aiEvaluation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "Wongirengembuten691",
