@@ -209,7 +209,22 @@
             "username": "tesuser"
           }
         ]
-      }
+      },
+      "results": [
+        {
+          "username": "tesuser",
+          "actualScore": 0,
+          "finalScore": 0,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 7,
+          "actualAccuracy": 0,
+          "finalAccuracy": 0,
+          "timeSpent": 7,
+          "violations": [],
+          "timestamp": 1771495419854
+        }
+      ]
     },
     {
       "id": "exam_1771494707301",
