@@ -68,10 +68,37 @@
       "duration": 1200,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "Siapa yg paling hitam ",
+          "image": null,
+          "options": [
+            {
+              "text": "Farhan",
+              "image": null
+            },
+            {
+              "text": "Zidan",
+              "image": null
+            },
+            {
+              "text": "Apip",
+              "image": null
+            },
+            {
+              "text": "Xaviero",
+              "image": null
+            }
+          ],
+          "correctAnswer": null,
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "updatedAt": 1771497614220
     },
     {
       "id": "exam_1771497169177",
