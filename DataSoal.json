@@ -1,66 +1,6 @@
 {
   "exams": [
     {
-      "id": "exam_1771496925991",
-      "title": "LITERASI WOI",
-      "description": "Baca jgn skip² yh syg, nanti skor kecil aku marah nih",
-      "totalQuestions": 10,
-      "duration": 1200,
-      "startTime": 1771497456040,
-      "endTime": 1771497537421,
-      "questions": [
-        {
-          "type": "Pilihan Ganda",
-          "question": "Farhan memiliki teman bernama Zidan, mereka selalu bermain bersama setiap hari terutama pada siang-sore hari, pada suatu waktu Farhan mulai menjauhi Zidan. Kira-kira apa alasannya?",
-          "image": null,
-          "options": [
-            {
-              "text": "Zidan mulai menjadi homo",
-              "image": null
-            },
-            {
-              "text": "Farhan tidak menyukai zidan",
-              "image": null
-            },
-            {
-              "text": "Apip gay",
-              "image": null
-            },
-            {
-              "text": "Sudah malam hari",
-              "image": null
-            }
-          ],
-          "correctAnswer": "D",
-          "explanation": "",
-          "aiEvaluation": ""
-        }
-      ],
-      "status": "stopped",
-      "readyUsers": [],
-      "joinedUsers": [],
-      "updatedAt": 1771497337854,
-      "userStartTimes": {
-        "Wongirengembuten691": 1771497516261
-      },
-      "results": [
-        {
-          "username": "Wongirengembuten691",
-          "actualScore": 0,
-          "finalScore": 0,
-          "violationCount": 0,
-          "violationPenalty": 0,
-          "total": 1,
-          "actualAccuracy": 0,
-          "finalAccuracy": 0,
-          "timeSpent": 17,
-          "violations": [],
-          "timestamp": 1771497535186
-        }
-      ],
-      "stoppedAt": 1771497537421
-    },
-    {
       "id": "exam_1771497038332",
       "title": "LITERASI WOI",
       "description": "Baca jgn skip² yh syg, nanti skor kecil aku marah nih",
