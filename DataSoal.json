@@ -114,6 +114,19 @@
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": []
+    },
+    {
+      "id": "exam_1771511852366",
+      "title": "Literasi bro (ini yg baru)",
+      "description": "Yh intinya jgn literasi rendah",
+      "totalQuestions": 15,
+      "duration": 1500,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
     }
   ]
 }
