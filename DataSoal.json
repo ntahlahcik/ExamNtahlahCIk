@@ -97,7 +97,13 @@
         }
       ],
       "status": "scheduled",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "Wongirengembuten691",
+          "readyAt": 1771497712899,
+          "readyAtString": "19/2/2026, 17.41.52"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "Wongirengembuten691",
