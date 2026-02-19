@@ -8,7 +8,70 @@
       "duration": 5400,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "question": "Hitunglah nilai dari integral tentu berikut: \n$\\int_0^{\\pi/2} \\sin^3 x \\cos^2 x \\, dx$",
+          "options": [
+            "A. $\\frac{2}{15}$",
+            "B. $-\\frac{2}{15}$",
+            "C. $\\frac{8}{15}$",
+            "D. $\\frac{1}{15}$"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Untuk menyelesaikan integral $\\int_0^{\\pi/2} \\sin^3 x \\cos^2 x \\, dx$, kita bisa menggunakan substitusi dan identitas trigonometri.\n\n1.  **Pisahkan** $\\sin^3 x$ menjadi $\\sin^2 x \\cdot \\sin x$:\n    $\\int_0^{\\pi/2} \\sin^2 x \\cos^2 x \\sin x \\, dx$\n\n2.  **Gunakan identitas** $\\sin^2 x = 1 - \\cos^2 x$:\n    $\\int_0^{\\pi/2} (1 - \\cos^2 x) \\cos^2 x \\sin x \\, dx$\n\n3.  **Lakukan substitusi** $u = \\cos x$. Maka $du = -\\sin x \\, dx$, atau $\\sin x \\, dx = -du$.\n    **Ubah batas integrasi**:\n    Ketika $x = 0$, $u = \\cos 0 = 1$.\n    Ketika $x = \\pi/2$, $u = \\cos(\\pi/2) = 0$.\n\n4.  **Substitusikan** ke dalam integral:\n    $\\int_1^0 (1 - u^2) u^2 (-du)$\n\n5.  **Ganti tanda negatif** dengan membalik batas integrasi:\n    $\\int_0^1 (1 - u^2) u^2 \\, du$\n    $= \\int_0^1 (u^2 - u^4) \\, du$\n\n6.  **Integrasikan** polinom tersebut:\n    $\\left[ \\frac{u^3}{3} - \\frac{u^5}{5} \\right]_0^1$\n\n7.  **Evaluasi** pada batas atas dan bawah:\n    $= \\left( \\frac{1^3}{3} - \\frac{1^5}{5} \\right) - \\left( \\frac{0^3}{3} - \\frac{0^5}{5} \\right)$\n    $= \\left( \\frac{1}{3} - \\frac{1}{5} \\right) - (0)$\n    $= \\frac{5}{15} - \\frac{3}{15}$\n    $= \\frac{2}{15}$\n\nJadi, jawaban yang benar adalah $\\frac{2}{15}$."
+        },
+        {
+          "question": "Nilai dari integral tak wajar $\\int_{-\\infty}^{\\infty} e^{-x^2} dx$ adalah $\\sqrt{\\pi}$.",
+          "options": [],
+          "correctAnswer": "Benar",
+          "explanation": "Pernyataan ini BENAR. Integral ini dikenal sebagai Integral Gauss (atau Integral Poisson) dan merupakan salah satu integral tak wajar yang fundamental dalam matematika, fisika, dan statistika. Pembuktiannya melibatkan teknik integrasi ganda dalam koordinat polar atau transformasi Laplace, dan hasilnya memang $\\sqrt{\\pi}$."
+        },
+        {
+          "question": "Diberikan fungsi $F(x) = \\frac{1}{2}x^2 \\ln x$. Tentukan nilai dari integral tentu $\\int_1^e F'(x) \\,dx$.",
+          "options": [
+            "A. $\\frac{e^2}{2}$",
+            "B. $\\frac{e^2}{4}$",
+            "C. $\\frac{e^2-1}{2}$",
+            "D. $\\frac{e^2+1}{4}$"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Untuk menyelesaikan soal ini, pertama kita harus mencari turunan pertama dari $F(x)$, yaitu $F'(x)$, kemudian menggunakan Teorema Dasar Kalkulus untuk menghitung integral tentunya.\n\nLangkah 1: Mencari $F'(x)$\nDiberikan $F(x) = \\frac{1}{2}x^2 \\ln x$. Kita gunakan aturan perkalian $(uv)' = u'v + uv'$:\nMisalkan $u = \\frac{1}{2}x^2$ dan $v = \\ln x$.\nMaka $u' = \\frac{d}{dx}(\\frac{1}{2}x^2) = x$.\nDan $v' = \\frac{d}{dx}(\\ln x) = \\frac{1}{x}$.\n\nSehingga $F'(x) = (x)(\\ln x) + (\\frac{1}{2}x^2)(\\frac{1}{x}) = x \\ln x + \\frac{1}{2}x$.\n\nLangkah 2: Menghitung integral tentu dengan Teorema Dasar Kalkulus\nMenurut Teorema Dasar Kalkulus bagian kedua, jika $F'(x)$ adalah turunan dari $F(x)$, maka $\\int_a^b F'(x) \\,dx = F(b) - F(a)$.\nDalam kasus ini, $a=1$ dan $b=e$. Jadi, kita perlu menghitung $F(e) - F(1)$.\n\nMenghitung $F(e)$:\n$F(e) = \\frac{1}{2}(e)^2 \\ln e = \\frac{1}{2}e^2 \\cdot 1 = \\frac{e^2}{2}$. (Mengingat $\\ln e = 1$)\n\nMenghitung $F(1)$:\n$F(1) = \\frac{1}{2}(1)^2 \\ln 1 = \\frac{1}{2} \\cdot 1 \\cdot 0 = 0$. (Mengingat $\\ln 1 = 0$)\n\nLangkah 3: Menentukan nilai integral\n$\\int_1^e F'(x) \\,dx = F(e) - F(1) = \\frac{e^2}{2} - 0 = \\frac{e^2}{2}$.\n\nJadi, nilai dari integral tentu tersebut adalah $\\frac{e^2}{2}$."
+        },
+        {
+          "question": "Nilai dari $\\int_0^1 x \\sqrt{1-x^2} dx$ adalah $\\frac{2}{3}$.",
+          "options": [],
+          "correctAnswer": "Salah",
+          "explanation": "Untuk menyelesaikan integral $\\int_0^1 x \\sqrt{1-x^2} dx$, kita dapat menggunakan metode substitusi:\nMisalkan $u = 1-x^2$.\nMaka $du = -2x dx$, yang berarti $x dx = -\\frac{1}{2} du$.\n\nUbah batas integrasi sesuai dengan $u$:\nJika $x=0$, maka $u = 1-0^2 = 1$.\nJika $x=1$, maka $u = 1-1^2 = 0$.\n\nSubstitusikan ke dalam integral:\n$\\int_1^0 \\sqrt{u} \\left(-\\frac{1}{2} du\\right)$\n$= -\\frac{1}{2} \\int_1^0 u^{1/2} du$\nUntuk mengubah urutan batas integrasi (dari 1 ke 0 menjadi dari 0 ke 1), kita balik tanda integral:\n$= \\frac{1}{2} \\int_0^1 u^{1/2} du$\n\nIntegrasikan:\n$= \\frac{1}{2} \\left[ \\frac{u^{3/2}}{3/2} \\right]_0^1$\n$= \\frac{1}{2} \\left[ \\frac{2}{3} u^{3/2} \\right]_0^1$\n$= \\frac{1}{2} \\cdot \\frac{2}{3} (1^{3/2} - 0^{3/2})$\n$= \\frac{1}{3} (1 - 0)$\n$= \\frac{1}{3}$\n\nKarena nilai integral sebenarnya adalah $\\frac{1}{3}$, maka pernyataan bahwa nilai integralnya adalah $\\frac{2}{3}$ adalah Salah."
+        },
+        {
+          "question": "Pernyataan: Nilai dari integral tentu $\\int_{e^e}^{e^{e^2}} \\frac{1}{x \\ln x \\ln(\\ln x)} dx = \\ln 2$.",
+          "options": [],
+          "correctAnswer": "Benar",
+          "explanation": "Untuk menyelesaikan integral $\\int \\frac{1}{x \\ln x \\ln(\\ln x)} dx$, kita dapat menggunakan substitusi berantai:\n1. Misalkan $u = \\ln x$. Maka $du = \\frac{1}{x} dx$. Integral menjadi $\\int \\frac{1}{u \\ln u} du$.\n2. Selanjutnya, misalkan $v = \\ln u$. Maka $dv = \\frac{1}{u} du$. Integral menjadi $\\int \\frac{1}{v} dv = \\ln|v| + C$.\n3. Substitusikan kembali: $\\ln|v| = \\ln|\\ln u| = \\ln|\\ln(\\ln x)| + C$.\n\nSekarang, kita evaluasi integral tentu dari $e^e$ sampai $e^{e^2}$:\n$\\left[\\ln|\\ln(\\ln x)|\\right]_{e^e}^{e^{e^2}}$\n\n- Batas atas ($x = e^{e^2}$):\n$\\ln|\\ln(\\ln(e^{e^2}))| = \\ln|\\ln(e^2)| = \\ln|2| = \\ln 2$.\n\n- Batas bawah ($x = e^e$):\n$\\ln|\\ln(\\ln(e^e))| = \\ln|\\ln(e)| = \\ln|1| = 0$.\n\nJadi, nilai integralnya adalah $\\ln 2 - 0 = \\ln 2$.\nPernyataan tersebut Benar."
+        },
+        {
+          "question": "Diberikan fungsi $F(x) = \\int_{x^2}^{x^3} \\sin(t^2) dt$. Tentukan turunan pertama dari $F(x)$, yaitu $F'(x)$.",
+          "options": [
+            "A. $3x^2 \\sin(x^6) - 2x \\sin(x^4)$",
+            "B. $\\sin(x^6) - \\sin(x^4)$",
+            "C. $3x^2 \\sin(x^6) + 2x \\sin(x^4)$",
+            "D. $3x^2 \\cos(x^6) - 2x \\cos(x^4)$"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Untuk menyelesaikan soal ini, kita menggunakan Aturan Leibniz untuk diferensiasi di bawah tanda integral. Jika suatu fungsi didefinisikan sebagai $F(x) = \\int_{a(x)}^{b(x)} f(t) dt$, maka turunannya adalah $F'(x) = f(b(x)) \\cdot b'(x) - f(a(x)) \\cdot a'(x)$.\n\nDalam kasus ini:\n$f(t) = \\sin(t^2)$\nBatas atas integral, $b(x) = x^3$, sehingga $b'(x) = 3x^2$.\nBatas bawah integral, $a(x) = x^2$, sehingga $a'(x) = 2x$.\n\nSubstitusikan nilai-nilai ini ke dalam Aturan Leibniz:\n$F'(x) = f(x^3) \\cdot (3x^2) - f(x^2) \\cdot (2x)$\n$F'(x) = \\sin((x^3)^2) \\cdot (3x^2) - \\sin((x^2)^2) \\cdot (2x)$\n$F'(x) = \\sin(x^6) \\cdot 3x^2 - \\sin(x^4) \\cdot 2x$\n$F'(x) = 3x^2 \\sin(x^6) - 2x \\sin(x^4)$\n\nJadi, jawaban yang benar adalah A."
+        },
+        {
+          "question": "Hitung nilai dari integral tentu berikut:\n$$\\int_0^1 x^2 e^x \\, dx$$",
+          "options": [
+            "A. $e - 2$",
+            "B. $e$",
+            "C. $2 - e$",
+            "D. $2e - 1$"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Untuk menghitung integral $\\int_0^1 x^2 e^x \\, dx$, kita akan menggunakan metode integrasi parsial (integration by parts) dua kali.\n\nRumus integrasi parsial adalah $\\int u \\, dv = uv - \\int v \\, du$.\n\n**Langkah 1: Integrasi parsial pertama**\nPilih $u = x^2 \\Rightarrow du = 2x \\, dx$\nPilih $dv = e^x \\, dx \\Rightarrow v = e^x$\n\nSubstitusikan ke dalam rumus:\n$\\int x^2 e^x \\, dx = x^2 e^x - \\int e^x (2x) \\, dx = x^2 e^x - 2 \\int x e^x \\, dx$\n\n**Langkah 2: Integrasi parsial kedua**\nSekarang kita perlu menghitung $\\int x e^x \\, dx$. Kembali gunakan integrasi parsial.\nPilih $u = x \\Rightarrow du = 1 \\, dx$\nPilih $dv = e^x \\, dx \\Rightarrow v = e^x$\n\nSubstitusikan ke dalam rumus:\n$\\int x e^x \\, dx = x e^x - \\int e^x (1) \\, dx = x e^x - e^x$\n\n**Langkah 3: Gabungkan hasil**\nSubstitusikan hasil dari langkah 2 kembali ke hasil langkah 1:\n$\\int x^2 e^x \\, dx = x^2 e^x - 2 (x e^x - e^x) = x^2 e^x - 2x e^x + 2e^x$\nFaktorkan $e^x$:\n$= e^x (x^2 - 2x + 2)$\n\n**Langkah 4: Evaluasi integral tentu**\nSekarang kita evaluasi dari batas bawah $0$ sampai batas atas $1$:\n$[e^x (x^2 - 2x + 2)]_0^1 = [e^1 (1^2 - 2(1) + 2)] - [e^0 (0^2 - 2(0) + 2)]$\n$= [e (1 - 2 + 2)] - [1 (0 - 0 + 2)]$\n$= [e (1)] - [1 (2)]$\n$= e - 2$\n\nJadi, nilai integralnya adalah $e - 2$."
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": []
