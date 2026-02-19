@@ -1,2 +1,10 @@
 {
+  "users": [
+    {
+      "username": "tesuser",
+      "password": "tesuser",
+      "examsTaken": [],
+      "questionNumbers": []
+    }
+  ]
 }
