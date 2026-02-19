@@ -98,7 +98,13 @@
       ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": [],
+      "joinedUsers": [
+        {
+          "username": "Wongirengembuten691",
+          "joinedAt": 1771497711244,
+          "joinedAtString": "19/2/2026, 17.41.51"
+        }
+      ],
       "updatedAt": 1771497691877
     },
     {
