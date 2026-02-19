@@ -84,7 +84,30 @@
       "duration": 1800,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "question": "Tentukan nilai x yang memenuhi persamaan linear berikut: \n3(x + 2) - 5 = 2x + 7",
+          "options": [
+            "A. 6",
+            "B. 8",
+            "C. 5",
+            "D. -6"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Langkah-langkah penyelesaian persamaan:\n1. Distribusikan angka 3 ke dalam tanda kurung:\n   3x + 6 - 5 = 2x + 7\n2. Gabungkan konstanta di sisi kiri:\n   3x + 1 = 2x + 7\n3. Pindahkan suku yang mengandung x ke satu sisi dan konstanta ke sisi lain:\n   3x - 2x = 7 - 1\n4. Sederhanakan:\n   x = 6\n\nJadi, nilai x yang memenuhi persamaan tersebut adalah 6."
+        },
+        {
+          "question": "Hitunglah nilai dari ekspresi $ (\\frac{1}{2})^2 + \\frac{3}{4} - \\frac{1}{8} $.",
+          "options": [
+            "A. $\\frac{7}{8}$",
+            "B. $\\frac{9}{8}$",
+            "C. $\\frac{3}{8}$",
+            "D. $1$"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Langkah-langkah penyelesaian:\n1. Hitung bagian pangkat: $ (\\frac{1}{2})^2 = \\frac{1^2}{2^2} = \\frac{1}{4} $.\n2. Ganti nilai ini ke dalam ekspresi: $ \\frac{1}{4} + \\frac{3}{4} - \\frac{1}{8} $.\n3. Untuk menjumlahkan atau mengurangi pecahan, samakan penyebutnya. Penyebut terkecil yang sama untuk 4 dan 8 adalah 8.\n   $ \\frac{1}{4} = \\frac{1 \\times 2}{4 \\times 2} = \\frac{2}{8} $.\n   $ \\frac{3}{4} = \\frac{3 \\times 2}{4 \\times 2} = \\frac{6}{8} $.\n4. Substitusikan kembali ke ekspresi dengan penyebut yang sama:\n   $ \\frac{2}{8} + \\frac{6}{8} - \\frac{1}{8} $.\n5. Lakukan operasi penjumlahan dan pengurangan pada pembilang:\n   $ \\frac{2+6-1}{8} = \\frac{8-1}{8} = \\frac{7}{8} $."
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": []
