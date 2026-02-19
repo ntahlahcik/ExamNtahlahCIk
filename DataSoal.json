@@ -94,6 +94,31 @@
           "correctAnswer": "B",
           "explanation": "",
           "aiEvaluation": ""
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Siapa raja anime?",
+          "image": null,
+          "options": [
+            {
+              "text": "Zen",
+              "image": null
+            },
+            {
+              "text": "Vita",
+              "image": null
+            },
+            {
+              "text": "Fufufafa",
+              "image": null
+            },
+            {
+              "text": "Pria solo",
+              "image": null
+            }
+          ],
+          "correctAnswer": "D",
+          "explanation": ""
         }
       ],
       "status": "active",
@@ -111,7 +136,7 @@
           "joinedAtString": "19/2/2026, 17.41.51"
         }
       ],
-      "updatedAt": 1771497691877
+      "updatedAt": 1771497832157
     },
     {
       "id": "exam_1771497169177",
