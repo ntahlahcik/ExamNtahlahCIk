@@ -74,7 +74,10 @@
       ],
       "status": "active",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "userStartTimes": {
+        "tesuser": 1771494828283
+      }
     },
     {
       "id": "exam_1771494707301",
