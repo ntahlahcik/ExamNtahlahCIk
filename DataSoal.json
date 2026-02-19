@@ -1,2 +1,17 @@
 {
+  "exams": [
+    {
+      "id": "exam_1771496925991",
+      "title": "LITERASI WOI",
+      "description": "Baca jgn skip² yh syg, nanti skor kecil aku marah nih",
+      "totalQuestions": 10,
+      "duration": 1200,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
+    }
+  ]
 }
