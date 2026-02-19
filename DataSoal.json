@@ -8,7 +8,90 @@
       "duration": 1800,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Isian Singkat",
+          "question": "Berdasarkan ringkasan materi berikut, jawab soal nomor 1. Ringkasan: \"fisika integral limit bahasa inggris indonesia...\" Jelaskan inti ringkasan materi tersebut dengan singkat (1–3 kalimat).",
+          "image": null,
+          "options": [],
+          "correctAnswer": "fisika integral limit bahasa inggris indonesia",
+          "explanation": "Soal cadangan otomatis: kunci jawaban berupa ringkasan singkat materi."
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Berdasarkan ringkasan materi berikut, jawab soal nomor 2. Ringkasan: \"fisika integral limit bahasa inggris indonesia...\"",
+          "image": null,
+          "options": [
+            {
+              "text": "A. Pernyataan yang sesuai dengan materi: fisika integral limit bahasa inggris indonesia...",
+              "image": null
+            },
+            {
+              "text": "B. Pernyataan yang bertentangan dengan materi yang diberikan.",
+              "image": null
+            },
+            {
+              "text": "C. Pernyataan yang membahas topik berbeda dari materi.",
+              "image": null
+            },
+            {
+              "text": "D. Pernyataan yang tidak didukung oleh materi.",
+              "image": null
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Soal cadangan otomatis: opsi A dianggap sebagai pernyataan yang paling sesuai dengan materi."
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Berdasarkan ringkasan materi berikut, jawab soal nomor 3. Ringkasan: \"fisika integral limit bahasa inggris indonesia...\"",
+          "image": null,
+          "options": [
+            {
+              "text": "A. Pernyataan yang sesuai dengan materi: fisika integral limit bahasa inggris indonesia...",
+              "image": null
+            },
+            {
+              "text": "B. Pernyataan yang bertentangan dengan materi yang diberikan.",
+              "image": null
+            },
+            {
+              "text": "C. Pernyataan yang membahas topik berbeda dari materi.",
+              "image": null
+            },
+            {
+              "text": "D. Pernyataan yang tidak didukung oleh materi.",
+              "image": null
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Soal cadangan otomatis: opsi A dianggap sebagai pernyataan yang paling sesuai dengan materi."
+        },
+        {
+          "type": "Isian Singkat",
+          "question": "Berdasarkan ringkasan materi berikut, jawab soal nomor 4. Ringkasan: \"fisika integral limit bahasa inggris indonesia...\" Jelaskan inti ringkasan materi tersebut dengan singkat (1–3 kalimat).",
+          "image": null,
+          "options": [],
+          "correctAnswer": "fisika integral limit bahasa inggris indonesia",
+          "explanation": "Soal cadangan otomatis: kunci jawaban berupa ringkasan singkat materi."
+        },
+        {
+          "type": "Benar/Salah",
+          "question": "Tentukan benar/salah: Ringkasan materi \"fisika integral limit bahasa inggris indonesia...\" membahas topik yang sama dengan materi ujian.",
+          "image": null,
+          "options": [],
+          "correctAnswer": "Benar",
+          "explanation": "Soal cadangan otomatis: pernyataan dibuat agar jawaban yang benar adalah \"Benar\"."
+        },
+        {
+          "type": "Esai",
+          "question": "Berdasarkan ringkasan materi berikut, jawab soal nomor 6. Ringkasan: \"fisika integral limit bahasa inggris indonesia...\" Jelaskan inti ringkasan materi tersebut dengan singkat (1–3 kalimat).",
+          "image": null,
+          "options": [],
+          "correctAnswer": "fisika integral limit bahasa inggris indonesia",
+          "explanation": "Soal cadangan otomatis: kunci jawaban berupa ringkasan singkat materi."
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
@@ -16,7 +99,8 @@
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
-      }
+      },
+      "updatedAt": 1771500956483
     }
   ]
 }
