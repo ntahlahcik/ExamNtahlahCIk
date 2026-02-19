@@ -6,8 +6,8 @@
       "description": "",
       "totalQuestions": 6,
       "duration": 1800,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771500123708,
+      "endTime": 1771501923708,
       "questions": [
         {
           "type": "Benar/Salah",
@@ -77,7 +77,7 @@
           "explanation": "Soal cadangan otomatis: kunci jawaban berupa ringkasan singkat materi."
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "tesuser",
