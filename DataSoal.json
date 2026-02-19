@@ -103,6 +103,13 @@
           "timestamp": 1771500150801,
           "timeString": "19/2/2026, 18.22.30",
           "username": "tesuser"
+        },
+        {
+          "type": "PAGE_UNLOAD",
+          "description": "Mencoba meninggalkan halaman ujian",
+          "timestamp": 1771500160885,
+          "timeString": "19/2/2026, 18.22.40",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -112,6 +119,13 @@
             "description": "Mencoba meninggalkan halaman ujian",
             "timestamp": 1771500150801,
             "timeString": "19/2/2026, 18.22.30",
+            "username": "tesuser"
+          },
+          {
+            "type": "PAGE_UNLOAD",
+            "description": "Mencoba meninggalkan halaman ujian",
+            "timestamp": 1771500160885,
+            "timeString": "19/2/2026, 18.22.40",
             "username": "tesuser"
           }
         ]
