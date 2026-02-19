@@ -8,10 +8,37 @@
       "duration": 120,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "Ahmad terlihat sedang sedih, Farhan pun datang untuk menghampiri bersama 2 temannya yang lain, Ahmad pun bercerita kalau orang tua dia ingin bercerai, setelah bercerita mereka pun mengajak Ahmad untuk bermain bola, untuk menenangkan dia. Kira² dalam cerita ini ada berapa orang yang terlibat?",
+          "image": null,
+          "options": [
+            {
+              "text": "4",
+              "image": null
+            },
+            {
+              "text": "5",
+              "image": null
+            },
+            {
+              "text": "6",
+              "image": null
+            },
+            {
+              "text": "7",
+              "image": null
+            }
+          ],
+          "correctAnswer": "D",
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "updatedAt": 1771512636156
     }
   ]
 }
