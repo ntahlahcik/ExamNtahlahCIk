@@ -1,3 +1,22 @@
 {
-  "exams": []
+  "exams": [
+    {
+      "id": "exam_1771500940513",
+      "title": "Ujian: fisika integral limit bahasa inggris indonesia (19/2/2026)",
+      "description": "",
+      "totalQuestions": 6,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "resultSettings": {
+        "showCorrectnessToUser": true,
+        "showExplanationToUser": true,
+        "showAnswerKeyToUser": false
+      }
+    }
+  ]
 }
