@@ -253,10 +253,61 @@
       "duration": 1800,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Esai",
+          "question": "Soal cadangan nomor 1 berdasarkan materi: bahasa indonesia fiiska kimia...",
+          "image": null,
+          "options": [],
+          "correctAnswer": null,
+          "explanation": ""
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Soal cadangan nomor 2 berdasarkan materi: bahasa indonesia fiiska kimia...",
+          "image": null,
+          "options": [
+            {
+              "text": "A. (silakan edit isi opsi ini)",
+              "image": null
+            },
+            {
+              "text": "B. (silakan edit isi opsi ini)",
+              "image": null
+            },
+            {
+              "text": "C. (silakan edit isi opsi ini)",
+              "image": null
+            },
+            {
+              "text": "D. (silakan edit isi opsi ini)",
+              "image": null
+            }
+          ],
+          "correctAnswer": null,
+          "explanation": ""
+        },
+        {
+          "type": "Esai",
+          "question": "Soal cadangan nomor 3 berdasarkan materi: bahasa indonesia fiiska kimia...",
+          "image": null,
+          "options": [],
+          "correctAnswer": null,
+          "explanation": ""
+        },
+        {
+          "type": "Esai",
+          "question": "Soal cadangan nomor 4 berdasarkan materi: bahasa indonesia fiiska kimia...",
+          "image": null,
+          "options": [],
+          "correctAnswer": null,
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "updatedAt": 1771499231759
     }
   ]
 }
