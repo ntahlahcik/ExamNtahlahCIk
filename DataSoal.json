@@ -31,14 +31,15 @@
               "image": null
             }
           ],
-          "correctAnswer": null,
-          "explanation": ""
+          "correctAnswer": "D",
+          "explanation": "",
+          "aiEvaluation": ""
         }
       ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
-      "updatedAt": 1771497315074
+      "updatedAt": 1771497337854
     },
     {
       "id": "exam_1771497038332",
