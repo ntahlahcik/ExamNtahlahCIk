@@ -6,8 +6,8 @@
       "description": "",
       "totalQuestions": 4,
       "duration": 1800,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771499552728,
+      "endTime": 1771501352728,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -59,7 +59,7 @@
           "explanation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "tesuser",
