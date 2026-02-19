@@ -91,14 +91,15 @@
               "image": null
             }
           ],
-          "correctAnswer": null,
-          "explanation": ""
+          "correctAnswer": "B",
+          "explanation": "",
+          "aiEvaluation": ""
         }
       ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
-      "updatedAt": 1771497614220
+      "updatedAt": 1771497691877
     },
     {
       "id": "exam_1771497169177",
