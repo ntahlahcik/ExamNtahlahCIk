@@ -17,6 +17,70 @@
           "timeSpent": 7,
           "violations": [],
           "timestamp": 1771495417658
+        },
+        {
+          "examId": "exam_1771499220885",
+          "examTitle": "Ujian: bahasa indonesia fiiska kimia (19/2/2026)",
+          "actualScore": 4,
+          "finalScore": 0,
+          "violationCount": 7,
+          "violationPenalty": 7,
+          "total": 4,
+          "actualAccuracy": 100,
+          "finalAccuracy": 0,
+          "timeSpent": 148,
+          "violations": [
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771499360665,
+              "timeString": "19/2/2026, 18.09.20",
+              "username": "tesuser"
+            },
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771499361108,
+              "timeString": "19/2/2026, 18.09.21",
+              "username": "tesuser"
+            },
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771499382566,
+              "timeString": "19/2/2026, 18.09.42",
+              "username": "tesuser"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771499385928,
+              "timeString": "19/2/2026, 18.09.45",
+              "username": "tesuser"
+            },
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771499386478,
+              "timeString": "19/2/2026, 18.09.46",
+              "username": "tesuser"
+            },
+            {
+              "type": "INACTIVITY",
+              "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+              "timestamp": 1771499422959,
+              "timeString": "19/2/2026, 18.10.22",
+              "username": "tesuser"
+            },
+            {
+              "type": "EXTENDED_TAB_SWITCH",
+              "description": "Tab/window tidak fokus lebih dari 30 detik",
+              "timestamp": 1771499422966,
+              "timeString": "19/2/2026, 18.10.22",
+              "username": "tesuser"
+            }
+          ],
+          "timestamp": 1771499427849
         }
       ],
       "questionNumbers": []
