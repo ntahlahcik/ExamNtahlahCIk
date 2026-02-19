@@ -60,7 +60,10 @@
           "joinedAtString": "19/2/2026, 21.52.31"
         }
       ],
-      "updatedAt": 1771512636156
+      "updatedAt": 1771512636156,
+      "userStartTimes": {
+        "xaviero": 1771512895803
+      }
     }
   ]
 }
