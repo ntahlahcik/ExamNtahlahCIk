@@ -42,7 +42,22 @@
       "updatedAt": 1771497337854,
       "userStartTimes": {
         "Wongirengembuten691": 1771497516261
-      }
+      },
+      "results": [
+        {
+          "username": "Wongirengembuten691",
+          "actualScore": 0,
+          "finalScore": 0,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 1,
+          "actualAccuracy": 0,
+          "finalAccuracy": 0,
+          "timeSpent": 17,
+          "violations": [],
+          "timestamp": 1771497535186
+        }
+      ]
     },
     {
       "id": "exam_1771497038332",
