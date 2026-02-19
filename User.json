@@ -157,6 +157,12 @@
       "password": "1234",
       "examsTaken": [],
       "questionNumbers": []
+    },
+    {
+      "username": "xaviero",
+      "password": "xaviero",
+      "examsTaken": [],
+      "questionNumbers": []
     }
   ]
 }
