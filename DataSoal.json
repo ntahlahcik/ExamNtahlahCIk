@@ -74,7 +74,10 @@
           "joinedAtString": "19/2/2026, 18.12.02"
         }
       ],
-      "updatedAt": 1771499507974
+      "updatedAt": 1771499507974,
+      "userStartTimes": {
+        "tesuser": 1771499555036
+      }
     }
   ]
 }
