@@ -265,8 +265,8 @@
       "description": "",
       "totalQuestions": 4,
       "duration": 1800,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771499275929,
+      "endTime": 1771501075929,
       "questions": [
         {
           "type": "Esai",
@@ -318,7 +318,7 @@
           "explanation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "tesuser",
