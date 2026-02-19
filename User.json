@@ -151,6 +151,12 @@
       "password": "savero",
       "examsTaken": [],
       "questionNumbers": []
+    },
+    {
+      "username": "2wan",
+      "password": "1234",
+      "examsTaken": [],
+      "questionNumbers": []
     }
   ]
 }
