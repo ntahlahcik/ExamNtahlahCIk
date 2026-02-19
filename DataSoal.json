@@ -139,6 +139,13 @@
           "timestamp": 1771500572903,
           "timeString": "19/2/2026, 18.29.32",
           "username": "tesuser"
+        },
+        {
+          "type": "EXTENDED_TAB_SWITCH",
+          "description": "Tab/window tidak fokus lebih dari 30 detik",
+          "timestamp": 1771500582314,
+          "timeString": "19/2/2026, 18.29.42",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -148,6 +155,13 @@
             "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
             "timestamp": 1771500572903,
             "timeString": "19/2/2026, 18.29.32",
+            "username": "tesuser"
+          },
+          {
+            "type": "EXTENDED_TAB_SWITCH",
+            "description": "Tab/window tidak fokus lebih dari 30 detik",
+            "timestamp": 1771500582314,
+            "timeString": "19/2/2026, 18.29.42",
             "username": "tesuser"
           }
         ]
