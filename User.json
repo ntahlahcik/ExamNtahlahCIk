@@ -167,7 +167,75 @@
     {
       "username": "Apip 76 apel",
       "password": "admin123",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771512272612",
+          "examTitle": "Literasi bro (ini yg baru)",
+          "actualScore": 1,
+          "finalScore": 0,
+          "violationCount": 6,
+          "violationPenalty": 6,
+          "total": 1,
+          "actualAccuracy": 100,
+          "finalAccuracy": 0,
+          "timeSpent": 70,
+          "violations": [
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771512898654,
+              "timeString": "19/2/2026, 21.54.58",
+              "username": "Apip 76 apel"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771512910680,
+              "timeString": "19/2/2026, 21.55.10",
+              "username": "Apip 76 apel"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771512916427,
+              "timeString": "19/2/2026, 21.55.16",
+              "username": "Apip 76 apel"
+            },
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771512916647,
+              "timeString": "19/2/2026, 21.55.16",
+              "username": "Apip 76 apel"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771512918647,
+              "timeString": "19/2/2026, 21.55.18",
+              "username": "Apip 76 apel"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771512928975,
+              "timeString": "19/2/2026, 21.55.28",
+              "username": "Apip 76 apel"
+            }
+          ],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Ahmad terlihat sedang sedih, Farhan pun datang untuk menghampiri bersama 2 temannya yang lain, Ahmad pun bercerita kalau orang tua dia ingin bercerai, setelah bercerita mereka pun mengajak Ahmad untuk bermain bola, untuk menenangkan dia. Kira² dalam cerita ini ada berapa orang yang terlibat?",
+              "userAnswer": "D",
+              "correctAnswer": "D",
+              "isCorrect": true,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771512966319
+        }
+      ],
       "questionNumbers": []
     }
   ]
