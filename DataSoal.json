@@ -66,6 +66,19 @@
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": []
+    },
+    {
+      "id": "exam_1771497375697",
+      "title": "Ujian: matematika (19/2/2026)",
+      "description": "",
+      "totalQuestions": 1,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
     }
   ]
 }
