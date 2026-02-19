@@ -25,6 +25,19 @@
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": []
+    },
+    {
+      "id": "exam_1771497169177",
+      "title": "Ujian: Soal matematika fisika bahasa inggris bahasa (19/2/2026)",
+      "description": "",
+      "totalQuestions": 10,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": []
     }
   ]
 }
