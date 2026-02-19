@@ -161,7 +161,32 @@
     {
       "username": "xaviero",
       "password": "xaviero",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771512272612",
+          "examTitle": "Literasi bro (ini yg baru)",
+          "actualScore": 0,
+          "finalScore": 0,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 1,
+          "actualAccuracy": 0,
+          "finalAccuracy": 0,
+          "timeSpent": 103,
+          "violations": [],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Ahmad terlihat sedang sedih, Farhan pun datang untuk menghampiri bersama 2 temannya yang lain, Ahmad pun bercerita kalau orang tua dia ingin bercerai, setelah bercerita mereka pun mengajak Ahmad untuk bermain bola, untuk menenangkan dia. Kira² dalam cerita ini ada berapa orang yang terlibat?",
+              "userAnswer": "B",
+              "correctAnswer": "D",
+              "isCorrect": false,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771513000381
+        }
+      ],
       "questionNumbers": []
     },
     {
