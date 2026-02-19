@@ -61,7 +61,7 @@
           "explanation": ""
         }
       ],
-      "status": "active",
+      "status": "completed",
       "readyUsers": [
         {
           "username": "Wongirengembuten691",
@@ -107,7 +107,8 @@
           "violations": [],
           "timestamp": 1771497945911
         }
-      ]
+      ],
+      "completedAt": 1771498992622
     },
     {
       "id": "exam_1771497169177",
