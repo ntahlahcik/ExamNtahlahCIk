@@ -35,7 +35,7 @@
           "explanation": ""
         }
       ],
-      "status": "active",
+      "status": "completed",
       "readyUsers": [
         {
           "username": "xaviero",
@@ -230,7 +230,8 @@
           ],
           "timestamp": 1771513002190
         }
-      ]
+      ],
+      "completedAt": 1771513008124
     }
   ]
 }
