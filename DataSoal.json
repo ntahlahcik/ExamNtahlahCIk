@@ -36,7 +36,13 @@
         }
       ],
       "status": "scheduled",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "xaviero",
+          "readyAt": 1771512695194,
+          "readyAtString": "19/2/2026, 22.51.35"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "xaviero",
