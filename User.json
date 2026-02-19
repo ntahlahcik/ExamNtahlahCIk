@@ -145,6 +145,12 @@
       "password": "tesy",
       "examsTaken": [],
       "questionNumbers": []
+    },
+    {
+      "username": "savero",
+      "password": "savero",
+      "examsTaken": [],
+      "questionNumbers": []
     }
   ]
 }
