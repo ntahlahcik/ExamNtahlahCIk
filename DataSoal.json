@@ -131,6 +131,26 @@
       "updatedAt": 1771500514297,
       "userStartTimes": {
         "tesuser": 1771500550848
+      },
+      "violations": [
+        {
+          "type": "WINDOW_BLUR",
+          "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+          "timestamp": 1771500572903,
+          "timeString": "19/2/2026, 18.29.32",
+          "username": "tesuser"
+        }
+      ],
+      "userViolations": {
+        "tesuser": [
+          {
+            "type": "WINDOW_BLUR",
+            "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+            "timestamp": 1771500572903,
+            "timeString": "19/2/2026, 18.29.32",
+            "username": "tesuser"
+          }
+        ]
       }
     }
   ]
