@@ -167,6 +167,13 @@
           "timestamp": 1771500727337,
           "timeString": "19/2/2026, 18.32.07",
           "username": "tesuser"
+        },
+        {
+          "type": "INACTIVITY",
+          "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+          "timestamp": 1771500858657,
+          "timeString": "19/2/2026, 18.34.18",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -204,6 +211,13 @@
             "description": "Tab/window tidak fokus lebih dari 30 detik",
             "timestamp": 1771500727337,
             "timeString": "19/2/2026, 18.32.07",
+            "username": "tesuser"
+          },
+          {
+            "type": "INACTIVITY",
+            "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+            "timestamp": 1771500858657,
+            "timeString": "19/2/2026, 18.34.18",
             "username": "tesuser"
           }
         ]
