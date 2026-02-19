@@ -38,6 +38,20 @@
           "timeSpent": 17,
           "violations": [],
           "timestamp": 1771497534048
+        },
+        {
+          "examId": "exam_1771497038332",
+          "examTitle": "LITERASI WOI",
+          "actualScore": 1,
+          "finalScore": 1,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 2,
+          "actualAccuracy": 50,
+          "finalAccuracy": 50,
+          "timeSpent": 14,
+          "violations": [],
+          "timestamp": 1771497851041
         }
       ],
       "questionNumbers": []
