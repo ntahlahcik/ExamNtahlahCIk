@@ -94,7 +94,13 @@
       ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": [],
+      "joinedUsers": [
+        {
+          "username": "savero",
+          "joinedAt": 1771511868854,
+          "joinedAtString": "19/2/2026, 21.37.48"
+        }
+      ],
       "resultSettings": {
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
