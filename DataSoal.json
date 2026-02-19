@@ -39,7 +39,10 @@
       "status": "active",
       "readyUsers": [],
       "joinedUsers": [],
-      "updatedAt": 1771497337854
+      "updatedAt": 1771497337854,
+      "userStartTimes": {
+        "Wongirengembuten691": 1771497516261
+      }
     },
     {
       "id": "exam_1771497038332",
