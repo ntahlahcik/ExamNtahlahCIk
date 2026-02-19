@@ -3,7 +3,22 @@
     {
       "username": "tesuser",
       "password": "tesuser",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771494001738",
+          "examTitle": "tes",
+          "actualScore": 0,
+          "finalScore": 0,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 7,
+          "actualAccuracy": 0,
+          "finalAccuracy": 0,
+          "timeSpent": 7,
+          "violations": [],
+          "timestamp": 1771495417658
+        }
+      ],
       "questionNumbers": []
     }
   ]
