@@ -61,7 +61,13 @@
       ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": [],
+      "joinedUsers": [
+        {
+          "username": "tesuser",
+          "joinedAt": 1771499522468,
+          "joinedAtString": "19/2/2026, 18.12.02"
+        }
+      ],
       "updatedAt": 1771499507974
     }
   ]
