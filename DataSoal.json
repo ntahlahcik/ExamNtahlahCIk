@@ -8,10 +8,37 @@
       "duration": 1200,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "Farhan memiliki teman bernama Zidan, mereka selalu bermain bersama setiap hari terutama pada siang-sore hari, pada suatu waktu Farhan mulai menjauhi Zidan. Kira-kira apa alasannya?",
+          "image": null,
+          "options": [
+            {
+              "text": "Zidan mulai menjadi homo",
+              "image": null
+            },
+            {
+              "text": "Farhan tidak menyukai zidan",
+              "image": null
+            },
+            {
+              "text": "Apip gay",
+              "image": null
+            },
+            {
+              "text": "Sudah malam hari",
+              "image": null
+            }
+          ],
+          "correctAnswer": null,
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "updatedAt": 1771497315074
     },
     {
       "id": "exam_1771497038332",
