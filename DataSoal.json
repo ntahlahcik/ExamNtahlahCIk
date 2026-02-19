@@ -71,6 +71,13 @@
           "timestamp": 1771512898654,
           "timeString": "19/2/2026, 21.54.58",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "WINDOW_BLUR",
+          "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+          "timestamp": 1771512910680,
+          "timeString": "19/2/2026, 21.55.10",
+          "username": "Apip 76 apel"
         }
       ],
       "userViolations": {
@@ -80,6 +87,13 @@
             "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
             "timestamp": 1771512898654,
             "timeString": "19/2/2026, 21.54.58",
+            "username": "Apip 76 apel"
+          },
+          {
+            "type": "WINDOW_BLUR",
+            "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+            "timestamp": 1771512910680,
+            "timeString": "19/2/2026, 21.55.10",
             "username": "Apip 76 apel"
           }
         ]
