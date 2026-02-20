@@ -98,6 +98,31 @@
           ],
           "correctAnswer": "D",
           "explanation": ""
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Apa bahasa inggris dari anime?",
+          "image": null,
+          "options": [
+            {
+              "text": "Animation",
+              "image": null
+            },
+            {
+              "text": "Cartoon",
+              "image": null
+            },
+            {
+              "text": "Anime",
+              "image": null
+            },
+            {
+              "text": "Anima",
+              "image": null
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -108,7 +133,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771597794685
+      "updatedAt": 1771597961077
     }
   ]
 }
