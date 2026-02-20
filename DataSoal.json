@@ -91,7 +91,21 @@
       "duration": 1800,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "$$\\int_a^b f(x)\\,dx$$",
+          "image": null,
+          "options": [
+            {
+              "text": "Xjdj",
+              "image": null
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
@@ -99,7 +113,8 @@
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
-      }
+      },
+      "updatedAt": 1771582129890
     }
   ]
 }
