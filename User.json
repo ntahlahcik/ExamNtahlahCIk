@@ -36,6 +36,12 @@
       "password": "tesuser",
       "examsTaken": [],
       "questionNumbers": []
+    },
+    {
+      "username": "xaviero",
+      "password": "xaviero",
+      "examsTaken": [],
+      "questionNumbers": []
     }
   ]
 }
