@@ -52,8 +52,8 @@
       "description": "Dawg",
       "totalQuestions": 1,
       "duration": 1800,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771553742392,
+      "endTime": 1771555542392,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -82,7 +82,7 @@
           "aiEvaluation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "tesuser",
