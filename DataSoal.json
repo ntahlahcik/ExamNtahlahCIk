@@ -1,2 +1,22 @@
 {
+  "exams": [
+    {
+      "id": "exam_1771567105757",
+      "title": "Tes 1",
+      "description": "Uh",
+      "totalQuestions": 1,
+      "duration": 120,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "resultSettings": {
+        "showCorrectnessToUser": true,
+        "showExplanationToUser": true,
+        "showAnswerKeyToUser": false
+      }
+    }
+  ]
 }
