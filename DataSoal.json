@@ -780,6 +780,13 @@
           "timestamp": 1771600819195,
           "timeString": "20/2/2026, 22.20.19",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "TAB_SWITCH",
+          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+          "timestamp": 1771600853336,
+          "timeString": "20/2/2026, 23.20.53",
+          "username": "duan"
         }
       ],
       "userViolations": {
@@ -1142,6 +1149,13 @@
             "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
             "timestamp": 1771600219495,
             "timeString": "20/2/2026, 23.10.19",
+            "username": "duan"
+          },
+          {
+            "type": "TAB_SWITCH",
+            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+            "timestamp": 1771600853336,
+            "timeString": "20/2/2026, 23.20.53",
             "username": "duan"
           }
         ],
