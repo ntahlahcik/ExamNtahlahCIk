@@ -640,6 +640,13 @@
           "timestamp": 1771600209121,
           "timeString": "20/2/2026, 23.10.09",
           "username": "rehan"
+        },
+        {
+          "type": "INACTIVITY",
+          "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+          "timestamp": 1771600219495,
+          "timeString": "20/2/2026, 23.10.19",
+          "username": "duan"
         }
       ],
       "userViolations": {
@@ -876,6 +883,13 @@
             "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
             "timestamp": 1771600089496,
             "timeString": "20/2/2026, 23.08.09",
+            "username": "duan"
+          },
+          {
+            "type": "INACTIVITY",
+            "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+            "timestamp": 1771600219495,
+            "timeString": "20/2/2026, 23.10.19",
             "username": "duan"
           }
         ],
