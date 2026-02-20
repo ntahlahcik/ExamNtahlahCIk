@@ -647,6 +647,13 @@
           "timestamp": 1771600219495,
           "timeString": "20/2/2026, 23.10.19",
           "username": "duan"
+        },
+        {
+          "type": "TAB_SWITCH",
+          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+          "timestamp": 1771600224387,
+          "timeString": "20/2/2026, 23.10.24",
+          "username": "rehan"
         }
       ],
       "userViolations": {
@@ -1053,6 +1060,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771600209121,
             "timeString": "20/2/2026, 23.10.09",
+            "username": "rehan"
+          },
+          {
+            "type": "TAB_SWITCH",
+            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+            "timestamp": 1771600224387,
+            "timeString": "20/2/2026, 23.10.24",
             "username": "rehan"
           }
         ],
