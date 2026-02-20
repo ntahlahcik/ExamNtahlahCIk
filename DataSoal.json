@@ -549,6 +549,13 @@
           "timestamp": 1771600101591,
           "timeString": "20/2/2026, 22.08.21",
           "username": "Ameliadr475@gmail.com"
+        },
+        {
+          "type": "SCREEN_RESIZE",
+          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+          "timestamp": 1771600101639,
+          "timeString": "20/2/2026, 22.08.21",
+          "username": "Ameliadr475@gmail.com"
         }
       ],
       "userViolations": {
@@ -761,6 +768,13 @@
             "type": "SCREEN_RESIZE",
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771600101591,
+            "timeString": "20/2/2026, 22.08.21",
+            "username": "Ameliadr475@gmail.com"
+          },
+          {
+            "type": "SCREEN_RESIZE",
+            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+            "timestamp": 1771600101639,
             "timeString": "20/2/2026, 22.08.21",
             "username": "Ameliadr475@gmail.com"
           }
