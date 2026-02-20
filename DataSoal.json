@@ -82,6 +82,24 @@
         }
       ],
       "completedAt": 1771571197798
+    },
+    {
+      "id": "exam_1771582096419",
+      "title": "Tes",
+      "description": "",
+      "totalQuestions": 10,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "resultSettings": {
+        "showCorrectnessToUser": true,
+        "showExplanationToUser": true,
+        "showAnswerKeyToUser": false
+      }
     }
   ]
 }
