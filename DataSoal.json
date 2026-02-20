@@ -49,6 +49,14 @@
           "options": [],
           "correctAnswer": null,
           "explanation": ""
+        },
+        {
+          "type": "Esai",
+          "question": "Apa bahasa inggris dari kalimat \"Farhan terlihat sangat serius tetapi juga tidak benar benar serius\"",
+          "image": null,
+          "options": [],
+          "correctAnswer": "Farhan looks very serious, but he is not truly serious",
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -59,7 +67,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771596625332
+      "updatedAt": 1771596907109
     }
   ]
 }
