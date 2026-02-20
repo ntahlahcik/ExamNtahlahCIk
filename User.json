@@ -183,6 +183,12 @@
       "password": "admin123",
       "examsTaken": [],
       "questionNumbers": []
+    },
+    {
+      "username": "rehan",
+      "password": "rehan221",
+      "examsTaken": [],
+      "questionNumbers": []
     }
   ]
 }
