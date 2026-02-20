@@ -359,6 +359,13 @@
           "timestamp": 1771599788133,
           "timeString": "20/2/2026, 23.03.08",
           "username": "ichisoft"
+        },
+        {
+          "type": "SCREEN_RESIZE",
+          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+          "timestamp": 1771599796684,
+          "timeString": "20/2/2026, 23.03.16",
+          "username": "ichisoft"
         }
       ],
       "userViolations": {
@@ -440,6 +447,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771599788133,
             "timeString": "20/2/2026, 23.03.08",
+            "username": "ichisoft"
+          },
+          {
+            "type": "SCREEN_RESIZE",
+            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+            "timestamp": 1771599796684,
+            "timeString": "20/2/2026, 23.03.16",
             "username": "ichisoft"
           }
         ],
