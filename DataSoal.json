@@ -802,6 +802,13 @@
           "timestamp": 1771600940355,
           "timeString": "20/2/2026, 22.22.20",
           "username": "tesuser"
+        },
+        {
+          "type": "SCREEN_RESIZE",
+          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+          "timestamp": 1771600942474,
+          "timeString": "20/2/2026, 22.22.22",
+          "username": "Ameliadr475@gmail.com"
         }
       ],
       "userViolations": {
@@ -1148,6 +1155,13 @@
             "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
             "timestamp": 1771600629117,
             "timeString": "20/2/2026, 22.17.09",
+            "username": "Ameliadr475@gmail.com"
+          },
+          {
+            "type": "SCREEN_RESIZE",
+            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+            "timestamp": 1771600942474,
+            "timeString": "20/2/2026, 22.22.22",
             "username": "Ameliadr475@gmail.com"
           }
         ],
