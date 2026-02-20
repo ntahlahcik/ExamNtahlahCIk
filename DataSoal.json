@@ -8,7 +8,33 @@
       "duration": 1800,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "Since entering senior high school, Alif had consistently held the first rank in his class, a status that slowly became inseparable from his sense of identity. Each examination was no longer merely an evaluation of understanding, but a silent confirmation of who he believed himself to be. When the midterm results were announced and his name appeared in second place—just 0.2 points below the highest score—the numerical gap was trivial, yet emotionally overwhelming. He interpreted the result not as feedback, but as failure. However, when the student who surpassed him expressed sincere appreciation for how Alif’s dedication had motivated her improvement, his rigid perception began to soften. Over time, he recognized that while competition had refined his discipline, it had also confined his definition of success. By the semester’s end, even after reclaiming first place, he regarded ranking not as validation of personal worth, but as a temporary indicator within a broader process of learning.",
+          "image": null,
+          "options": [
+            {
+              "text": "Academic ranking can motivate students, yet it often creates unnecessary emotional pressure.",
+              "image": null
+            },
+            {
+              "text": "Success in school is meaningful only when it results from healthy competition among peers",
+              "image": null
+            },
+            {
+              "text": "Academic ranking plays an important role in shaping identity, but it should not become the sole basis of self-worth.",
+              "image": null
+            },
+            {
+              "text": "Temporary academic setbacks can eventually strengthen a student’s determination to succeed.",
+              "image": null
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
@@ -16,7 +42,8 @@
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
-      }
+      },
+      "updatedAt": 1771596110075
     }
   ]
 }
