@@ -388,6 +388,13 @@
           "timestamp": 1771599817217,
           "timeString": "20/2/2026, 23.03.37",
           "username": "ichisoft"
+        },
+        {
+          "type": "WINDOW_BLUR",
+          "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+          "timestamp": 1771599882903,
+          "timeString": "20/2/2026, 22.04.42",
+          "username": "Ameliadr475@gmail.com"
         }
       ],
       "userViolations": {
@@ -531,6 +538,13 @@
             "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
             "timestamp": 1771599759117,
             "timeString": "20/2/2026, 22.02.39",
+            "username": "Ameliadr475@gmail.com"
+          },
+          {
+            "type": "WINDOW_BLUR",
+            "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+            "timestamp": 1771599882903,
+            "timeString": "20/2/2026, 22.04.42",
             "username": "Ameliadr475@gmail.com"
           }
         ],
