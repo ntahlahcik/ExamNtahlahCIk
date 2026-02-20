@@ -1,3 +1,22 @@
 {
-  "exams": []
+  "exams": [
+    {
+      "id": "exam_1771595506709",
+      "title": "Bahasa inggris 2",
+      "description": "Ytta",
+      "totalQuestions": 15,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "resultSettings": {
+        "showCorrectnessToUser": true,
+        "showExplanationToUser": true,
+        "showAnswerKeyToUser": false
+      }
+    }
+  ]
 }
