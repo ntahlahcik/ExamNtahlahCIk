@@ -163,7 +163,13 @@
       ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": [],
+      "joinedUsers": [
+        {
+          "username": "xaviero",
+          "joinedAt": 1771598583934,
+          "joinedAtString": "20/2/2026, 22.43.03"
+        }
+      ],
       "resultSettings": {
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
