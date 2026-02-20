@@ -752,6 +752,13 @@
           "timestamp": 1771600591193,
           "timeString": "20/2/2026, 22.16.31",
           "username": "tesuser"
+        },
+        {
+          "type": "WINDOW_BLUR",
+          "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+          "timestamp": 1771600597017,
+          "timeString": "20/2/2026, 22.16.37",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -919,6 +926,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771600591193,
             "timeString": "20/2/2026, 22.16.31",
+            "username": "tesuser"
+          },
+          {
+            "type": "WINDOW_BLUR",
+            "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+            "timestamp": 1771600597017,
+            "timeString": "20/2/2026, 22.16.37",
             "username": "tesuser"
           }
         ],
