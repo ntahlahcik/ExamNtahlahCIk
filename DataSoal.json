@@ -2299,6 +2299,277 @@
             }
           ],
           "timestamp": 1771600954936
+        },
+        {
+          "username": "Ameliadr475@gmail.com",
+          "actualScore": 6,
+          "finalScore": 0,
+          "violationCount": 25,
+          "violationPenalty": 25,
+          "total": 9,
+          "actualAccuracy": 66.67,
+          "finalAccuracy": 0,
+          "timeSpent": 1329,
+          "violations": [
+            {
+              "type": "INACTIVITY",
+              "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+              "timestamp": 1771599759117,
+              "timeString": "20/2/2026, 22.02.39",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771599882903,
+              "timeString": "20/2/2026, 22.04.42",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599929881,
+              "timeString": "20/2/2026, 22.05.29",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599929911,
+              "timeString": "20/2/2026, 22.05.29",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599934520,
+              "timeString": "20/2/2026, 22.05.34",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599934537,
+              "timeString": "20/2/2026, 22.05.34",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771599938533,
+              "timeString": "20/2/2026, 22.05.38",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771599939576,
+              "timeString": "20/2/2026, 22.05.39",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "EXTENDED_TAB_SWITCH",
+              "description": "Tab/window tidak fokus lebih dari 30 detik",
+              "timestamp": 1771599978441,
+              "timeString": "20/2/2026, 22.06.18",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "RIGHT_CLICK",
+              "description": "Klik kanan diblokir",
+              "timestamp": 1771599983525,
+              "timeString": "20/2/2026, 22.06.23",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "RIGHT_CLICK",
+              "description": "Klik kanan diblokir",
+              "timestamp": 1771599984157,
+              "timeString": "20/2/2026, 22.06.24",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599987675,
+              "timeString": "20/2/2026, 22.06.27",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599987706,
+              "timeString": "20/2/2026, 22.06.27",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600101591,
+              "timeString": "20/2/2026, 22.08.21",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600101639,
+              "timeString": "20/2/2026, 22.08.21",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771600199380,
+              "timeString": "20/2/2026, 22.09.59",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600207828,
+              "timeString": "20/2/2026, 22.10.07",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600207891,
+              "timeString": "20/2/2026, 22.10.07",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600388966,
+              "timeString": "20/2/2026, 22.13.08",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600388981,
+              "timeString": "20/2/2026, 22.13.08",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600487293,
+              "timeString": "20/2/2026, 22.14.47",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600487311,
+              "timeString": "20/2/2026, 22.14.47",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "INACTIVITY",
+              "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+              "timestamp": 1771600629117,
+              "timeString": "20/2/2026, 22.17.09",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600942474,
+              "timeString": "20/2/2026, 22.22.22",
+              "username": "Ameliadr475@gmail.com"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771600942497,
+              "timeString": "20/2/2026, 22.22.22",
+              "username": "Ameliadr475@gmail.com"
+            }
+          ],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Since entering senior high school, Alif had consistently held the first rank in his class, a status that slowly became inseparable from his sense of identity. Each examination was no longer merely an evaluation of understanding, but a silent confirmation of who he believed himself to be. When the midterm results were announced and his name appeared in second place—just 0.2 points below the highest score—the numerical gap was trivial, yet emotionally overwhelming. He interpreted the result not as feedback, but as failure. However, when the student who surpassed him expressed sincere appreciation for how Alif’s dedication had motivated her improvement, his rigid perception began to soften. Over time, he recognized that while competition had refined his discipline, it had also confined his definition of success. By the semester’s end, even after reclaiming first place, he regarded ranking not as validation of personal worth, but as a temporary indicator within a broader process of learning.",
+              "userAnswer": "C",
+              "correctAnswer": "C",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Benar/Salah",
+              "question": "\"After submitting the report and realizing there was a mistake in the conclusion, an email was immediately sent to her teacher to explain the error\".\nIs the combined sentence grammatically and logically correct?",
+              "userAnswer": "Salah",
+              "correctAnswer": "Salah",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Buatlah kalimat yang menggunakan simple continuous tense",
+              "userAnswer": "She is eating",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Esai",
+              "question": "Apa bahasa inggris dari kalimat \"Farhan terlihat sangat serius tetapi juga tidak benar benar serius\"",
+              "userAnswer": "Farhan looks very serious but also not really serious ",
+              "correctAnswer": "Farhan looks very serious, but he is not truly serious",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "“What is the formula of the simple present tense in the negative form",
+              "userAnswer": "Subject+don't/doesn't+verb 1",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Spell your first name with how to pronounce it in alphabet",
+              "userAnswer": "A= ei, M= em, e= i, L=el, I=ai, A= ei",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Pilihan Ganda",
+              "question": "Anna joined a photography club last year. At first, she only used her phone camera, but later she bought a professional camera to improve her skills. She practices taking pictures every weekend in different places around the city. Why did Anna buy a professional camera? What can we conclude about Anna?",
+              "userAnswer": "C",
+              "correctAnswer": "D",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Pilihan Ganda",
+              "question": "Apa bahasa inggris dari anime?",
+              "userAnswer": "C",
+              "correctAnswer": "C",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Checklist",
+              "question": "Apa saja kata yang termasuk verb 2?",
+              "userAnswer": "A, C",
+              "correctAnswer": "A, D",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Tuliskan bahasa inggris dari 1867",
+              "userAnswer": "One thousand eight hundred sixty seven",
+              "correctAnswer": "One thousand eight hundred sixty-seven.",
+              "isCorrect": false,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771600972087
         }
       ]
     }
