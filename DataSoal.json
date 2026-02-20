@@ -1,3 +1,22 @@
 {
-  "exams": []
+  "exams": [
+    {
+      "id": "exam_1771595095953",
+      "title": "Bahasa inggris ajah",
+      "description": "Yiia yang inggris inggris aja",
+      "totalQuestions": 15,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "resultSettings": {
+        "showCorrectnessToUser": true,
+        "showExplanationToUser": true,
+        "showAnswerKeyToUser": false
+      }
+    }
+  ]
 }
