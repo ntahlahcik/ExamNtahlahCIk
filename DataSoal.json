@@ -241,10 +241,37 @@
       "duration": 1800,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "\n\n\\[\n\\int (3x^2 - 4x + 5)\\, dx\n\\]",
+          "image": null,
+          "options": [
+            {
+              "text": "\\[\nx^3 - 2x^2 + 5x + C\n\\]",
+              "image": null
+            },
+            {
+              "text": "\\[\n3x^3 - 4x^2 + 5x + C\n\\]",
+              "image": null
+            },
+            {
+              "text": "\\[\nx^3 - 4x^2 + 5x + C\n\\]",
+              "image": null
+            },
+            {
+              "text": "\\[\nx^3 - 2x^2 + 5 + C\n\\]",
+              "image": null
+            }
+          ],
+          "correctAnswer": null,
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": []
+      "joinedUsers": [],
+      "updatedAt": 1771553325033
     }
   ]
 }
