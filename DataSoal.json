@@ -55,7 +55,32 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771567167440
+      "updatedAt": 1771567167440,
+      "results": [
+        {
+          "username": "Iyan",
+          "actualScore": 1,
+          "finalScore": 1,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 1,
+          "actualAccuracy": 100,
+          "finalAccuracy": 100,
+          "timeSpent": 7,
+          "violations": [],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Siapa nama presiden ke 7",
+              "userAnswer": "A",
+              "correctAnswer": "A",
+              "isCorrect": true,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771567203090
+        }
+      ]
     }
   ]
 }
