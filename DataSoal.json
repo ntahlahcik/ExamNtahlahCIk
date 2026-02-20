@@ -162,7 +162,13 @@
         }
       ],
       "status": "scheduled",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "ichisoft",
+          "readyAt": 1771598596116,
+          "readyAtString": "20/2/2026, 22.43.16"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "xaviero",
