@@ -6,8 +6,8 @@
       "description": "Ytta",
       "totalQuestions": 15,
       "duration": 1800,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771599615638,
+      "endTime": 1771601415638,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -161,7 +161,7 @@
           "explanation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "ichisoft",
