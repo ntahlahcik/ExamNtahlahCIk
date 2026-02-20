@@ -507,6 +507,13 @@
           "timestamp": 1771599993579,
           "timeString": "20/2/2026, 23.06.33",
           "username": "rehan"
+        },
+        {
+          "type": "EXTENDED_TAB_SWITCH",
+          "description": "Tab/window tidak fokus lebih dari 30 detik",
+          "timestamp": 1771600033580,
+          "timeString": "20/2/2026, 23.07.13",
+          "username": "rehan"
         }
       ],
       "userViolations": {
@@ -780,6 +787,13 @@
             "description": "Tab/window tidak fokus lebih dari 30 detik",
             "timestamp": 1771599993579,
             "timeString": "20/2/2026, 23.06.33",
+            "username": "rehan"
+          },
+          {
+            "type": "EXTENDED_TAB_SWITCH",
+            "description": "Tab/window tidak fokus lebih dari 30 detik",
+            "timestamp": 1771600033580,
+            "timeString": "20/2/2026, 23.07.13",
             "username": "rehan"
           }
         ]
