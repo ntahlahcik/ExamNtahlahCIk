@@ -161,7 +161,7 @@
           "explanation": ""
         }
       ],
-      "status": "active",
+      "status": "completed",
       "readyUsers": [
         {
           "username": "ichisoft",
@@ -2627,7 +2627,8 @@
           ],
           "timestamp": 1771600972087
         }
-      ]
+      ],
+      "completedAt": 1771601465183
     }
   ]
 }
