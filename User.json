@@ -3,7 +3,32 @@
     {
       "username": "Iyan",
       "password": "bian08",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771567105757",
+          "examTitle": "Tes 1",
+          "actualScore": 1,
+          "finalScore": 1,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 1,
+          "actualAccuracy": 100,
+          "finalAccuracy": 100,
+          "timeSpent": 7,
+          "violations": [],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Siapa nama presiden ke 7",
+              "userAnswer": "A",
+              "correctAnswer": "A",
+              "isCorrect": true,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771567201434
+        }
+      ],
       "questionNumbers": []
     }
   ]
