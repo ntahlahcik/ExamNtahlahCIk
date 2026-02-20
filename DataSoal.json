@@ -37,7 +37,13 @@
       ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": [],
+      "joinedUsers": [
+        {
+          "username": "Iyan",
+          "joinedAt": 1771567185385,
+          "joinedAtString": "20/2/2026, 13.59.45"
+        }
+      ],
       "resultSettings": {
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
