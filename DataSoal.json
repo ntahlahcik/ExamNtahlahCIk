@@ -73,6 +73,31 @@
           "options": [],
           "correctAnswer": null,
           "explanation": ""
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Anna joined a photography club last year. At first, she only used her phone camera, but later she bought a professional camera to improve her skills. She practices taking pictures every weekend in different places around the city. Why did Anna buy a professional camera? What can we conclude about Anna?",
+          "image": null,
+          "options": [
+            {
+              "text": "To improve her photography skills, She is not serious about developing her hobby.",
+              "image": null
+            },
+            {
+              "text": "She is serious about developing her hobby, to not improve her photography skills.",
+              "image": null
+            },
+            {
+              "text": "She is serious about developing her hobby, to improve her photography skills.",
+              "image": null
+            },
+            {
+              "text": "To improve her photography skills, She is serious about developing her hobby.",
+              "image": null
+            }
+          ],
+          "correctAnswer": "D",
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -83,7 +108,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771597391027
+      "updatedAt": 1771597794685
     }
   ]
 }
