@@ -320,7 +320,75 @@
     {
       "username": "Zen",
       "password": "fufufafa123",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771553211779",
+          "examTitle": "Integral",
+          "actualScore": 0,
+          "finalScore": 0,
+          "violationCount": 6,
+          "violationPenalty": 6,
+          "total": 1,
+          "actualAccuracy": 0,
+          "finalAccuracy": 0,
+          "timeSpent": 155,
+          "violations": [
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771554952185,
+              "timeString": "20/2/2026, 10.35.52",
+              "username": "Zen"
+            },
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771554953211,
+              "timeString": "20/2/2026, 10.35.53",
+              "username": "Zen"
+            },
+            {
+              "type": "EXTENDED_TAB_SWITCH",
+              "description": "Tab/window tidak fokus lebih dari 30 detik",
+              "timestamp": 1771554961782,
+              "timeString": "20/2/2026, 10.36.01",
+              "username": "Zen"
+            },
+            {
+              "type": "EXTENDED_TAB_SWITCH",
+              "description": "Tab/window tidak fokus lebih dari 30 detik",
+              "timestamp": 1771555001781,
+              "timeString": "20/2/2026, 10.36.41",
+              "username": "Zen"
+            },
+            {
+              "type": "WINDOW_BLUR",
+              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
+              "timestamp": 1771555020712,
+              "timeString": "20/2/2026, 10.37.00",
+              "username": "Zen"
+            },
+            {
+              "type": "INACTIVITY",
+              "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+              "timestamp": 1771555050852,
+              "timeString": "20/2/2026, 10.37.30",
+              "username": "Zen"
+            }
+          ],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "\\[\n\\int (3x^2 - 4x + 5)\\, dx\n\\]",
+              "userAnswer": "D",
+              "correctAnswer": "A",
+              "isCorrect": false,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771555085928
+        }
+      ],
       "questionNumbers": []
     }
   ]
