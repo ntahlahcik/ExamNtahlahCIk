@@ -823,6 +823,13 @@
           "timestamp": 1771601121480,
           "timeString": "20/2/2026, 22.25.21",
           "username": "tesuser"
+        },
+        {
+          "type": "EXTENDED_TAB_SWITCH",
+          "description": "Tab/window tidak fokus lebih dari 30 detik",
+          "timestamp": 1771601160867,
+          "timeString": "20/2/2026, 22.26.00",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -1011,6 +1018,13 @@
             "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
             "timestamp": 1771601121480,
             "timeString": "20/2/2026, 22.25.21",
+            "username": "tesuser"
+          },
+          {
+            "type": "EXTENDED_TAB_SWITCH",
+            "description": "Tab/window tidak fokus lebih dari 30 detik",
+            "timestamp": 1771601160867,
+            "timeString": "20/2/2026, 22.26.00",
             "username": "tesuser"
           }
         ],
