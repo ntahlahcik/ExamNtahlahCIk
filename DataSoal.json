@@ -366,6 +366,13 @@
           "timestamp": 1771599796684,
           "timeString": "20/2/2026, 23.03.16",
           "username": "ichisoft"
+        },
+        {
+          "type": "RIGHT_CLICK",
+          "description": "Klik kanan diblokir",
+          "timestamp": 1771599812988,
+          "timeString": "20/2/2026, 23.03.32",
+          "username": "ichisoft"
         }
       ],
       "userViolations": {
@@ -454,6 +461,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771599796684,
             "timeString": "20/2/2026, 23.03.16",
+            "username": "ichisoft"
+          },
+          {
+            "type": "RIGHT_CLICK",
+            "description": "Klik kanan diblokir",
+            "timestamp": 1771599812988,
+            "timeString": "20/2/2026, 23.03.32",
             "username": "ichisoft"
           }
         ],
