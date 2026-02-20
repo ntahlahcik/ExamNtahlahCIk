@@ -36,7 +36,13 @@
         }
       ],
       "status": "active",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "Iyan",
+          "readyAt": 1771567189764,
+          "readyAtString": "20/2/2026, 13.59.49"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "Iyan",
