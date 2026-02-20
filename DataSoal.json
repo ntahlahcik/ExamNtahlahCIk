@@ -8,7 +8,33 @@
       "duration": 120,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "Siapa nama presiden ke 7",
+          "image": null,
+          "options": [
+            {
+              "text": "Joko widodo",
+              "image": null
+            },
+            {
+              "text": "Prabowo",
+              "image": null
+            },
+            {
+              "text": "Apip",
+              "image": null
+            },
+            {
+              "text": "Zidan",
+              "image": null
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": ""
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
@@ -16,7 +42,8 @@
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
-      }
+      },
+      "updatedAt": 1771567167440
     }
   ]
 }
