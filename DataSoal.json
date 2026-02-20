@@ -244,7 +244,7 @@
       "questions": [
         {
           "type": "Pilihan Ganda",
-          "question": "\n\\[\n\\int (3x^2 - 4x + 5)\\, dx\n\\]",
+          "question": "\\[\n\\int (3x^2 - 4x + 5)\\, dx\n\\]",
           "image": null,
           "options": [
             {
@@ -272,7 +272,7 @@
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
-      "updatedAt": 1771553345464
+      "updatedAt": 1771553395264
     }
   ]
 }
