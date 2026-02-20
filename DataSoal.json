@@ -465,6 +465,13 @@
           "timestamp": 1771599950579,
           "timeString": "20/2/2026, 23.05.50",
           "username": "rehan"
+        },
+        {
+          "type": "RIGHT_CLICK",
+          "description": "Klik kanan diblokir",
+          "timestamp": 1771599953937,
+          "timeString": "20/2/2026, 22.05.53",
+          "username": "wongirengembuten691"
         }
       ],
       "userViolations": {
@@ -481,6 +488,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771599682116,
             "timeString": "20/2/2026, 22.01.22",
+            "username": "wongirengembuten691"
+          },
+          {
+            "type": "RIGHT_CLICK",
+            "description": "Klik kanan diblokir",
+            "timestamp": 1771599953937,
+            "timeString": "20/2/2026, 22.05.53",
             "username": "wongirengembuten691"
           }
         ],
