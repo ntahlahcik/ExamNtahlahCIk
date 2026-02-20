@@ -6,8 +6,8 @@
       "description": "Uh",
       "totalQuestions": 1,
       "duration": 120,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771567185911,
+      "endTime": 1771567305911,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -35,7 +35,7 @@
           "explanation": ""
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [],
       "joinedUsers": [
         {
