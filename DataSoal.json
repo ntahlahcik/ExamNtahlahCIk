@@ -2196,6 +2196,109 @@
             }
           ],
           "timestamp": 1771600890786
+        },
+        {
+          "username": "tesuser",
+          "actualScore": 3,
+          "finalScore": 2,
+          "violationCount": 1,
+          "violationPenalty": 1,
+          "total": 9,
+          "actualAccuracy": 33.33,
+          "finalAccuracy": 22.22,
+          "timeSpent": 31,
+          "violations": [
+            {
+              "type": "TAB_SWITCH",
+              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+              "timestamp": 1771600940355,
+              "timeString": "20/2/2026, 22.22.20",
+              "username": "tesuser"
+            }
+          ],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Since entering senior high school, Alif had consistently held the first rank in his class, a status that slowly became inseparable from his sense of identity. Each examination was no longer merely an evaluation of understanding, but a silent confirmation of who he believed himself to be. When the midterm results were announced and his name appeared in second place—just 0.2 points below the highest score—the numerical gap was trivial, yet emotionally overwhelming. He interpreted the result not as feedback, but as failure. However, when the student who surpassed him expressed sincere appreciation for how Alif’s dedication had motivated her improvement, his rigid perception began to soften. Over time, he recognized that while competition had refined his discipline, it had also confined his definition of success. By the semester’s end, even after reclaiming first place, he regarded ranking not as validation of personal worth, but as a temporary indicator within a broader process of learning.",
+              "userAnswer": "",
+              "correctAnswer": "C",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Benar/Salah",
+              "question": "\"After submitting the report and realizing there was a mistake in the conclusion, an email was immediately sent to her teacher to explain the error\".\nIs the combined sentence grammatically and logically correct?",
+              "userAnswer": "",
+              "correctAnswer": "Salah",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Buatlah kalimat yang menggunakan simple continuous tense",
+              "userAnswer": "",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Esai",
+              "question": "Apa bahasa inggris dari kalimat \"Farhan terlihat sangat serius tetapi juga tidak benar benar serius\"",
+              "userAnswer": "",
+              "correctAnswer": "Farhan looks very serious, but he is not truly serious",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "“What is the formula of the simple present tense in the negative form",
+              "userAnswer": "",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Spell your first name with how to pronounce it in alphabet",
+              "userAnswer": "Jxnx",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Pilihan Ganda",
+              "question": "Anna joined a photography club last year. At first, she only used her phone camera, but later she bought a professional camera to improve her skills. She practices taking pictures every weekend in different places around the city. Why did Anna buy a professional camera? What can we conclude about Anna?",
+              "userAnswer": "",
+              "correctAnswer": "D",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Pilihan Ganda",
+              "question": "Apa bahasa inggris dari anime?",
+              "userAnswer": "",
+              "correctAnswer": "C",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Checklist",
+              "question": "Apa saja kata yang termasuk verb 2?",
+              "userAnswer": "",
+              "correctAnswer": "A, D",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Tuliskan bahasa inggris dari 1867",
+              "userAnswer": "",
+              "correctAnswer": "One thousand eight hundred sixty-seven.",
+              "isCorrect": false,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771600954936
         }
       ]
     }
