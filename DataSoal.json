@@ -41,6 +41,14 @@
           "options": [],
           "correctAnswer": "Salah",
           "explanation": ""
+        },
+        {
+          "type": "Isian Singkat",
+          "question": "Buatlah kalimat yang menggunakan simple continuous tense",
+          "image": null,
+          "options": [],
+          "correctAnswer": null,
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -51,7 +59,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771596421395
+      "updatedAt": 1771596625332
     }
   ]
 }
