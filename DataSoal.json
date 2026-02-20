@@ -373,6 +373,13 @@
           "timestamp": 1771599812988,
           "timeString": "20/2/2026, 23.03.32",
           "username": "ichisoft"
+        },
+        {
+          "type": "RIGHT_CLICK",
+          "description": "Klik kanan diblokir",
+          "timestamp": 1771599815483,
+          "timeString": "20/2/2026, 23.03.35",
+          "username": "ichisoft"
         }
       ],
       "userViolations": {
@@ -468,6 +475,13 @@
             "description": "Klik kanan diblokir",
             "timestamp": 1771599812988,
             "timeString": "20/2/2026, 23.03.32",
+            "username": "ichisoft"
+          },
+          {
+            "type": "RIGHT_CLICK",
+            "description": "Klik kanan diblokir",
+            "timestamp": 1771599815483,
+            "timeString": "20/2/2026, 23.03.35",
             "username": "ichisoft"
           }
         ],
