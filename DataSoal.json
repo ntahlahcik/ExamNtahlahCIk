@@ -241,7 +241,10 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771598285983
+      "updatedAt": 1771598285983,
+      "userStartTimes": {
+        "duan": 1771599638411
+      }
     }
   ]
 }
