@@ -816,6 +816,13 @@
           "timestamp": 1771600998378,
           "timeString": "20/2/2026, 22.23.18",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "TAB_SWITCH",
+          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+          "timestamp": 1771601121480,
+          "timeString": "20/2/2026, 22.25.21",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -997,6 +1004,13 @@
             "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
             "timestamp": 1771600940355,
             "timeString": "20/2/2026, 22.22.20",
+            "username": "tesuser"
+          },
+          {
+            "type": "TAB_SWITCH",
+            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+            "timestamp": 1771601121480,
+            "timeString": "20/2/2026, 22.25.21",
             "username": "tesuser"
           }
         ],
