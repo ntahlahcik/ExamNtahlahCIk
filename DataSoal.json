@@ -331,6 +331,13 @@
           "timestamp": 1771599752145,
           "timeString": "20/2/2026, 22.02.32",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "INACTIVITY",
+          "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+          "timestamp": 1771599759117,
+          "timeString": "20/2/2026, 22.02.39",
+          "username": "Ameliadr475@gmail.com"
         }
       ],
       "userViolations": {
@@ -424,6 +431,15 @@
             "timestamp": 1771599752145,
             "timeString": "20/2/2026, 22.02.32",
             "username": "Apip 76 apel"
+          }
+        ],
+        "Ameliadr475@gmail.com": [
+          {
+            "type": "INACTIVITY",
+            "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+            "timestamp": 1771599759117,
+            "timeString": "20/2/2026, 22.02.39",
+            "username": "Ameliadr475@gmail.com"
           }
         ]
       },
