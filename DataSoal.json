@@ -500,6 +500,13 @@
           "timestamp": 1771599987675,
           "timeString": "20/2/2026, 22.06.27",
           "username": "Ameliadr475@gmail.com"
+        },
+        {
+          "type": "EXTENDED_TAB_SWITCH",
+          "description": "Tab/window tidak fokus lebih dari 30 detik",
+          "timestamp": 1771599993579,
+          "timeString": "20/2/2026, 23.06.33",
+          "username": "rehan"
         }
       ],
       "userViolations": {
@@ -766,6 +773,13 @@
             "description": "Klik kanan diblokir",
             "timestamp": 1771599957199,
             "timeString": "20/2/2026, 23.05.57",
+            "username": "rehan"
+          },
+          {
+            "type": "EXTENDED_TAB_SWITCH",
+            "description": "Tab/window tidak fokus lebih dari 30 detik",
+            "timestamp": 1771599993579,
+            "timeString": "20/2/2026, 23.06.33",
             "username": "rehan"
           }
         ]
