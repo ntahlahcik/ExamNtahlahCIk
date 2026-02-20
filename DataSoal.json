@@ -33,6 +33,14 @@
           ],
           "correctAnswer": "C",
           "explanation": ""
+        },
+        {
+          "type": "Benar/Salah",
+          "question": "\"After submitting the report and realizing there was a mistake in the conclusion, an email was immediately sent to her teacher to explain the error\".\nIs the combined sentence grammatically and logically correct?",
+          "image": null,
+          "options": [],
+          "correctAnswer": "Salah",
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -43,7 +51,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771596110075
+      "updatedAt": 1771596421395
     }
   ]
 }
