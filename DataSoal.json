@@ -6,8 +6,8 @@
       "description": "Yatta",
       "totalQuestions": 1,
       "duration": 120,
-      "startTime": 1771512886293,
-      "endTime": 1771513006293,
+      "startTime": null,
+      "endTime": null,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -35,203 +35,16 @@
           "explanation": ""
         }
       ],
-      "status": "completed",
-      "readyUsers": [
-        {
-          "username": "xaviero",
-          "readyAt": 1771512695194,
-          "readyAtString": "19/2/2026, 22.51.35"
-        },
-        {
-          "username": "Apip 76 apel",
-          "readyAt": 1771512764152,
-          "readyAtString": "19/2/2026, 21.52.44"
-        }
-      ],
-      "joinedUsers": [
-        {
-          "username": "xaviero",
-          "joinedAt": 1771512687713,
-          "joinedAtString": "19/2/2026, 22.51.27"
-        },
-        {
-          "username": "Apip 76 apel",
-          "joinedAt": 1771512751979,
-          "joinedAtString": "19/2/2026, 21.52.31"
-        }
-      ],
-      "updatedAt": 1771512636156,
-      "userStartTimes": {
-        "xaviero": 1771512895803
-      },
-      "violations": [
-        {
-          "type": "TAB_SWITCH",
-          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
-          "timestamp": 1771512898654,
-          "timeString": "19/2/2026, 21.54.58",
-          "username": "Apip 76 apel"
-        },
-        {
-          "type": "WINDOW_BLUR",
-          "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
-          "timestamp": 1771512910680,
-          "timeString": "19/2/2026, 21.55.10",
-          "username": "Apip 76 apel"
-        },
-        {
-          "type": "TAB_SWITCH",
-          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
-          "timestamp": 1771512916647,
-          "timeString": "19/2/2026, 21.55.16",
-          "username": "Apip 76 apel"
-        },
-        {
-          "type": "SCREEN_RESIZE",
-          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
-          "timestamp": 1771512918647,
-          "timeString": "19/2/2026, 21.55.18",
-          "username": "Apip 76 apel"
-        },
-        {
-          "type": "SCREEN_RESIZE",
-          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
-          "timestamp": 1771512928975,
-          "timeString": "19/2/2026, 21.55.28",
-          "username": "Apip 76 apel"
-        }
-      ],
-      "userViolations": {
-        "Apip 76 apel": [
-          {
-            "type": "TAB_SWITCH",
-            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
-            "timestamp": 1771512898654,
-            "timeString": "19/2/2026, 21.54.58",
-            "username": "Apip 76 apel"
-          },
-          {
-            "type": "WINDOW_BLUR",
-            "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
-            "timestamp": 1771512910680,
-            "timeString": "19/2/2026, 21.55.10",
-            "username": "Apip 76 apel"
-          },
-          {
-            "type": "TAB_SWITCH",
-            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
-            "timestamp": 1771512916647,
-            "timeString": "19/2/2026, 21.55.16",
-            "username": "Apip 76 apel"
-          },
-          {
-            "type": "SCREEN_RESIZE",
-            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
-            "timestamp": 1771512918647,
-            "timeString": "19/2/2026, 21.55.18",
-            "username": "Apip 76 apel"
-          },
-          {
-            "type": "SCREEN_RESIZE",
-            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
-            "timestamp": 1771512928975,
-            "timeString": "19/2/2026, 21.55.28",
-            "username": "Apip 76 apel"
-          }
-        ]
-      },
-      "results": [
-        {
-          "username": "Apip 76 apel",
-          "actualScore": 1,
-          "finalScore": 0,
-          "violationCount": 6,
-          "violationPenalty": 6,
-          "total": 1,
-          "actualAccuracy": 100,
-          "finalAccuracy": 0,
-          "timeSpent": 70,
-          "violations": [
-            {
-              "type": "TAB_SWITCH",
-              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
-              "timestamp": 1771512898654,
-              "timeString": "19/2/2026, 21.54.58",
-              "username": "Apip 76 apel"
-            },
-            {
-              "type": "WINDOW_BLUR",
-              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
-              "timestamp": 1771512910680,
-              "timeString": "19/2/2026, 21.55.10",
-              "username": "Apip 76 apel"
-            },
-            {
-              "type": "WINDOW_BLUR",
-              "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
-              "timestamp": 1771512916427,
-              "timeString": "19/2/2026, 21.55.16",
-              "username": "Apip 76 apel"
-            },
-            {
-              "type": "TAB_SWITCH",
-              "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
-              "timestamp": 1771512916647,
-              "timeString": "19/2/2026, 21.55.16",
-              "username": "Apip 76 apel"
-            },
-            {
-              "type": "SCREEN_RESIZE",
-              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
-              "timestamp": 1771512918647,
-              "timeString": "19/2/2026, 21.55.18",
-              "username": "Apip 76 apel"
-            },
-            {
-              "type": "SCREEN_RESIZE",
-              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
-              "timestamp": 1771512928975,
-              "timeString": "19/2/2026, 21.55.28",
-              "username": "Apip 76 apel"
-            }
-          ],
-          "answers": [
-            {
-              "type": "Pilihan Ganda",
-              "question": "Ahmad terlihat sedang sedih, Farhan pun datang untuk menghampiri bersama 2 temannya yang lain, Ahmad pun bercerita kalau orang tua dia ingin bercerai, setelah bercerita mereka pun mengajak Ahmad untuk bermain bola, untuk menenangkan dia. Kira² dalam cerita ini ada berapa orang yang terlibat?",
-              "userAnswer": "D",
-              "correctAnswer": "D",
-              "isCorrect": true,
-              "explanation": ""
-            }
-          ],
-          "timestamp": 1771512968130
-        },
-        {
-          "username": "xaviero",
-          "actualScore": 0,
-          "finalScore": 0,
-          "violationCount": 0,
-          "violationPenalty": 0,
-          "total": 1,
-          "actualAccuracy": 0,
-          "finalAccuracy": 0,
-          "timeSpent": 103,
-          "violations": [],
-          "answers": [
-            {
-              "type": "Pilihan Ganda",
-              "question": "Ahmad terlihat sedang sedih, Farhan pun datang untuk menghampiri bersama 2 temannya yang lain, Ahmad pun bercerita kalau orang tua dia ingin bercerai, setelah bercerita mereka pun mengajak Ahmad untuk bermain bola, untuk menenangkan dia. Kira² dalam cerita ini ada berapa orang yang terlibat?",
-              "userAnswer": "B",
-              "correctAnswer": "D",
-              "isCorrect": false,
-              "explanation": ""
-            }
-          ],
-          "timestamp": 1771513002190
-        }
-      ],
-      "completedAt": 1771513008124
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "updatedAt": 1771553586769,
+      "userStartTimes": {},
+      "violations": [],
+      "userViolations": {},
+      "results": [],
+      "completedAt": null,
+      "stoppedAt": null
     },
     {
       "id": "exam_1771553211779",
