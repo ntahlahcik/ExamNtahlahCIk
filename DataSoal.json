@@ -35,7 +35,7 @@
           "explanation": ""
         }
       ],
-      "status": "active",
+      "status": "completed",
       "readyUsers": [
         {
           "username": "Iyan",
@@ -80,7 +80,8 @@
           ],
           "timestamp": 1771567203090
         }
-      ]
+      ],
+      "completedAt": 1771571197798
     }
   ]
 }
