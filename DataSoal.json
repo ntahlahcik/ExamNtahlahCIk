@@ -100,7 +100,32 @@
       "updatedAt": 1771553395264,
       "userStartTimes": {
         "tesuser": 1771553744579
-      }
+      },
+      "results": [
+        {
+          "username": "tesuser",
+          "actualScore": 1,
+          "finalScore": 1,
+          "violationCount": 0,
+          "violationPenalty": 0,
+          "total": 1,
+          "actualAccuracy": 100,
+          "finalAccuracy": 100,
+          "timeSpent": 18,
+          "violations": [],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "\\[\n\\int (3x^2 - 4x + 5)\\, dx\n\\]",
+              "userAnswer": "A",
+              "correctAnswer": "A",
+              "isCorrect": true,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771553766489
+        }
+      ]
     }
   ]
 }
