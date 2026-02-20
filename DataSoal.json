@@ -82,7 +82,7 @@
           "aiEvaluation": ""
         }
       ],
-      "status": "active",
+      "status": "completed",
       "readyUsers": [
         {
           "username": "tesuser",
@@ -291,7 +291,8 @@
             "username": "Zen"
           }
         ]
-      }
+      },
+      "completedAt": 1771555665321
     }
   ]
 }
