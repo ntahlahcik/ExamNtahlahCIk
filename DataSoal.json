@@ -151,6 +151,14 @@
             "D"
           ],
           "explanation": ""
+        },
+        {
+          "type": "Isian Singkat",
+          "question": "Tuliskan bahasa inggris dari 1867",
+          "image": null,
+          "options": [],
+          "correctAnswer": "One thousand eight hundred sixty-seven.",
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -161,7 +169,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771598170200
+      "updatedAt": 1771598285983
     }
   ]
 }
