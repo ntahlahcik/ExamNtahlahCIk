@@ -493,6 +493,13 @@
           "timestamp": 1771599983525,
           "timeString": "20/2/2026, 22.06.23",
           "username": "Ameliadr475@gmail.com"
+        },
+        {
+          "type": "SCREEN_RESIZE",
+          "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+          "timestamp": 1771599987675,
+          "timeString": "20/2/2026, 22.06.27",
+          "username": "Ameliadr475@gmail.com"
         }
       ],
       "userViolations": {
@@ -692,6 +699,13 @@
             "description": "Klik kanan diblokir",
             "timestamp": 1771599983525,
             "timeString": "20/2/2026, 22.06.23",
+            "username": "Ameliadr475@gmail.com"
+          },
+          {
+            "type": "SCREEN_RESIZE",
+            "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+            "timestamp": 1771599987675,
+            "timeString": "20/2/2026, 22.06.27",
             "username": "Ameliadr475@gmail.com"
           }
         ],
