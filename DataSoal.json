@@ -123,6 +123,34 @@
           ],
           "correctAnswer": "C",
           "explanation": ""
+        },
+        {
+          "type": "Checklist",
+          "question": "Apa saja kata yang termasuk verb 2?",
+          "image": null,
+          "options": [
+            {
+              "text": "Did",
+              "image": null
+            },
+            {
+              "text": "Arise",
+              "image": null
+            },
+            {
+              "text": "Spoked",
+              "image": null
+            },
+            {
+              "text": "Made",
+              "image": null
+            }
+          ],
+          "correctAnswer": [
+            "A",
+            "D"
+          ],
+          "explanation": ""
         }
       ],
       "status": "scheduled",
@@ -133,7 +161,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771597961077
+      "updatedAt": 1771598170200
     }
   ]
 }
