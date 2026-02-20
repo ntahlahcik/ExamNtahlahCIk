@@ -374,7 +374,140 @@
     {
       "username": "wongirengembuten691",
       "password": "          ",
-      "examsTaken": [],
+      "examsTaken": [
+        {
+          "examId": "exam_1771595506709",
+          "examTitle": "Bahasa inggris 2",
+          "actualScore": 6,
+          "finalScore": 1,
+          "violationCount": 5,
+          "violationPenalty": 5,
+          "total": 9,
+          "actualAccuracy": 66.67,
+          "finalAccuracy": 11.11,
+          "timeSpent": 562,
+          "violations": [
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599675548,
+              "timeString": "20/2/2026, 22.01.15",
+              "username": "wongirengembuten691"
+            },
+            {
+              "type": "SCREEN_RESIZE",
+              "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
+              "timestamp": 1771599682116,
+              "timeString": "20/2/2026, 22.01.22",
+              "username": "wongirengembuten691"
+            },
+            {
+              "type": "RIGHT_CLICK",
+              "description": "Klik kanan diblokir",
+              "timestamp": 1771599747239,
+              "timeString": "20/2/2026, 22.02.27",
+              "username": "wongirengembuten691"
+            },
+            {
+              "type": "RIGHT_CLICK",
+              "description": "Klik kanan diblokir",
+              "timestamp": 1771599747471,
+              "timeString": "20/2/2026, 22.02.27",
+              "username": "wongirengembuten691"
+            },
+            {
+              "type": "RIGHT_CLICK",
+              "description": "Klik kanan diblokir",
+              "timestamp": 1771599953937,
+              "timeString": "20/2/2026, 22.05.53",
+              "username": "wongirengembuten691"
+            }
+          ],
+          "answers": [
+            {
+              "type": "Pilihan Ganda",
+              "question": "Since entering senior high school, Alif had consistently held the first rank in his class, a status that slowly became inseparable from his sense of identity. Each examination was no longer merely an evaluation of understanding, but a silent confirmation of who he believed himself to be. When the midterm results were announced and his name appeared in second place—just 0.2 points below the highest score—the numerical gap was trivial, yet emotionally overwhelming. He interpreted the result not as feedback, but as failure. However, when the student who surpassed him expressed sincere appreciation for how Alif’s dedication had motivated her improvement, his rigid perception began to soften. Over time, he recognized that while competition had refined his discipline, it had also confined his definition of success. By the semester’s end, even after reclaiming first place, he regarded ranking not as validation of personal worth, but as a temporary indicator within a broader process of learning.",
+              "userAnswer": "C",
+              "correctAnswer": "C",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Benar/Salah",
+              "question": "\"After submitting the report and realizing there was a mistake in the conclusion, an email was immediately sent to her teacher to explain the error\".\nIs the combined sentence grammatically and logically correct?",
+              "userAnswer": "Salah",
+              "correctAnswer": "Salah",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Buatlah kalimat yang menggunakan simple continuous tense",
+              "userAnswer": "She is reading a book in the library",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Esai",
+              "question": "Apa bahasa inggris dari kalimat \"Farhan terlihat sangat serius tetapi juga tidak benar benar serius\"",
+              "userAnswer": "Farhan looks very serious, but not really",
+              "correctAnswer": "Farhan looks very serious, but he is not truly serious",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "“What is the formula of the simple present tense in the negative form",
+              "userAnswer": "I do not eat / She does not eat",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Spell your first name with how to pronounce it in alphabet",
+              "userAnswer": "F (ɛf), A (eɪ), R (ɑːr), H (eɪtʃ), A (eɪ), N (ɛn)",
+              "correctAnswer": "Tidak ada jawaban benar (opsional)",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Pilihan Ganda",
+              "question": "Anna joined a photography club last year. At first, she only used her phone camera, but later she bought a professional camera to improve her skills. She practices taking pictures every weekend in different places around the city. Why did Anna buy a professional camera? What can we conclude about Anna?",
+              "userAnswer": "C",
+              "correctAnswer": "D",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Pilihan Ganda",
+              "question": "Apa bahasa inggris dari anime?",
+              "userAnswer": "C",
+              "correctAnswer": "C",
+              "isCorrect": true,
+              "explanation": ""
+            },
+            {
+              "type": "Checklist",
+              "question": "Apa saja kata yang termasuk verb 2?",
+              "userAnswer": "A",
+              "correctAnswer": "A, D",
+              "isCorrect": false,
+              "explanation": ""
+            },
+            {
+              "type": "Isian Singkat",
+              "question": "Tuliskan bahasa inggris dari 1867",
+              "userAnswer": "Eighteen sixty-seven 😛😛😛😛",
+              "correctAnswer": "One thousand eight hundred sixty-seven.",
+              "isCorrect": false,
+              "explanation": ""
+            }
+          ],
+          "timestamp": 1771600203758
+        }
+      ],
       "questionNumbers": []
     },
     {
