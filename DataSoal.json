@@ -738,6 +738,13 @@
           "timestamp": 1771600487293,
           "timeString": "20/2/2026, 22.14.47",
           "username": "Ameliadr475@gmail.com"
+        },
+        {
+          "type": "TAB_SWITCH",
+          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+          "timestamp": 1771600578205,
+          "timeString": "20/2/2026, 22.16.18",
+          "username": "tesuser"
         }
       ],
       "userViolations": {
@@ -891,6 +898,13 @@
             "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
             "timestamp": 1771600252557,
             "timeString": "20/2/2026, 22.10.52",
+            "username": "tesuser"
+          },
+          {
+            "type": "TAB_SWITCH",
+            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+            "timestamp": 1771600578205,
+            "timeString": "20/2/2026, 22.16.18",
             "username": "tesuser"
           }
         ],
