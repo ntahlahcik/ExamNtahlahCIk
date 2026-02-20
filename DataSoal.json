@@ -689,6 +689,13 @@
           "timestamp": 1771600286150,
           "timeString": "20/2/2026, 22.11.26",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "INACTIVITY",
+          "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+          "timestamp": 1771600387979,
+          "timeString": "20/2/2026, 22.13.07",
+          "username": "Apip 76 apel"
         }
       ],
       "userViolations": {
@@ -865,6 +872,13 @@
             "description": "Tab/window tidak fokus lebih dari 30 detik",
             "timestamp": 1771600286150,
             "timeString": "20/2/2026, 22.11.26",
+            "username": "Apip 76 apel"
+          },
+          {
+            "type": "INACTIVITY",
+            "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+            "timestamp": 1771600387979,
+            "timeString": "20/2/2026, 22.13.07",
             "username": "Apip 76 apel"
           }
         ],
