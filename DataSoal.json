@@ -296,6 +296,13 @@
           "timestamp": 1771599683928,
           "timeString": "20/2/2026, 23.01.23",
           "username": "ichisoft"
+        },
+        {
+          "type": "TAB_SWITCH",
+          "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+          "timestamp": 1771599688447,
+          "timeString": "20/2/2026, 23.01.28",
+          "username": "ichisoft"
         }
       ],
       "userViolations": {
@@ -349,6 +356,13 @@
             "description": "Perubahan ukuran layar terdeteksi - kemungkinan split screen",
             "timestamp": 1771599683928,
             "timeString": "20/2/2026, 23.01.23",
+            "username": "ichisoft"
+          },
+          {
+            "type": "TAB_SWITCH",
+            "description": "Tab/window tidak fokus - kemungkinan membuka tab/jendela lain",
+            "timestamp": 1771599688447,
+            "timeString": "20/2/2026, 23.01.28",
             "username": "ichisoft"
           }
         ]
