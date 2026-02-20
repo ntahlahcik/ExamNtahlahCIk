@@ -486,6 +486,13 @@
           "timestamp": 1771599978441,
           "timeString": "20/2/2026, 22.06.18",
           "username": "Ameliadr475@gmail.com"
+        },
+        {
+          "type": "RIGHT_CLICK",
+          "description": "Klik kanan diblokir",
+          "timestamp": 1771599983525,
+          "timeString": "20/2/2026, 22.06.23",
+          "username": "Ameliadr475@gmail.com"
         }
       ],
       "userViolations": {
@@ -678,6 +685,13 @@
             "description": "Tab/window tidak fokus lebih dari 30 detik",
             "timestamp": 1771599978441,
             "timeString": "20/2/2026, 22.06.18",
+            "username": "Ameliadr475@gmail.com"
+          },
+          {
+            "type": "RIGHT_CLICK",
+            "description": "Klik kanan diblokir",
+            "timestamp": 1771599983525,
+            "timeString": "20/2/2026, 22.06.23",
             "username": "Ameliadr475@gmail.com"
           }
         ],
