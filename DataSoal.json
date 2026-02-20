@@ -394,6 +394,24 @@
         "showAnswerKeyToUser": false
       },
       "updatedAt": 1771595143880
+    },
+    {
+      "id": "exam_1771595155151",
+      "title": "Bahasa inggris ajah",
+      "description": "Yiia yang inggris inggris aja",
+      "totalQuestions": 15,
+      "duration": 1800,
+      "startTime": null,
+      "endTime": null,
+      "questions": [],
+      "status": "scheduled",
+      "readyUsers": [],
+      "joinedUsers": [],
+      "resultSettings": {
+        "showCorrectnessToUser": true,
+        "showExplanationToUser": true,
+        "showAnswerKeyToUser": false
+      }
     }
   ]
 }
