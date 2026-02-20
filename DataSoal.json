@@ -724,6 +724,13 @@
           "timestamp": 1771600476149,
           "timeString": "20/2/2026, 22.14.36",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "INACTIVITY",
+          "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+          "timestamp": 1771600482319,
+          "timeString": "20/2/2026, 23.14.42",
+          "username": "xaviero"
         }
       ],
       "userViolations": {
@@ -1216,6 +1223,13 @@
             "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
             "timestamp": 1771600192352,
             "timeString": "20/2/2026, 23.09.52",
+            "username": "xaviero"
+          },
+          {
+            "type": "INACTIVITY",
+            "description": "Tidak ada aktivitas mouse/keyboard selama 2 menit",
+            "timestamp": 1771600482319,
+            "timeString": "20/2/2026, 23.14.42",
             "username": "xaviero"
           }
         ]
