@@ -324,6 +324,13 @@
           "timestamp": 1771599746010,
           "timeString": "20/2/2026, 22.02.26",
           "username": "Apip 76 apel"
+        },
+        {
+          "type": "EXTENDED_TAB_SWITCH",
+          "description": "Tab/window tidak fokus lebih dari 30 detik",
+          "timestamp": 1771599752145,
+          "timeString": "20/2/2026, 22.02.32",
+          "username": "Apip 76 apel"
         }
       ],
       "userViolations": {
@@ -409,6 +416,13 @@
             "description": "Fokus window hilang - kemungkinan membuka aplikasi/situs lain",
             "timestamp": 1771599746010,
             "timeString": "20/2/2026, 22.02.26",
+            "username": "Apip 76 apel"
+          },
+          {
+            "type": "EXTENDED_TAB_SWITCH",
+            "description": "Tab/window tidak fokus lebih dari 30 detik",
+            "timestamp": 1771599752145,
+            "timeString": "20/2/2026, 22.02.32",
             "username": "Apip 76 apel"
           }
         ]
