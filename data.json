@@ -1,2 +1,11 @@
 {
+  "data_user": [
+    {
+      "id": "user_1771693570046",
+      "username": "tesuser",
+      "password": "tesuser",
+      "role": "user",
+      "avatar": null
+    }
+  ]
 }
