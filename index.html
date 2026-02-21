@@ -1,0 +1,4128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamNtahlahCik - Sistem Ujian Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+    :root {
+        --primary-color: #4A55A2;
+        --accent-color: #6b8cff;
+        --accent-color-light: #8bd3ff;
+        --background-gradient: linear-gradient(170deg, #F3F6FB 0%, #E8F0F9 100%);
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --text-color: #1a202c;
+        --text-color-muted: #5a647e;
+        --border-color: #e2e8f0;
+        --error-color: #e53e3e;
+        --success-color: #38a169;
+        --warning-color: #d69e2e;
+        --border-radius-lg: 16px;
+        --border-radius-md: 12px;
+        --shadow-lg: 0 20px 40px -10px rgba(74, 85, 162, 0.15);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-focus: 0 0 0 4px rgba(107, 140, 255, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; }
+    
+    body {
+        min-height: 100vh;
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--background-gradient);
+        background-attachment: fixed;
+        color: var(--text-color);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: clamp(1rem, 5vw, 3rem);
+    }
+
+    .section { display: none; }
+    .section.active { display: block; animation: fadeIn 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+    .main-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .logo {
+        width: 60px; height: 60px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-color-light));
+        display: flex; align-items: center; justify-content: center;
+        color: white; font-weight: 700; font-size: 1.8rem;
+        box-shadow: 0 10px 25px -5px rgba(107, 140, 255, 0.3);
+        flex-shrink: 0;
+    }
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
+        display: block;
+    }
+    .title h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); color: var(--primary-color); line-height: 1.2; }
+    .title p { color: var(--text-color-muted); font-size: clamp(0.9rem, 2vw, 1rem); }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: clamp(1.5rem, 5vw, 3rem);
+        margin-bottom: 2.5rem;
+        border: 1px solid white;
+        backdrop-filter: blur(10px);
+    }
+
+    .form-group { margin-bottom: 2rem; }
+    .form-group .label { display: block; font-weight: 600; margin-bottom: 0.75rem; font-size: 1rem; }
+    .form-group .small { font-size: 0.85rem; color: var(--text-color-muted); font-weight: 400; margin-top: -0.5rem; margin-bottom: 0.75rem; }
+    
+    .form-control {
+        width: 100%; padding: 0.8rem 1.1rem;
+        border-radius: var(--border-radius-md);
+        border: 1px solid var(--border-color);
+        background: #fff; font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus { outline: none; border-color: var(--accent-color); box-shadow: var(--shadow-focus); }
+    textarea.form-control { min-height: 150px; resize: vertical; }
+
+    .btn { 
+        display: inline-block; width: 100%; padding: 0.9rem 1.5rem; font-size: 1rem; font-weight: 600; 
+        color: white; background: linear-gradient(95deg, var(--accent-color), var(--accent-color-light)); 
+        border: none; border-radius: var(--border-radius-md); cursor: pointer; text-align: center; 
+        text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    }
+    .btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .btn:disabled { background: #adb5bd; cursor: not-allowed; opacity: 0.7; }
+    .btn-secondary { background: linear-gradient(95deg, var(--text-color-muted), #8b949e); }
+    .btn-danger { background: linear-gradient(95deg, var(--error-color), #fc8181); }
+
+    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .checkbox-tile input { display: none; }
+    .checkbox-tile label { 
+        display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; 
+        padding: 1rem; border: 2px solid var(--border-color); border-radius: var(--border-radius-md); 
+        cursor: pointer; text-align: center; font-weight: 500; background-color: #fff; transition: all 0.25s ease; 
+    }
+    .checkbox-tile label:hover { border-color: var(--primary-color); }
+    .checkbox-tile input:checked + label { 
+        border-color: var(--accent-color); color: var(--accent-color); font-weight: 600; 
+        box-shadow: 0 8px 20px -5px rgba(107, 140, 255, 0.2); transform: translateY(-5px); 
+    }
+
+    .timer-container { 
+        position: sticky; top: 1.5rem; z-index: 1000; 
+        background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); 
+        padding: 0.8rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 600; 
+        color: var(--primary-color); border: 1px solid white; box-shadow: var(--shadow-md); 
+        border-radius: var(--border-radius-lg); margin-bottom: 2rem; 
+    }
+    .timer-container.ending { color: var(--error-color); animation: pulse 1s infinite ease-in-out; }
+    @keyframes pulse { 50% { transform: scale(1.02); } }
+
+    .question-card { border-left: 6px solid var(--accent-color); overflow: hidden; }
+    .question-text { font-weight: 600; font-size: 1.2rem; margin-bottom: 1.5rem; line-height: 1.7; }
+    .options-container { display: flex; flex-direction: column; gap: 0.75rem; }
+    .exam-option { 
+        border-radius: var(--border-radius-md); border: 2px solid var(--border-color); 
+        transition: all 0.2s ease; background-color: #fff; 
+    }
+    .exam-option:hover { border-color: var(--primary-color); transform: translateX(5px); }
+    .exam-option input { display: none; }
+    .exam-option label { 
+        display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; cursor: pointer; 
+    }
+    .exam-option .control { 
+        width: 24px; height: 24px; border: 2px solid #ced4da; flex-shrink: 0; margin-top: 0.1rem; 
+        display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s ease; 
+    }
+    input[type="radio"] + label .control { border-radius: 50%; }
+    input[type="checkbox"] + label .control { border-radius: 7px; }
+    input:checked + label .control { 
+        background: linear-gradient(95deg, var(--accent-color), var(--accent-color-light)); 
+        border-color: transparent; color: white; 
+    }
+    input:checked + label .control::after { content: '✔'; font-size: 15px; }
+    .exam-option .option-text { flex-grow: 1; }
+    .exam-option .option-prefix { font-weight: 700; color: var(--primary-color); }
+    .exam-option:has(input:checked) { border-color: var(--accent-color); background-color: #f7f9ff; }
+
+    .result-card { border-left: 6px solid var(--accent-color); }
+    .result-card.correct { border-left-color: var(--success-color); }
+    .result-card.incorrect { border-left-color: var(--error-color); }
+    .status-badge { 
+        font-weight: 600; padding: 0.25rem 0.8rem; border-radius: 20px; color: white; font-size: 0.9rem; 
+    }
+    .status-badge.correct { background-color: var(--success-color); }
+    .status-badge.incorrect { background-color: var(--error-color); }
+
+    .pembahasan { 
+        background-color: #F7F9FF; border: 1px solid var(--border-color); padding: 1.25rem; 
+        margin-top: 1.5rem; border-radius: var(--border-radius-md); font-size: 0.95rem; 
+    }
+
+    .admin-panel { display: grid; grid-template-columns: 250px 1fr; gap: 2rem; }
+    .admin-sidebar { background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius-lg); height: fit-content; }
+    .admin-sidebar button { width: 100%; margin-bottom: 0.5rem; padding: 0.75rem; text-align: left; }
+    .admin-content { background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius-lg); }
+
+    .question-editor { margin-bottom: 2rem; padding: 1.5rem; border: 2px dashed var(--border-color); border-radius: var(--border-radius-md); }
+    .question-list-item { padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); margin-bottom: 1rem; }
+    .question-list-item h4 { margin-bottom: 0.5rem; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius-md); text-align: center; }
+    .stat-card .stat-value { font-size: 2rem; font-weight: 700; color: var(--accent-color); }
+    .stat-card .stat-label { color: var(--text-color-muted); font-size: 0.9rem; }
+
+    .user-list-item { padding: 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .user-list-item .user-info { flex-grow: 1; }
+    .user-list-item .user-actions { display: flex; gap: 0.5rem; }
+
+    .loading-overlay { 
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+        background: rgba(0, 0, 0, 0.5); display: none; align-items: center; 
+        justify-content: center; z-index: 10000; 
+    }
+    .loading-overlay.active { display: flex; }
+    .spinner { width: 60px; height: 60px; border-radius: 50%; background: conic-gradient(var(--accent-color), transparent); animation: spin 1.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .toast-container { 
+        position: fixed; top: 20px; right: 20px; z-index: 10001; 
+        display: flex; flex-direction: column; gap: 0.5rem; 
+    }
+    .toast { 
+        padding: 1rem 1.5rem; background: var(--card-bg); border-radius: var(--border-radius-md); 
+        box-shadow: var(--shadow-lg); min-width: 300px; animation: slideInRight 0.3s ease; 
+    }
+    .toast.success { border-left: 4px solid var(--success-color); }
+    .toast.error { border-left: 4px solid var(--error-color); }
+    .toast.info { border-left: 4px solid var(--accent-color); }
+    @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+    .violation-warning {
+        position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+        max-width: min(320px, 90vw); padding: 0.6rem 1rem; font-size: 0.85rem;
+        border-radius: var(--border-radius-md); z-index: 10002;
+        font-weight: 600; box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+        animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from { transform: translateX(-50%) translateY(20px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+    @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+
+    .violation-counter {
+        position: fixed; bottom: 16px; right: 16px; background: rgba(229, 62, 62, 0.95);
+        color: white; padding: 0.5rem 1rem; border-radius: var(--border-radius-md);
+        font-size: 0.85rem; font-weight: 600; z-index: 10001; box-shadow: var(--shadow-lg);
+    }
+
+    .violation-log-item {
+        padding: 0.75rem; border-left: 4px solid var(--error-color);
+        background: #fff5f5; margin-bottom: 0.5rem; border-radius: var(--border-radius-md);
+        font-size: 0.9rem;
+    }
+
+    .violation-log-item .time { color: var(--text-color-muted); font-size: 0.85rem; }
+
+
+    .excel-export-btn {
+        background: linear-gradient(95deg, #38a169, #48bb78);
+        margin-top: 1rem;
+    }
+
+    .excel-export-btn:hover {
+        background: linear-gradient(95deg, #2f855a, #38a169);
+    }
+
+    /* Question Editor Enhancements */
+    .math-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.75rem 0;
+    }
+    .mini-btn {
+        width: auto;
+        padding: 0.45rem 0.75rem;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        background: white;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--primary-color);
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .mini-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent-color); }
+    .mini-btn.active { background: #f0f9ff; border-color: var(--accent-color); }
+
+    .editor-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .preview-box {
+        background: #fff;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-md);
+        padding: 1rem;
+        min-height: 150px;
+        overflow: auto;
+    }
+    @media (max-width: 992px) {
+        .editor-split { grid-template-columns: 1fr; }
+    }
+
+    .option-row {
+        display: grid;
+        grid-template-columns: 42px 1fr auto;
+        gap: 0.75rem;
+        align-items: start;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-md);
+        background: #fff;
+        margin-bottom: 0.75rem;
+    }
+    .option-letter {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        background: #f7f9ff;
+        color: var(--primary-color);
+        border: 1px solid var(--border-color);
+    }
+    .option-actions {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    .img-preview {
+        margin-top: 0.5rem;
+        max-width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    @media (max-width: 600px) {
+        .option-row {
+            grid-template-columns: 1fr;
+        }
+        .option-actions {
+            justify-content: flex-start;
+        }
+        .option-letter {
+            width: 100%;
+            height: 40px;
+        }
+    }
+
+    .real-time-indicator {
+        display: inline-block; width: 10px; height: 10px;
+        background: var(--success-color); border-radius: 50%;
+        margin-right: 0.5rem; animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .analysis-card {
+        background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius-md);
+        margin-bottom: 1rem; border-left: 4px solid var(--accent-color);
+    }
+
+    @media (max-width: 992px) {
+        .admin-panel { grid-template-columns: 1fr; }
+        .violation-counter { bottom: 12px; right: 12px; font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header class="main-header">
+        <div class="logo">
+            <img src="img/logo.jpeg" alt="ExamNtahlahCik Logo" onerror="this.parentElement.textContent='E'">
+        </div>
+        <div class="title">
+            <h1>ExamNtahlahCik</h1>
+            <p>Sistem Ujian Profesional</p>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section id="login-section" class="section active">
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Masuk ke Sistem</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="label">Username</label>
+                    <input type="text" id="login-username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="label">Password</label>
+                    <input type="password" id="login-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="user-type" value="user" checked> Peserta Ujian
+                    </label>
+                    <label style="margin-left: 2rem;">
+                        <input type="radio" name="user-type" value="admin"> Admin
+                    </label>
+                </div>
+                <button type="submit" class="btn">Masuk</button>
+                <button type="button" class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="showSection('register-section')">
+                    Create New Account
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register-section" class="section">
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Buat Akun Baru</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label class="label">Username</label>
+                    <input type="text" id="register-username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="label">Password</label>
+                    <input type="password" id="register-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="label">Tipe Akun</label>
+                    <div style="display:flex; gap: 1.5rem; align-items:center; flex-wrap:wrap;">
+                        <label>
+                            <input type="radio" name="register-user-type" value="user" checked> Peserta Ujian
+                        </label>
+                        <label>
+                            <input type="radio" name="register-user-type" value="admin"> Admin
+                        </label>
+                    </div>
+                    <small class="small">Catatan: Pembuatan akun Admin memerlukan passcode.</small>
+                </div>
+                <div class="form-group" id="admin-passcode-group" style="display:none;">
+                    <label class="label">Passcode Admin</label>
+                    <input type="password" id="admin-passcode" class="form-control" placeholder="Masukkan passcode admin">
+                </div>
+                <button type="submit" class="btn">Daftar</button>
+                <button type="button" class="btn btn-secondary" style="margin-top: 0.75rem;" onclick="showSection('login-section')">
+                    Kembali ke Login
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Admin Panel Section -->
+    <section id="admin-section" class="section">
+        <div class="admin-panel">
+            <div class="admin-sidebar">
+                <h3 style="margin-bottom: 1rem;">Menu Admin</h3>
+                <button class="btn btn-secondary" onclick="showAdminView('create-exam')">Buat Ujian</button>
+                <button class="btn btn-secondary" onclick="showAdminView('manage-questions')">Kelola Soal</button>
+                <button class="btn btn-secondary" onclick="showAdminView('start-control')">Kontrol Mulai Ujian</button>
+                <button class="btn btn-secondary" onclick="showAdminView('view-results')">Lihat Hasil</button>
+                <button class="btn btn-secondary" onclick="showAdminView('monitor')">Monitor Real-time</button>
+                <button class="btn btn-secondary" onclick="showAdminView('violations')">Log Pelanggaran</button>
+                <button class="btn btn-secondary" onclick="showAdminView('dashboard')">Dashboard Analisis</button>
+                <button class="btn btn-secondary" onclick="showAdminView('review-answers')">Review Jawaban</button>
+                <button class="btn btn-danger" onclick="logout()">Keluar</button>
+            </div>
+            <div class="admin-content" id="admin-content">
+                <div id="create-exam-view">
+                    <h2 style="margin-bottom: 2rem;">Buat Ujian Baru</h2>
+                    <form id="create-exam-form">
+                        <div class="form-group">
+                            <label class="label">Judul Ujian</label>
+                            <input type="text" id="exam-title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Deskripsi</label>
+                            <textarea id="exam-description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Durasi Ujian</label>
+                            <div style="display: flex; gap: 1rem;">
+                                <input type="number" id="exam-hours" class="form-control" placeholder="Jam" min="0" max="23" value="0" style="width: 100px;">
+                                <input type="number" id="exam-minutes" class="form-control" placeholder="Menit" min="0" max="59" value="30" style="width: 100px;">
+                                <input type="number" id="exam-seconds" class="form-control" placeholder="Detik" min="0" max="59" value="0" style="width: 100px;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Jumlah Soal</label>
+                            <input type="number" id="exam-total-questions" class="form-control" min="1" value="10" required>
+                        </div>
+                        <button type="submit" class="btn">Buat Ujian</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Exam List Section -->
+    <section id="user-exam-list-section" class="section">
+        <div class="card">
+            <h2 style="margin-bottom: 1.5rem;">Pilih Ujian</h2>
+            <p style="color: var(--text-color-muted); margin-bottom: 1.5rem;">Pilih ujian yang tersedia. Status akan otomatis ter-update.</p>
+            <div id="user-exam-list"></div>
+            <div style="display:flex; gap: 0.75rem; flex-wrap:wrap; margin-top: 1.25rem;">
+                <button class="btn btn-secondary" style="max-width: 260px;" onclick="showUserExamList(true)">Refresh</button>
+                <button class="btn btn-danger" style="max-width: 260px;" onclick="logout()">Keluar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waiting Room Section -->
+    <section id="waiting-room-section" class="section">
+        <div class="card">
+            <h2 id="waiting-exam-title" style="margin-bottom: 1rem;"></h2>
+            <p id="waiting-exam-desc" style="color: var(--text-color-muted); margin-bottom: 2rem;"></p>
+            <div style="text-align: center; padding: 2rem; background: #f0f9ff; border-radius: var(--border-radius-lg); margin-bottom: 2rem;">
+                <div class="spinner" style="margin: 0 auto 1.5rem;"></div>
+                <h3 style="margin-bottom: 0.5rem;">Menunggu Admin Memulai Ujian</h3>
+                <p style="color: var(--text-color-muted); margin-bottom: 2rem;">Ujian akan dimulai serentak ketika admin menekan tombol "Mulai Ujian"</p>
+                <button type="button" class="btn" id="btn-ready" onclick="markUserReady()" style="max-width: 300px; margin: 0 auto;">
+                    ✓ Saya Siap
+                </button>
+                <div id="ready-status" style="margin-top: 1rem; font-weight: 600; color: var(--success-color); display: none;">
+                    ✓ Anda telah menandai siap
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <p style="color: var(--text-color-muted); font-size: 0.9rem;">Halaman akan otomatis memuat ujian ketika admin memulai</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Exam Section -->
+    <section id="exam-section" class="section">
+        <div id="violation-warning" class="violation-warning" style="display: none;">
+            ⚠️ PERINGATAN: Tindakan tidak wajar terdeteksi! Poin akan dikurangi.
+        </div>
+        <div id="violation-counter" class="violation-counter" style="display: none;">
+            Pelanggaran: <span id="violation-count">0</span> (-<span id="violation-points">0</span> poin)
+        </div>
+        <div id="timer-container" class="timer-container">
+            Sisa Waktu: <span id="timer">00:00:00</span>
+        </div>
+        <div id="progress-indicator" class="card" style="margin-bottom: 1rem; padding: 1rem; background: var(--accent-color-light);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <strong>Progress:</strong>
+                <span id="progress-text">0/0 soal terjawab</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: var(--border-color); border-radius: 4px; overflow: hidden;">
+                <div id="progress-bar" style="height: 100%; background: var(--primary-color); width: 0%; transition: width 0.3s ease;"></div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 id="exam-title-display" style="margin-bottom: 2rem;"></h2>
+            <form id="quiz-form">
+                <div id="questions-container" style="display:flex; flex-direction:column; gap: 2rem;"></div>
+                <button type="submit" class="btn" style="margin-top: 2.5rem;">Selesai & Kumpulkan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="result-section" class="section">
+        <div class="card">
+            <h2 style="margin-bottom: 2rem;">Hasil Ujian</h2>
+            <div id="results-container"></div>
+            <button class="btn" onclick="logout()" style="margin-top: 2rem;">Kembali ke Login</button>
+        </div>
+    </section>
+</div>
+
+<div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Exam stopped modal -->
+<div class="loading-overlay" id="exam-stopped-overlay" style="display:none; background: rgba(0,0,0,0.6);">
+    <div class="card" style="max-width: 640px; margin: 1rem; text-align:center;">
+        <h2 style="margin-bottom: 0.75rem; color: var(--error-color);">Ujian Dihentikan</h2>
+        <p id="exam-stopped-message" style="margin-bottom: 1.25rem; color: var(--text-color-muted);">Admin sedang menghentikan ujian.</p>
+        <button class="btn" style="max-width: 320px; margin: 0 auto;" onclick="logout()">Kembali ke Login</button>
+    </div>
+</div>
+
+<script>
+// Konfigurasi GitHub API
+const encryptedToken = 'U2FsdGVkX18SiiVuKvyeV5nOX9c0ahowF9pwmG4wb6ydjKQDxIzckXtOCTFbiDMDtmgzOwMTTqqMgMK8RKrPPA==';
+const secretKey = 'ExamNtahlahCik';
+const bytes = CryptoJS.AES.decrypt(encryptedToken, secretKey);
+const GITHUB_TOKEN = bytes.toString(CryptoJS.enc.Utf8);
+
+const GITHUB_OWNER = 'ntahlahcik';
+const GITHUB_REPO = 'ExamNtahlahCIk';
+
+const FILE_PATHS = {
+    users: 'User.json',
+    admin: 'Admin.json',
+    examData: 'DataSoal.json'
+};
+
+// Passcode untuk membuat akun admin
+const ADMIN_CREATION_PASSCODE = 'Ntahlahcik67#$&niega';
+
+let currentUser = null;
+let currentExam = null;
+let lastCreatedExamId = null;
+let timerInterval = null;
+let serverTimeSync = null;
+let remainingSeconds = 0;
+
+// Anti-Cheating System
+let violations = [];
+let violationCount = 0;
+let isExamActive = false;
+let lastFocusTime = Date.now();
+let violationCheckInterval = null;
+let mouseActivity = true;
+let keyboardActivity = true;
+let lastActivityTime = Date.now();
+
+// Anti-Cheating Detection System - Fokus: copy, paste, inspect, dev tools. TIDAK: diam, ngetik, tab switch
+const WARNING_ONLY_TYPES = [];
+const VIOLATION_POPUP_COOLDOWN_MS = 15000; // Cooldown 15 detik antar popup agar tidak mengganggu
+let lastViolationPopupTime = 0;
+
+function recordViolation(type, description, isWarningOnly = false) {
+    if (!isExamActive) return;
+    
+    const isWarning = isWarningOnly || WARNING_ONLY_TYPES.includes(type);
+    if (!isWarning) violationCount++;
+    
+    const violation = {
+        type,
+        description,
+        timestamp: Date.now(),
+        timeString: new Date().toLocaleString('id-ID'),
+        username: currentUser?.username || 'Unknown',
+        isWarning: isWarning
+    };
+    
+    violations.push(violation);
+    
+    // Update UI - dengan cooldown agar tidak mengganggu
+    const warningEl = document.getElementById('violation-warning');
+    const counterEl = document.getElementById('violation-counter');
+    const countEl = document.getElementById('violation-count');
+    const pointsEl = document.getElementById('violation-points');
+    
+    const now = Date.now();
+    const canShowPopup = (now - lastViolationPopupTime) >= VIOLATION_POPUP_COOLDOWN_MS;
+    if (warningEl && canShowPopup && !isWarning) {
+        lastViolationPopupTime = now;
+        warningEl.style.display = 'block';
+        warningEl.textContent = `⚠️ ${description}`;
+        warningEl.style.background = 'var(--error-color)';
+        setTimeout(() => { warningEl.style.display = 'none'; }, 3000);
+    }
+    
+    if (counterEl && countEl && pointsEl && !isWarning) {
+        counterEl.style.display = 'block';
+        countEl.textContent = violationCount;
+        pointsEl.textContent = violationCount;
+    }
+    
+    // Report to admin immediately
+    reportViolationToAdmin(violation);
+    
+    if (isWarning) {
+        showToast(`Peringatan: ${description}`, 'warning');
+    } else {
+    showToast(`Pelanggaran terdeteksi: ${description}. Poin dikurangi -1.`, 'error');
+    }
+}
+
+function reportViolationToAdmin(violation) {
+    // Save violation to exam data for admin to see
+    if (!currentExam) return;
+    
+    const examDataPromise = readFile('examData').then(examData => {
+        if (!examData) return;
+        const exam = examData.exams.find(e => e.id === currentExam.id);
+        if (!exam) return;
+        
+        exam.violations = exam.violations || [];
+        exam.violations.push(violation);
+        
+        // Update user's violation count
+        exam.userViolations = exam.userViolations || {};
+        exam.userViolations[currentUser.username] = exam.userViolations[currentUser.username] || [];
+        exam.userViolations[currentUser.username].push(violation);
+        
+        updateFile('examData', examData);
+    });
+}
+
+function initializeAntiCheating() {
+    if (!isExamActive) return;
+    
+    // Tab/Blur: TIDAK rekam pelanggaran - user bisa switch tab untuk notifikasi dll. Fokus anti-cheat: copy, paste, inspect
+    document.addEventListener('visibilitychange', () => { lastFocusTime = Date.now(); });
+    window.addEventListener('focus', () => { lastFocusTime = Date.now(); });
+    
+    // Prevent right-click context menu
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        recordViolation('RIGHT_CLICK', 'Klik kanan diblokir');
+        return false;
+    });
+    
+    // Keyboard shortcut blocking - JANGAN ganggu saat user ngetik di input/textarea
+    document.addEventListener('keydown', (e) => {
+        const isTypingField = e.target && (e.target.matches('input, textarea') || e.target.isContentEditable);
+        // Saat ngetik di jawaban: hanya blokir dev tools (F12, Ctrl+Shift+I/J), biarkan Ctrl+A dll untuk editing
+        const devToolsShortcuts = [
+            { key: 'F12' },
+            { ctrl: true, shift: true, key: 'I' },
+            { ctrl: true, shift: true, key: 'J' },
+            { ctrl: true, key: 'U' }
+        ];
+        const allBlockedShortcuts = [
+            ...devToolsShortcuts,
+            { ctrl: true, key: 'S' }, { ctrl: true, key: 'P' },
+            { ctrl: true, key: 'C' }, { ctrl: true, key: 'V' },
+            { ctrl: true, key: 'A' }, { ctrl: true, key: 'X' },
+            { ctrl: true, key: 'F' }, { ctrl: true, key: 'H' },
+            { meta: true, key: 'C' }, { meta: true, key: 'V' }
+        ];
+        const shortcutsToCheck = isTypingField ? devToolsShortcuts : allBlockedShortcuts;
+        
+        const isBlocked = shortcutsToCheck.some(shortcut => {
+            if (shortcut.key && e.key !== shortcut.key) return false;
+            if (shortcut.ctrl && !e.ctrlKey) return false;
+            if (shortcut.shift && !e.shiftKey) return false;
+            if (shortcut.meta && !e.metaKey) return false;
+            return true;
+        });
+        
+        if (isBlocked) {
+            e.preventDefault();
+            recordViolation('KEYBOARD_SHORTCUT', `Shortcut diblokir: ${e.ctrlKey ? 'Ctrl+' : ''}${e.metaKey ? 'Cmd+' : ''}${e.shiftKey ? 'Shift+' : ''}${e.key}`);
+            return false;
+        }
+        
+        keyboardActivity = true;
+        lastActivityTime = Date.now();
+    });
+    
+    document.addEventListener('mousemove', () => { mouseActivity = true; lastActivityTime = Date.now(); });
+    document.addEventListener('click', () => { mouseActivity = true; lastActivityTime = Date.now(); });
+    
+    // Detect copy-paste attempts
+    document.addEventListener('copy', (e) => {
+        e.preventDefault();
+        recordViolation('COPY_ATTEMPT', 'Mencoba menyalin teks dari halaman');
+        return false;
+    });
+    
+    document.addEventListener('paste', (e) => {
+        e.preventDefault();
+        recordViolation('PASTE_ATTEMPT', 'Mencoba menempelkan teks ke halaman');
+        return false;
+    });
+    
+    document.addEventListener('cut', (e) => {
+        e.preventDefault();
+        recordViolation('CUT_ATTEMPT', 'Mencoba memotong teks dari halaman');
+        return false;
+    });
+    
+    // Detect clipboard access attempts
+    if (navigator.clipboard) {
+        const originalRead = navigator.clipboard.readText;
+        navigator.clipboard.readText = function() {
+            recordViolation('CLIPBOARD_ACCESS', 'Mencoba mengakses clipboard');
+            return Promise.reject('Clipboard access blocked');
+        };
+    }
+    
+    // Simpan state ujian saat keluar (accidental close) - bisa continue nanti. Jangan rekam pelanggaran.
+    window.addEventListener('beforeunload', (e) => {
+        if (isExamActive && currentExam) {
+            saveExamStateToStorage();
+            e.preventDefault();
+            e.returnValue = '';
+        }
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden && isExamActive && currentExam) saveExamStateToStorage();
+    });
+    
+    // Detect Print Screen attempts (limited detection)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'PrintScreen' || (e.key === 'F13' && e.shiftKey)) {
+            e.preventDefault();
+            recordViolation('PRINT_SCREEN', 'Mencoba mengambil screenshot');
+            return false;
+        }
+    });
+    
+    // Detect developer tools (advanced)
+    let devToolsOpen = false;
+    const detectDevTools = setInterval(() => {
+        if (isExamActive) {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            if (widthThreshold || heightThreshold) {
+                if (!devToolsOpen) {
+                    devToolsOpen = true;
+                    recordViolation('DEV_TOOLS', 'Developer tools terdeteksi terbuka');
+                }
+            } else {
+                devToolsOpen = false;
+            }
+        } else {
+            clearInterval(detectDevTools);
+        }
+    }, 1000);
+    
+    // TIDAK ada pelanggaran untuk diam/inactivity - user butuh waktu mikir
+    // TIDAK ada pelanggaran untuk tab switch - bisa notifikasi dll
+    violationCheckInterval = null;
+}
+
+const EXAM_STATE_KEY = 'examNtahlahCik_examState';
+
+function saveExamStateToStorage() {
+    if (!currentExam || !currentUser) return;
+    const answers = captureAnswers(currentExam.questions || []);
+    const remaining = typeof remainingSeconds === 'number' ? remainingSeconds : 0;
+    try {
+        localStorage.setItem(EXAM_STATE_KEY, JSON.stringify({
+            examId: currentExam.id,
+            username: currentUser.username,
+            answers,
+            savedAt: Date.now(),
+            remainingSeconds: remaining
+        }));
+    } catch (e) {}
+}
+
+function restoreExamStateFromStorage() {
+    try {
+        const raw = localStorage.getItem(EXAM_STATE_KEY);
+        if (!raw) return null;
+        const state = JSON.parse(raw);
+        if (!state.examId || !state.username) return null;
+        if (state.savedAt && Date.now() - state.savedAt > 86400000) { localStorage.removeItem(EXAM_STATE_KEY); return null; }
+        return state;
+    } catch (e) { return null; }
+}
+
+function clearExamStateFromStorage() {
+    try { localStorage.removeItem(EXAM_STATE_KEY); } catch (e) {}
+}
+
+function stopAntiCheating() {
+    isExamActive = false;
+    if (violationCheckInterval) {
+        clearInterval(violationCheckInterval);
+        violationCheckInterval = null;
+    }
+    
+    const warningEl = document.getElementById('violation-warning');
+    const counterEl = document.getElementById('violation-counter');
+    if (warningEl) warningEl.style.display = 'none';
+    if (counterEl) counterEl.style.display = 'none';
+}
+
+// Utility Functions - Jangan tampilkan loading saat user mengerjakan ujian (mengganggu)
+function showLoading(show) {
+    if (show && isExamActive && document.getElementById('exam-section')?.classList.contains('active')) return;
+    document.getElementById('loading-overlay').classList.toggle('active', show);
+}
+
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+}
+
+function normalizeUsername(username) {
+    return (username || '').trim();
+}
+
+function validateUsernamePassword(username, password) {
+    if (!username || !password) {
+        showToast('Username dan password harus diisi', 'error');
+        return false;
+    }
+    if (username.length < 3) {
+        showToast('Username minimal 3 karakter', 'error');
+        return false;
+    }
+    if (password.length < 4) {
+        showToast('Password minimal 4 karakter', 'error');
+        return false;
+    }
+    return true;
+}
+
+// ===== Question Editor Helpers (LaTeX, Image, Answer Checking) =====
+function insertAtCursor(textarea, insertText) {
+    if (!textarea) return;
+    const start = textarea.selectionStart ?? textarea.value.length;
+    const end = textarea.selectionEnd ?? textarea.value.length;
+    textarea.value = textarea.value.slice(0, start) + insertText + textarea.value.slice(end);
+    const newPos = start + insertText.length;
+    textarea.selectionStart = textarea.selectionEnd = newPos;
+    textarea.focus();
+    textarea.dispatchEvent(new Event('input'));
+}
+
+function setupMathToolbar(toolbarEl, textareaEl) {
+    if (!toolbarEl || !textareaEl) return;
+    toolbarEl.querySelectorAll('[data-insert]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            insertAtCursor(textareaEl, btn.getAttribute('data-insert') || '');
+        });
+    });
+}
+
+function debounce(fn, wait = 250) {
+    let t = null;
+    return (...args) => {
+        if (t) clearTimeout(t);
+        t = setTimeout(() => fn(...args), wait);
+    };
+}
+
+function escapeHtml(s) {
+    return (s ?? '').toString()
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function reconcileExamStatuses(examData) {
+    if (!examData || !Array.isArray(examData.exams)) return false;
+    let changed = false;
+    const now = Date.now();
+    examData.exams.forEach(exam => {
+        if (exam.status === 'active' && exam.endTime && now >= exam.endTime) {
+            exam.status = 'completed';
+            exam.completedAt = now;
+            changed = true;
+        }
+    });
+    return changed;
+}
+
+function showExamStoppedPopup(message) {
+    stopAntiCheating();
+    if (timerInterval) clearInterval(timerInterval);
+    if (serverTimeSync) clearInterval(serverTimeSync);
+    const overlay = document.getElementById('exam-stopped-overlay');
+    const msgEl = document.getElementById('exam-stopped-message');
+    if (msgEl) msgEl.textContent = message || 'Admin sedang menghentikan ujian.';
+    if (overlay) {
+        overlay.style.display = 'flex';
+        overlay.classList.add('active');
+    }
+}
+
+function captureAnswers(questions) {
+    const answers = {};
+    (questions || []).forEach((q, idx) => {
+        if (q.type === 'Checklist') {
+            const selected = Array.from(document.querySelectorAll(`input[name="question_${idx}"]:checked`)).map(el => el.value);
+            answers[idx] = selected;
+        } else if (q.type === 'Isian Singkat' || q.type === 'Esai') {
+            answers[idx] = document.getElementById(`answer_${idx}`)?.value ?? '';
+        } else {
+            answers[idx] = document.querySelector(`input[name="question_${idx}"]:checked`)?.value ?? null;
+        }
+    });
+    return answers;
+}
+
+function restoreAnswers(answersByIndex) {
+    if (!answersByIndex) return;
+    Object.keys(answersByIndex).forEach((k) => {
+        const idx = Number(k);
+        const val = answersByIndex[k];
+        if (Array.isArray(val)) {
+            val.forEach(letter => {
+                const el = document.querySelector(`input[name="question_${idx}"][value="${letter}"]`);
+                if (el) el.checked = true;
+            });
+        } else if (typeof val === 'string' && document.getElementById(`answer_${idx}`)) {
+            document.getElementById(`answer_${idx}`).value = val;
+        } else if (val) {
+            const el = document.querySelector(`input[name="question_${idx}"][value="${val}"]`);
+            if (el) el.checked = true;
+        }
+    });
+}
+
+function setupLatexPreview(textareaEl, previewEl) {
+    if (!textareaEl || !previewEl) return;
+    const render = debounce(() => {
+        const val = textareaEl.value || '';
+        if (!val) {
+            previewEl.innerHTML = '<span style="color: var(--text-color-muted);">Preview akan muncul di sini…</span>';
+            return;
+        }
+        // Safety: never treat textarea text as HTML. Keep as plain text for MathJax to typeset.
+        previewEl.textContent = val;
+        if (window.MathJax) MathJax.typesetPromise([previewEl]);
+    }, 250);
+    textareaEl.addEventListener('input', render);
+    textareaEl.addEventListener('paste', (e) => {
+        const text = e.clipboardData?.getData('text/plain') || '';
+        // Auto-detect LaTeX paste (contains backslash commands) and wrap into $$...$$ if not already delimited.
+        if (text && text.includes('\\') && !text.includes('$')) {
+            e.preventDefault();
+            insertAtCursor(textareaEl, `$$${text}$$`);
+            showToast('LaTeX terdeteksi dari paste. Otomatis dibungkus $$...$$ untuk preview.', 'info');
+        }
+    });
+    render();
+}
+
+function readImageAsDataUrl(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error('Gagal membaca gambar'));
+        reader.readAsDataURL(file);
+    });
+}
+
+function normalizeAnswerText(s) {
+    return (s ?? '').toString().trim().toLowerCase();
+}
+
+function arrayEqAsSet(a, b) {
+    const sa = new Set((a || []).map(String));
+    const sb = new Set((b || []).map(String));
+    if (sa.size !== sb.size) return false;
+    for (const v of sa) if (!sb.has(v)) return false;
+    return true;
+}
+
+function checkIsCorrect(q, userAnswer) {
+    if (q.correctAnswer === null || q.correctAnswer === '' || typeof q.correctAnswer === 'undefined') return true;
+
+    if (q.type === 'Checklist') {
+        return arrayEqAsSet(userAnswer || [], q.correctAnswer || []);
+    }
+
+    if (q.type === 'Isian Singkat' || q.type === 'Esai') {
+        return normalizeAnswerText(userAnswer) === normalizeAnswerText(q.correctAnswer);
+    }
+
+    // default (Pilihan Ganda, Benar/Salah)
+    return String(userAnswer ?? '') === String(q.correctAnswer ?? '');
+}
+
+async function createAccount({ username, password, role, passcode }) {
+    username = normalizeUsername(username);
+    if (!validateUsernamePassword(username, password)) return false;
+
+    if (role === 'admin') {
+        if (!passcode || passcode !== ADMIN_CREATION_PASSCODE) {
+            showToast('Passcode admin salah. Tidak bisa membuat akun admin.', 'error');
+            return false;
+        }
+
+        const adminData = await readFile('admin');
+        if (!adminData) return false;
+        adminData.admins = adminData.admins || [];
+
+        const exists = adminData.admins.some(a => (a.username || '') === username);
+        if (exists) {
+            showToast('Username admin sudah dipakai. Gunakan username lain.', 'error');
+            return false;
+        }
+
+        adminData.admins.push({ username, password, role: 'admin' });
+        const saved = await updateFile('admin', adminData);
+        if (!saved) return false;
+        showToast('Akun admin berhasil dibuat!', 'success');
+        return true;
+    }
+
+    // default: user
+    const userData = await readFile('users');
+    if (!userData) return false;
+    userData.users = userData.users || [];
+
+    const exists = userData.users.some(u => (u.username || '') === username);
+    if (exists) {
+        showToast('Username user sudah dipakai. Gunakan username lain.', 'error');
+        return false;
+    }
+
+    userData.users.push({
+        username,
+        password,
+        examsTaken: [],
+        questionNumbers: []
+    });
+
+    const saved = await updateFile('users', userData);
+    if (!saved) return false;
+    showToast('Akun user berhasil dibuat!', 'success');
+    return true;
+}
+
+function encodeContent(str) {
+    const bytes = new TextEncoder().encode(str);
+    return btoa(String.fromCharCode(...bytes));
+}
+
+function decodeContent(base64) {
+    try {
+        const binaryStr = atob(base64);
+        const bytes = new Uint8Array(binaryStr.length);
+        for (let i = 0; i < binaryStr.length; i++) {
+            bytes[i] = binaryStr.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    } catch (e) {
+        return "{}";
+    }
+}
+
+// GitHub API Functions
+let fileShas = {};
+
+async function readFile(fileKey, opts = {}) {
+    const filePath = FILE_PATHS[fileKey];
+    if (!filePath) return null;
+    
+    const silent = !!opts.silent;
+    if (!silent) showLoading(true);
+    try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`, {
+            headers: { 'Authorization': `token ${GITHUB_TOKEN}` },
+            cache: 'no-cache'
+        });
+        
+        if (!res.ok) {
+            if (res.status === 404) {
+                // Return default structure for new files
+                if (fileKey === 'users') return { users: [] };
+                if (fileKey === 'admin') return { admins: [], questions: [] };
+                if (fileKey === 'examData') return { exams: [] };
+            }
+            throw new Error(`Failed to read file: ${res.status}`);
+        }
+        
+        const data = await res.json();
+        fileShas[filePath] = data.sha;
+        
+        if (!data.content) {
+            if (fileKey === 'users') return { users: [] };
+            if (fileKey === 'admin') return { admins: [], questions: [] };
+            if (fileKey === 'examData') return { exams: [] };
+        }
+        
+        const content = decodeContent(data.content);
+        return JSON.parse(content);
+    } catch (error) {
+        console.error(`Error reading ${filePath}:`, error);
+        showToast(`Gagal membaca data: ${error.message}`, 'error');
+        return null;
+    } finally {
+        if (!silent) showLoading(false);
+    }
+}
+
+async function updateFile(fileKey, data, opts = {}) {
+    const filePath = FILE_PATHS[fileKey];
+    if (!filePath) return null;
+    
+    if (!fileShas[filePath]) {
+        await readFile(fileKey, { silent: opts.silent }); // Gunakan silent dari opts
+        if (!fileShas[filePath]) {
+            if (!opts.silent) showToast(`Tidak bisa menyimpan ${filePath}. Coba muat ulang halaman.`, 'error');
+            return null;
+        }
+    }
+    
+    const silent = !!opts.silent;
+    if (!silent) showLoading(true);
+    try {
+        const contentRaw = JSON.stringify(data, null, 2);
+        const encodedContent = encodeContent(contentRaw);
+        const body = {
+            message: `Update ${filePath}`,
+            content: encodedContent,
+            sha: fileShas[filePath]
+        };
+        
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        
+        if (!res.ok) {
+            throw new Error(`Failed to save: ${res.status}`);
+        }
+        
+        const responseData = await res.json();
+        fileShas[filePath] = responseData.content.sha;
+        return responseData;
+    } catch (error) {
+        console.error(`Error saving ${filePath}:`, error);
+        showToast(`Gagal menyimpan: ${error.message}`, 'error');
+        return null;
+    } finally {
+        if (!silent) showLoading(false);
+    }
+}
+
+// Login Handler
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = normalizeUsername(document.getElementById('login-username').value);
+    const password = document.getElementById('login-password').value;
+    const userType = document.querySelector('input[name="user-type"]:checked').value;
+    
+    if (!validateUsernamePassword(username, password)) return;
+    
+    if (userType === 'admin') {
+        const adminData = await readFile('admin');
+        if (!adminData) return;
+        
+        // Initialize admins array if it doesn't exist
+        if (!adminData.admins) {
+            adminData.admins = [];
+        }
+        
+        const admin = adminData.admins.find(a => a.username === username && a.password === password);
+        if (admin) {
+            currentUser = { ...admin, role: 'admin' };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            showAdminPanel();
+        } else {
+            showToast('Username atau password admin salah', 'error');
+        }
+    } else {
+        const userData = await readFile('users');
+        if (!userData) return;
+        
+        const user = userData.users?.find(u => u.username === username && u.password === password);
+        if (!user) {
+            showToast('Akun user tidak ditemukan / password salah. Silakan daftar dulu.', 'error');
+            return;
+        }
+        
+        currentUser = { ...user, role: 'user' };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        showUserExamList();
+    }
+});
+
+// Register Handlers
+document.querySelectorAll('input[name="register-user-type"]').forEach((el) => {
+    el.addEventListener('change', () => {
+        const role = document.querySelector('input[name="register-user-type"]:checked')?.value || 'user';
+        const group = document.getElementById('admin-passcode-group');
+        if (group) group.style.display = role === 'admin' ? 'block' : 'none';
+    });
+});
+
+document.getElementById('register-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = normalizeUsername(document.getElementById('register-username').value);
+    const password = document.getElementById('register-password').value;
+    const role = document.querySelector('input[name="register-user-type"]:checked')?.value || 'user';
+    const passcode = document.getElementById('admin-passcode')?.value || '';
+
+    const ok = await createAccount({ username, password, role, passcode });
+    if (!ok) return;
+
+    // Prefill login after successful register
+    document.getElementById('login-username').value = username;
+    document.getElementById('login-password').value = '';
+    showSection('login-section');
+});
+
+// Admin Functions
+let currentAdminView = '';
+let adminPollIntervals = [];
+
+function clearAdminPollIntervals() {
+    adminPollIntervals.forEach(id => clearInterval(id));
+    adminPollIntervals = [];
+}
+
+function showAdminPanel() {
+    showSection('admin-section');
+    showAdminView('create-exam');
+}
+
+async function showAdminView(view) {
+    currentAdminView = view;
+    clearAdminPollIntervals();
+    const content = document.getElementById('admin-content');
+    
+    if (view !== 'create-exam') {
+        showLoading(true);
+    }
+    
+    if (view === 'create-exam') {
+        content.innerHTML = `
+            <h2 style="margin-bottom: 2rem;">Buat Ujian Baru</h2>
+            <form id="create-exam-form">
+                <div class="form-group">
+                    <label class="label">Judul Ujian</label>
+                    <input type="text" id="exam-title" class="form-control" placeholder="Judul ujian">
+                </div>
+                <div class="form-group">
+                    <label class="label">Deskripsi</label>
+                    <textarea id="exam-description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="label">Tampilan Hasil untuk Peserta</label>
+                    <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                        <label style="display:flex; gap:0.6rem; align-items:center;">
+                            <input type="checkbox" id="exam-show-correctness" checked>
+                            Tampilkan status Benar/Salah ke peserta
+                        </label>
+                        <label style="display:flex; gap:0.6rem; align-items:center;">
+                            <input type="checkbox" id="exam-show-explanation" checked>
+                            Tampilkan pembahasan ke peserta
+                        </label>
+                        <label style="display:flex; gap:0.6rem; align-items:center;">
+                            <input type="checkbox" id="exam-show-answer-key">
+                            Tampilkan kunci jawaban ke peserta (tidak disarankan)
+                        </label>
+                        <small class="small">Catatan: Kunci jawaban tetap tersimpan internal untuk penilaian, walau disembunyikan dari peserta.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">Durasi Ujian</label>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="number" id="exam-hours" class="form-control" placeholder="Jam" min="0" max="23" value="0" style="width: 100px;">
+                        <input type="number" id="exam-minutes" class="form-control" placeholder="Menit" min="0" max="59" value="30" style="width: 100px;">
+                        <input type="number" id="exam-seconds" class="form-control" placeholder="Detik" min="0" max="59" value="0" style="width: 100px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">Jumlah Soal</label>
+                    <input type="number" id="exam-total-questions" class="form-control" min="1" value="10" required>
+                </div>
+                <div class="form-group">
+                    <label class="label">Maksimal Pengerjaan per User</label>
+                    <input type="number" id="exam-max-attempts" class="form-control" min="1" value="1" title="Berapa kali user boleh mengerjakan ujian ini">
+                    <small class="small">1 = sekali saja. Lebih dari 1 = user bisa kerjakan ulang.</small>
+                </div>
+                <button type="submit" class="btn">Buat Ujian</button>
+            </form>
+        `;
+        
+        document.getElementById('create-exam-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('exam-title').value;
+            const description = document.getElementById('exam-description').value;
+            const hours = parseInt(document.getElementById('exam-hours').value) || 0;
+            const minutes = parseInt(document.getElementById('exam-minutes').value) || 0;
+            const seconds = parseInt(document.getElementById('exam-seconds').value) || 0;
+            const totalQuestions = parseInt(document.getElementById('exam-total-questions').value) || 10;
+            const maxAttempts = Math.max(1, parseInt(document.getElementById('exam-max-attempts')?.value) || 1);
+            const showCorrectnessToUser = !!document.getElementById('exam-show-correctness')?.checked;
+            const showExplanationToUser = !!document.getElementById('exam-show-explanation')?.checked;
+            const showAnswerKeyToUser = !!document.getElementById('exam-show-answer-key')?.checked;
+            
+            const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+            const startTime = Date.now();
+            const endTime = startTime + (totalSeconds * 1000);
+            
+            const examData = await readFile('examData');
+            if (!examData) return;
+            
+            const titleFinal = (title || '').trim() || `Ujian ${new Date().toLocaleDateString('id-ID')}`;
+            document.getElementById('exam-title').value = titleFinal;
+
+            const newExam = {
+                id: `exam_${Date.now()}`,
+                title: titleFinal,
+                description,
+                totalQuestions,
+                duration: totalSeconds,
+                maxAttempts: maxAttempts,
+                startTime: null,
+                endTime: null,
+                questions: [],
+                status: 'scheduled',
+                readyUsers: [],
+                joinedUsers: [],
+                resultSettings: {
+                    showCorrectnessToUser,
+                    showExplanationToUser,
+                    showAnswerKeyToUser
+                }
+            };
+            
+            examData.exams = examData.exams || [];
+            examData.exams.push(newExam);
+            
+            await updateFile('examData', examData);
+            lastCreatedExamId = newExam.id;
+            currentExam = newExam;
+            showToast('Ujian berhasil dibuat! Sekarang tambahkan soal.', 'success');
+            showAdminView('manage-questions');
+        });
+    } else if (view === 'manage-questions') {
+        await loadQuestionManagement();
+    } else if (view === 'view-results') {
+        await loadResultsView();
+    } else if (view === 'monitor') {
+        await loadMonitorView();
+    } else if (view === 'start-control') {
+        await loadStartControlView();
+    } else if (view === 'violations') {
+        await loadViolationsView();
+    } else if (view === 'dashboard') {
+        await loadDashboardView();
+    } else if (view === 'review-answers') {
+        await loadReviewAnswersView();
+    }
+    if (currentAdminView === view) showLoading(false);
+}
+
+async function loadQuestionManagement() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'manage-questions') return;
+    
+    const activeExams = (examData.exams || []).filter(e => e.status === 'active' || e.status === 'scheduled');
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;">Kelola Soal</h2>
+        <div class="form-group">
+            <label class="label">Pilih Ujian</label>
+            <select id="select-exam" class="form-control">
+                <option value="">-- Pilih Ujian --</option>
+                ${activeExams.map(e => `<option value="${e.id}">${e.title}</option>`).join('')}
+            </select>
+        </div>
+        <div id="question-editor-area"></div>
+    `;
+    
+    document.getElementById('select-exam').addEventListener('change', async (e) => {
+        const examId = e.target.value;
+        if (!examId) return;
+        
+        const exam = activeExams.find(e => e.id === examId);
+        if (!exam) return;
+        
+        currentExam = exam;
+        renderQuestionEditor(exam);
+    });
+}
+
+function renderQuestionEditor(exam) {
+    const area = document.getElementById('question-editor-area');
+    area.innerHTML = `
+        <h3>Soal untuk: ${exam.title}</h3>
+        <div id="questions-list"></div>
+        <button class="btn" onclick="addNewQuestion()" style="margin-top: 1rem;">Tambah Soal Baru</button>
+    `;
+    
+    renderQuestionsList(exam.questions || []);
+}
+
+function renderQuestionsList(questions) {
+    const list = document.getElementById('questions-list');
+    if (questions.length === 0) {
+        list.innerHTML = '<p>Tidak ada soal. Klik "Tambah Soal Baru" untuk menambahkan.</p>';
+        return;
+    }
+    
+    list.innerHTML = questions.map((q, idx) => `
+        <div class="question-list-item">
+            <h4>Soal ${idx + 1}: ${q.question} ${q.image ? '<span style="color: var(--text-color-muted); font-weight: 600;">(📷)</span>' : ''}</h4>
+            <p><strong>Jenis:</strong> ${q.type}</p>
+            <p><strong>Kunci Jawaban:</strong> ${q.correctAnswer === null || q.correctAnswer === '' ? '<em>Tidak ada jawaban benar (opsional)</em>' : (Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer)}</p>
+            <div style="margin-top: 0.5rem;">
+                <button class="btn btn-secondary" onclick="editQuestion(${idx})" style="width: auto; padding: 0.5rem 1rem; margin-right: 0.5rem;">Edit</button>
+                <button class="btn btn-danger" onclick="deleteQuestion(${idx})" style="width: auto; padding: 0.5rem 1rem;">Hapus</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function addNewQuestion() {
+    const area = document.getElementById('question-editor-area');
+    const editor = document.createElement('div');
+    editor.className = 'question-editor';
+    editor.innerHTML = `
+        <h4>Tambah Soal Baru</h4>
+        <div class="form-group">
+            <label class="label">Jenis Soal</label>
+            <select id="new-question-type" class="form-control">
+                <option value="Pilihan Ganda">Pilihan Ganda</option>
+                <option value="Benar/Salah">Benar/Salah</option>
+                <option value="Checklist">Checklist (Jawaban lebih dari satu)</option>
+                <option value="Isian Singkat">Isian Singkat</option>
+                <option value="Esai">Esai</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="label">Pertanyaan (support LaTeX)</label>
+            <div class="math-toolbar" id="new-q-math-toolbar">
+                <button type="button" class="mini-btn" data-insert="$$\\frac{a}{b}$$">frac</button>
+                <button type="button" class="mini-btn" data-insert="$$\\sqrt{x}$$">sqrt</button>
+                <button type="button" class="mini-btn" data-insert="$$x^2$$">x^2</button>
+                <button type="button" class="mini-btn" data-insert="$$x_{1}$$">x_1</button>
+                <button type="button" class="mini-btn" data-insert="$$\\pi$$">pi</button>
+                <button type="button" class="mini-btn" data-insert="$$\\sum_{i=1}^{n} i$$">sum</button>
+                <button type="button" class="mini-btn" data-insert="$$\\int_a^b f(x)\\,dx$$">int</button>
+            </div>
+            <div class="editor-split">
+                <textarea id="new-question-text" class="form-control" required placeholder="Tulis soal di sini..."></textarea>
+                <div>
+                    <div class="label" style="margin-bottom: 0.5rem;">Preview</div>
+                    <div class="preview-box" id="new-question-preview"></div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+                <label class="label">Gambar Soal (opsional)</label>
+                <input type="file" id="new-question-image" class="form-control" accept="image/*">
+                <img id="new-question-image-preview" class="img-preview" style="display:none;" alt="Preview gambar soal">
+            </div>
+        </div>
+        <div id="new-question-options"></div>
+        <button class="btn" onclick="saveNewQuestion()">Simpan Soal</button>
+        <button class="btn btn-secondary" onclick="cancelNewQuestion()">Batal</button>
+    `;
+    
+    area.appendChild(editor);
+    document.getElementById('new-question-type').addEventListener('change', renderQuestionOptions);
+    setupMathToolbar(document.getElementById('new-q-math-toolbar'), document.getElementById('new-question-text'));
+    setupLatexPreview(document.getElementById('new-question-text'), document.getElementById('new-question-preview'));
+    const imgInput = document.getElementById('new-question-image');
+    const imgPreview = document.getElementById('new-question-image-preview');
+    if (imgInput && imgPreview) {
+        imgInput.addEventListener('change', async () => {
+            const file = imgInput.files?.[0];
+            if (!file) {
+                imgPreview.style.display = 'none';
+                imgPreview.src = '';
+                return;
+            }
+            try {
+                const dataUrl = await readImageAsDataUrl(file);
+                imgPreview.src = dataUrl;
+                imgPreview.style.display = 'block';
+            } catch {
+                showToast('Gagal memuat gambar', 'error');
+            }
+        });
+    }
+    renderQuestionOptions();
+}
+
+function renderQuestionOptions() {
+    const type = document.getElementById('new-question-type').value;
+    const container = document.getElementById('new-question-options');
+    
+    if (type === 'Pilihan Ganda') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Opsi Jawaban</label>
+                <small class="small">Klik tombol huruf untuk memilih kunci jawaban. Bisa kosong (opsional).</small>
+                <div id="new-options-area"></div>
+                <button type="button" class="mini-btn" onclick="addOptionRow('new-options-area','radio')">+ Tambah Opsi</button>
+                <input type="hidden" id="new-correct-answer" value="">
+            </div>
+        `;
+        seedOptionRows('new-options-area', 4, 'radio');
+    } else if (type === 'Benar/Salah') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Kunci Jawaban</label>
+                <select id="new-correct-answer" class="form-control">
+                    <option value="Benar">Benar</option>
+                    <option value="Salah">Salah</option>
+                    <option value="">Tidak ada jawaban benar (opsional)</option>
+                </select>
+            </div>
+        `;
+    } else if (type === 'Checklist') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Opsi Jawaban (bisa lebih dari satu benar)</label>
+                <small class="small">Centang opsi yang benar. Bisa kosong (opsional).</small>
+                <div id="new-options-area"></div>
+                <button type="button" class="mini-btn" onclick="addOptionRow('new-options-area','checkbox')">+ Tambah Opsi</button>
+                <input type="hidden" id="new-correct-answer" value="">
+            </div>
+        `;
+        seedOptionRows('new-options-area', 4, 'checkbox');
+    } else if (type === 'Isian Singkat') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Kunci Jawaban (opsional)</label>
+                <input type="text" id="new-correct-answer" class="form-control" placeholder="Contoh: 42 (kosongkan jika opsional)">
+                <small class="small">Jika dikosongkan, soal dianggap opsional (nilai benar otomatis).</small>
+            </div>
+            <div class="form-group">
+                <label class="label">
+                    <input type="checkbox" id="new-hidden-answer" style="margin-right: 0.5rem;">
+                    Hidden Answer (Kunci jawaban tidak ada di pilihan - untuk penilaian manual)
+                </label>
+                <small class="small">Centang jika kunci jawaban sebenarnya tidak ada di pilihan yang diberikan. Soal ini akan memerlukan penilaian manual oleh admin.</small>
+            </div>
+        `;
+    } else if (type === 'Esai') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Kunci Jawaban / Rubrik Singkat (opsional)</label>
+                <textarea id="new-correct-answer" class="form-control" placeholder="Isi jika ingin auto-cek sederhana (kosongkan jika opsional)"></textarea>
+                <small class="small">Mode sederhana: jika diisi, jawaban peserta harus sama persis (abaikan huruf besar/kecil & spasi luar).</small>
+            </div>
+            <div class="form-group">
+                <label class="label">
+                    <input type="checkbox" id="new-hidden-answer" style="margin-right: 0.5rem;">
+                    Hidden Answer (Kunci jawaban tidak ada di pilihan - untuk penilaian manual)
+                </label>
+                <small class="small">Centang jika kunci jawaban sebenarnya tidak ada di pilihan yang diberikan. Soal ini akan memerlukan penilaian manual oleh admin.</small>
+            </div>
+        `;
+    }
+}
+
+async function saveNewQuestion() {
+    const type = document.getElementById('new-question-type').value;
+    const question = document.getElementById('new-question-text').value;
+    const correctAnswerRaw = document.getElementById('new-correct-answer')?.value ?? '';
+    
+    if (!question) {
+        showToast('Pertanyaan harus diisi', 'error');
+        return;
+    }
+    
+    // Question image
+    const questionImage = document.getElementById('new-question-image-preview')?.src;
+    const questionImageData = questionImage && questionImage.startsWith('data:') ? questionImage : null;
+
+    let options = [];
+    let correctAnswer = null;
+    if (type === 'Pilihan Ganda') {
+        const { options: optObjs, correctLetters } = getOptionsFromArea('new-options-area');
+        options = optObjs;
+        correctAnswer = correctLetters[0] || null;
+    } else if (type === 'Checklist') {
+        const { options: optObjs, correctLetters } = getOptionsFromArea('new-options-area');
+        options = optObjs;
+        correctAnswer = correctLetters.length > 0 ? correctLetters : null;
+    } else if (type === 'Benar/Salah') {
+        correctAnswer = correctAnswerRaw || null;
+    } else if (type === 'Isian Singkat' || type === 'Esai') {
+        correctAnswer = (correctAnswerRaw || '').trim() || null;
+    }
+    
+    // Check for hidden answer
+    const hiddenAnswer = document.getElementById('new-hidden-answer')?.checked || false;
+    
+    const newQuestion = {
+        type,
+        question,
+        image: questionImageData,
+        options,
+        correctAnswer, // null => opsional
+        explanation: document.getElementById('new-question-explanation')?.value || '',
+        hiddenAnswer: hiddenAnswer
+    };
+    
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === currentExam.id);
+    if (!exam) return;
+    
+    exam.questions = exam.questions || [];
+    exam.questions.push(newQuestion);
+    exam.updatedAt = Date.now();
+    
+    await updateFile('examData', examData);
+    showToast('Soal berhasil ditambahkan', 'success');
+    renderQuestionEditor(exam);
+}
+
+function cancelNewQuestion() {
+    const editor = document.querySelector('.question-editor');
+    if (editor) editor.remove();
+}
+
+async function editQuestion(index) {
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === currentExam.id);
+    if (!exam || !exam.questions[index]) return;
+    
+    const q = exam.questions[index];
+    const area = document.getElementById('question-editor-area');
+    const editor = document.createElement('div');
+    editor.className = 'question-editor';
+    editor.id = `edit-question-${index}`;
+    editor.innerHTML = `
+        <h4>Edit Soal ${index + 1}</h4>
+        <div class="form-group">
+            <label class="label">Jenis Soal</label>
+            <select id="edit-question-type-${index}" class="form-control">
+                <option value="Pilihan Ganda" ${q.type === 'Pilihan Ganda' ? 'selected' : ''}>Pilihan Ganda</option>
+                <option value="Benar/Salah" ${q.type === 'Benar/Salah' ? 'selected' : ''}>Benar/Salah</option>
+                <option value="Checklist" ${q.type === 'Checklist' ? 'selected' : ''}>Checklist (Jawaban lebih dari satu)</option>
+                <option value="Isian Singkat" ${q.type === 'Isian Singkat' ? 'selected' : ''}>Isian Singkat</option>
+                <option value="Esai" ${q.type === 'Esai' ? 'selected' : ''}>Esai</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="label">Pertanyaan (support LaTeX)</label>
+            <div class="math-toolbar" id="edit-q-math-toolbar-${index}">
+                <button type="button" class="mini-btn" data-insert="$$\\frac{a}{b}$$">frac</button>
+                <button type="button" class="mini-btn" data-insert="$$\\sqrt{x}$$">sqrt</button>
+                <button type="button" class="mini-btn" data-insert="$$x^2$$">x^2</button>
+                <button type="button" class="mini-btn" data-insert="$$x_{1}$$">x_1</button>
+                <button type="button" class="mini-btn" data-insert="$$\\pi$$">pi</button>
+            </div>
+            <div class="editor-split">
+                <textarea id="edit-question-text-${index}" class="form-control" required>${q.question}</textarea>
+                <div>
+                    <div class="label" style="margin-bottom: 0.5rem;">Preview</div>
+                    <div class="preview-box" id="edit-question-preview-${index}"></div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+                <label class="label">Gambar Soal (opsional)</label>
+                <input type="file" id="edit-question-image-${index}" class="form-control" accept="image/*">
+                <img id="edit-question-image-preview-${index}" class="img-preview" style="display:none;" alt="Preview gambar soal">
+            </div>
+        </div>
+        <div id="edit-question-options-${index}"></div>
+        <button class="btn" onclick="saveEditedQuestion(${index})">Simpan Perubahan</button>
+        <button class="btn btn-secondary" onclick="cancelEditQuestion(${index})">Batal</button>
+    `;
+    
+    area.appendChild(editor);
+    document.getElementById(`edit-question-type-${index}`).addEventListener('change', () => renderEditQuestionOptions(index, q));
+    setupMathToolbar(document.getElementById(`edit-q-math-toolbar-${index}`), document.getElementById(`edit-question-text-${index}`));
+    setupLatexPreview(document.getElementById(`edit-question-text-${index}`), document.getElementById(`edit-question-preview-${index}`));
+
+    const imgPreview = document.getElementById(`edit-question-image-preview-${index}`);
+    if (imgPreview && q.image) {
+        imgPreview.src = q.image;
+        imgPreview.style.display = 'block';
+    }
+    const imgInput = document.getElementById(`edit-question-image-${index}`);
+    if (imgInput && imgPreview) {
+        imgInput.addEventListener('change', async () => {
+            const file = imgInput.files?.[0];
+            if (!file) return;
+            try {
+                const dataUrl = await readImageAsDataUrl(file);
+                imgPreview.src = dataUrl;
+                imgPreview.style.display = 'block';
+            } catch {
+                showToast('Gagal memuat gambar', 'error');
+            }
+        });
+    }
+    renderEditQuestionOptions(index, q);
+}
+
+function renderEditQuestionOptions(index, q) {
+    const type = document.getElementById(`edit-question-type-${index}`).value;
+    const container = document.getElementById(`edit-question-options-${index}`);
+    
+    if (type === 'Pilihan Ganda') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Opsi Jawaban</label>
+                <small class="small">Klik tombol "Kunci" untuk memilih jawaban benar. Bisa kosong (opsional).</small>
+                <div id="edit-options-area-${index}"></div>
+                <button type="button" class="mini-btn" onclick="addOptionRowEdit(${index},'radio')">+ Tambah Opsi</button>
+            </div>
+        `;
+        const area = document.getElementById(`edit-options-area-${index}`);
+        const opts = (q.options || []).map(coerceOptionObject);
+        const correct = q.correctAnswer ? [q.correctAnswer] : [];
+        area.innerHTML = '';
+        if (opts.length === 0) {
+            for (let i = 0; i < 4; i++) addOptionRowToArea(area, 'radio', null, false);
+        } else {
+            opts.forEach((opt, i) => {
+                const letter = String.fromCharCode(65 + i);
+                addOptionRowToArea(area, 'radio', opt, correct.includes(letter));
+            });
+        }
+    } else if (type === 'Benar/Salah') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Kunci Jawaban</label>
+                <select id="edit-correct-answer-${index}" class="form-control">
+                    <option value="Benar" ${q.correctAnswer === 'Benar' ? 'selected' : ''}>Benar</option>
+                    <option value="Salah" ${q.correctAnswer === 'Salah' ? 'selected' : ''}>Salah</option>
+                    <option value="" ${!q.correctAnswer ? 'selected' : ''}>Tidak ada jawaban benar (opsional)</option>
+                </select>
+            </div>
+        `;
+    } else if (type === 'Checklist') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Opsi Jawaban (bisa lebih dari satu benar)</label>
+                <small class="small">Klik tombol "Benar" untuk menandai opsi yang benar. Bisa kosong (opsional).</small>
+                <div id="edit-options-area-${index}"></div>
+                <button type="button" class="mini-btn" onclick="addOptionRowEdit(${index},'checkbox')">+ Tambah Opsi</button>
+            </div>
+        `;
+        const area = document.getElementById(`edit-options-area-${index}`);
+        const opts = (q.options || []).map(coerceOptionObject);
+        const correct = Array.isArray(q.correctAnswer) ? q.correctAnswer : (q.correctAnswer ? [q.correctAnswer] : []);
+        area.innerHTML = '';
+        if (opts.length === 0) {
+            for (let i = 0; i < 4; i++) addOptionRowToArea(area, 'checkbox', null, false);
+        } else {
+            opts.forEach((opt, i) => {
+                const letter = String.fromCharCode(65 + i);
+                addOptionRowToArea(area, 'checkbox', opt, correct.includes(letter));
+            });
+        }
+    } else if (type === 'Isian Singkat') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Kunci Jawaban (opsional)</label>
+                <input type="text" id="edit-correct-answer-${index}" class="form-control" value="${q.correctAnswer || ''}" placeholder="Kosongkan jika opsional">
+            </div>
+            <div class="form-group">
+                <label class="label">
+                    <input type="checkbox" id="edit-hidden-answer-${index}" ${q.hiddenAnswer ? 'checked' : ''} style="margin-right: 0.5rem;">
+                    Hidden Answer (Kunci jawaban tidak ada di pilihan - untuk penilaian manual)
+                </label>
+                <small class="small">Centang jika kunci jawaban sebenarnya tidak ada di pilihan yang diberikan. Soal ini akan memerlukan penilaian manual oleh admin.</small>
+            </div>
+        `;
+    } else if (type === 'Esai') {
+        container.innerHTML = `
+            <div class="form-group">
+                <label class="label">Kunci Jawaban / Rubrik Singkat (opsional)</label>
+                <textarea id="edit-correct-answer-${index}" class="form-control" placeholder="Kosongkan jika opsional">${q.correctAnswer || ''}</textarea>
+            </div>
+            <div class="form-group">
+                <label class="label">
+                    <input type="checkbox" id="edit-hidden-answer-${index}" ${q.hiddenAnswer ? 'checked' : ''} style="margin-right: 0.5rem;">
+                    Hidden Answer (Kunci jawaban tidak ada di pilihan - untuk penilaian manual)
+                </label>
+                <small class="small">Centang jika kunci jawaban sebenarnya tidak ada di pilihan yang diberikan. Soal ini akan memerlukan penilaian manual oleh admin.</small>
+            </div>
+        `;
+    }
+}
+
+function addOptionRowEdit(index, mode) {
+    const area = document.getElementById(`edit-options-area-${index}`);
+    if (!area) return;
+    addOptionRowToArea(area, mode, null, false);
+}
+
+async function saveEditedQuestion(index) {
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === currentExam.id);
+    if (!exam || !exam.questions[index]) return;
+    
+    const type = document.getElementById(`edit-question-type-${index}`).value;
+    const question = document.getElementById(`edit-question-text-${index}`).value;
+    const correctAnswerEl = document.getElementById(`edit-correct-answer-${index}`);
+    const correctAnswerRaw = correctAnswerEl ? (correctAnswerEl.value ?? '') : '';
+    
+    if (!question) {
+        showToast('Pertanyaan harus diisi', 'error');
+        return;
+    }
+    
+    const imgSrc = document.getElementById(`edit-question-image-preview-${index}`)?.src;
+    const questionImageData = imgSrc && imgSrc.startsWith('data:') ? imgSrc : (exam.questions[index].image || null);
+    
+    let options = [];
+    let correctAnswer = null;
+    if (type === 'Pilihan Ganda') {
+        const { options: optObjs, correctLetters } = getOptionsFromArea(`edit-options-area-${index}`);
+        options = optObjs;
+        correctAnswer = correctLetters[0] || null;
+    } else if (type === 'Checklist') {
+        const { options: optObjs, correctLetters } = getOptionsFromArea(`edit-options-area-${index}`);
+        options = optObjs;
+        correctAnswer = correctLetters.length > 0 ? correctLetters : null;
+    } else if (type === 'Benar/Salah') {
+        correctAnswer = correctAnswerRaw || null;
+    } else if (type === 'Isian Singkat' || type === 'Esai') {
+        correctAnswer = (correctAnswerRaw || '').trim() || null;
+    }
+    
+    // Check for hidden answer
+    const hiddenAnswer = document.getElementById(`edit-hidden-answer-${index}`)?.checked || false;
+    
+    exam.questions[index] = {
+        type,
+        question,
+        image: questionImageData,
+        options,
+        correctAnswer,
+        explanation: exam.questions[index].explanation || '',
+        hiddenAnswer: hiddenAnswer
+    };
+    exam.updatedAt = Date.now();
+    
+    await updateFile('examData', examData);
+    showToast('Soal berhasil diupdate', 'success');
+    document.getElementById(`edit-question-${index}`).remove();
+    renderQuestionEditor(exam);
+}
+
+function cancelEditQuestion(index) {
+    const editor = document.getElementById(`edit-question-${index}`);
+    if (editor) editor.remove();
+}
+
+async function deleteQuestion(index) {
+    if (!confirm(`Yakin ingin menghapus soal nomor ${index + 1}?`)) return;
+    
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === currentExam.id);
+    if (!exam || !exam.questions[index]) return;
+    
+    exam.questions.splice(index, 1);
+    exam.updatedAt = Date.now();
+    await updateFile('examData', examData);
+    showToast('Soal berhasil dihapus', 'success');
+    renderQuestionEditor(exam);
+}
+
+// Removed AI functions
+
+// ===== Option Row UI (Admin Editor) =====
+function seedOptionRows(areaId, count, mode) {
+    const area = document.getElementById(areaId);
+    if (!area) return;
+    area.innerHTML = '';
+    for (let i = 0; i < count; i++) addOptionRow(areaId, mode);
+}
+
+function addOptionRow(areaId, mode) {
+    const area = document.getElementById(areaId);
+    if (!area) return;
+    const idx = area.querySelectorAll('.option-row').length;
+    const letter = String.fromCharCode(65 + idx);
+
+    const row = document.createElement('div');
+    row.className = 'option-row';
+    row.dataset.letter = letter;
+    row.innerHTML = `
+        <div class="option-letter">${letter}</div>
+        <div>
+            <label class="label" style="margin-bottom: 0.5rem;">Teks Opsi (support LaTeX)</label>
+            <textarea class="form-control option-text" placeholder="Tulis opsi ${letter}..."></textarea>
+            <div class="math-toolbar">
+                <button type="button" class="mini-btn" data-insert="$$\\frac{a}{b}$$">frac</button>
+                <button type="button" class="mini-btn" data-insert="$$\\sqrt{x}$$">sqrt</button>
+                <button type="button" class="mini-btn" data-insert="$$x^2$$">x^2</button>
+                <button type="button" class="mini-btn" data-insert="$$\\pi$$">pi</button>
+            </div>
+            <div class="preview-box option-preview" style="margin-top: 0.75rem;"></div>
+            <div class="form-group" style="margin-top: 0.75rem;">
+                <label class="label">Gambar Opsi (opsional)</label>
+                <input type="file" class="form-control option-image-input" accept="image/*">
+                <img class="img-preview option-image-preview" style="display:none;" alt="Preview gambar opsi">
+            </div>
+        </div>
+        <div class="option-actions">
+            <button type="button" class="mini-btn key-btn">${mode === 'checkbox' ? 'Benar' : 'Kunci'}</button>
+            <button type="button" class="mini-btn" data-action="delete">Hapus</button>
+        </div>
+    `;
+
+    area.appendChild(row);
+
+    const textarea = row.querySelector('textarea.option-text');
+    const toolbar = row.querySelector('.math-toolbar');
+    const preview = row.querySelector('.option-preview');
+    setupMathToolbar(toolbar, textarea);
+    setupLatexPreview(textarea, preview);
+
+    // Image upload
+    const imgInput = row.querySelector('.option-image-input');
+    const imgPreview = row.querySelector('.option-image-preview');
+    imgInput.addEventListener('change', async () => {
+        const file = imgInput.files?.[0];
+        if (!file) {
+            imgPreview.style.display = 'none';
+            imgPreview.src = '';
+            return;
+        }
+        try {
+            const dataUrl = await readImageAsDataUrl(file);
+            imgPreview.src = dataUrl;
+            imgPreview.style.display = 'block';
+        } catch {
+            showToast('Gagal memuat gambar opsi', 'error');
+        }
+    });
+
+    // Key selection
+    const keyBtn = row.querySelector('.key-btn');
+    keyBtn.addEventListener('click', () => {
+        if (mode === 'checkbox') {
+            keyBtn.classList.toggle('active');
+        } else {
+            // radio-like: only one active in this area
+            area.querySelectorAll('.key-btn').forEach(b => b.classList.remove('active'));
+            keyBtn.classList.add('active');
+        }
+        syncCorrectAnswerHidden(areaId, mode);
+    });
+
+    // Delete row
+    row.querySelector('[data-action="delete"]').addEventListener('click', () => {
+        row.remove();
+        // re-letter
+        Array.from(area.querySelectorAll('.option-row')).forEach((r, i) => {
+            const l = String.fromCharCode(65 + i);
+            r.dataset.letter = l;
+            const badge = r.querySelector('.option-letter');
+            if (badge) badge.textContent = l;
+        });
+        syncCorrectAnswerHidden(areaId, mode);
+    });
+
+    syncCorrectAnswerHidden(areaId, mode);
+}
+
+function syncCorrectAnswerHidden(areaId, mode) {
+    const area = document.getElementById(areaId);
+    const hidden = document.getElementById('new-correct-answer') || document.getElementById(`edit-correct-answer-${areaId}`);
+    // hidden selector above is defensive; in our usage for "new", it exists as #new-correct-answer.
+    const hiddenEl = document.getElementById('new-correct-answer') || document.querySelector(`#${areaId} ~ input[type="hidden"]`);
+    const targetHidden = hiddenEl || hidden;
+    if (!area || !targetHidden) return;
+
+    const selectedLetters = Array.from(area.querySelectorAll('.option-row'))
+        .filter(r => r.querySelector('.key-btn')?.classList.contains('active'))
+        .map(r => r.dataset.letter);
+
+    if (mode === 'checkbox') {
+        targetHidden.value = selectedLetters.join(',');
+    } else {
+        targetHidden.value = selectedLetters[0] || '';
+    }
+}
+
+function getOptionsFromArea(areaId) {
+    const area = document.getElementById(areaId);
+    if (!area) return { options: [], correctLetters: [] };
+    const rows = Array.from(area.querySelectorAll('.option-row'));
+    const options = rows.map((r) => {
+        const text = r.querySelector('textarea.option-text')?.value || '';
+        const img = r.querySelector('img.option-image-preview')?.src || '';
+        return {
+            text: text.trim(),
+            image: img && img.startsWith('data:') ? img : null
+        };
+    }).filter(o => o.text || o.image);
+
+    const correctLetters = rows
+        .filter(r => r.querySelector('.key-btn')?.classList.contains('active'))
+        .map(r => r.dataset.letter);
+
+    return { options, correctLetters };
+}
+
+function coerceOptionObject(opt) {
+    if (!opt) return { text: '', image: null };
+    if (typeof opt === 'string') return { text: opt, image: null };
+    return { text: (opt.text || ''), image: opt.image || null };
+}
+
+function addOptionRowToArea(areaEl, mode, initialOption = null, isCorrect = false) {
+    if (!areaEl) return;
+    const idx = areaEl.querySelectorAll('.option-row').length;
+    const letter = String.fromCharCode(65 + idx);
+    const opt = coerceOptionObject(initialOption);
+
+    const row = document.createElement('div');
+    row.className = 'option-row';
+    row.dataset.letter = letter;
+    row.innerHTML = `
+        <div class="option-letter">${letter}</div>
+        <div>
+            <label class="label" style="margin-bottom: 0.5rem;">Teks Opsi (support LaTeX)</label>
+            <textarea class="form-control option-text" placeholder="Tulis opsi ${letter}..."></textarea>
+            <div class="math-toolbar">
+                <button type="button" class="mini-btn" data-insert="$$\\frac{a}{b}$$">frac</button>
+                <button type="button" class="mini-btn" data-insert="$$\\sqrt{x}$$">sqrt</button>
+                <button type="button" class="mini-btn" data-insert="$$x^2$$">x^2</button>
+                <button type="button" class="mini-btn" data-insert="$$\\pi$$">pi</button>
+            </div>
+            <div class="preview-box option-preview" style="margin-top: 0.75rem;"></div>
+            <div class="form-group" style="margin-top: 0.75rem;">
+                <label class="label">Gambar Opsi (opsional)</label>
+                <input type="file" class="form-control option-image-input" accept="image/*">
+                <img class="img-preview option-image-preview" style="display:none;" alt="Preview gambar opsi">
+            </div>
+        </div>
+        <div class="option-actions">
+            <button type="button" class="mini-btn key-btn">${mode === 'checkbox' ? 'Benar' : 'Kunci'}</button>
+            <button type="button" class="mini-btn" data-action="delete">Hapus</button>
+        </div>
+    `;
+    areaEl.appendChild(row);
+
+    const textarea = row.querySelector('textarea.option-text');
+    textarea.value = opt.text || '';
+    const toolbar = row.querySelector('.math-toolbar');
+    const preview = row.querySelector('.option-preview');
+    setupMathToolbar(toolbar, textarea);
+    setupLatexPreview(textarea, preview);
+
+    const imgInput = row.querySelector('.option-image-input');
+    const imgPreview = row.querySelector('.option-image-preview');
+    if (opt.image) {
+        imgPreview.src = opt.image;
+        imgPreview.style.display = 'block';
+    }
+    imgInput.addEventListener('change', async () => {
+        const file = imgInput.files?.[0];
+        if (!file) {
+            imgPreview.style.display = 'none';
+            imgPreview.src = '';
+            return;
+        }
+        try {
+            const dataUrl = await readImageAsDataUrl(file);
+            imgPreview.src = dataUrl;
+            imgPreview.style.display = 'block';
+        } catch {
+            showToast('Gagal memuat gambar opsi', 'error');
+        }
+    });
+
+    const keyBtn = row.querySelector('.key-btn');
+    if (isCorrect) keyBtn.classList.add('active');
+    keyBtn.addEventListener('click', () => {
+        if (mode === 'checkbox') {
+            keyBtn.classList.toggle('active');
+        } else {
+            areaEl.querySelectorAll('.key-btn').forEach(b => b.classList.remove('active'));
+            keyBtn.classList.add('active');
+        }
+    });
+
+    row.querySelector('[data-action="delete"]').addEventListener('click', () => {
+        row.remove();
+        Array.from(areaEl.querySelectorAll('.option-row')).forEach((r, i) => {
+            const l = String.fromCharCode(65 + i);
+            r.dataset.letter = l;
+            const badge = r.querySelector('.option-letter');
+            if (badge) badge.textContent = l;
+        });
+    });
+}
+
+// User Exam Functions
+let waitingRoomPollInterval = null;
+
+async function showUserExamList(forceRefresh = false) {
+    const examData = await readFile('examData', { silent: !forceRefresh });
+    if (!examData) return;
+    if (reconcileExamStatuses(examData)) {
+        await updateFile('examData', examData, { silent: true });
+    }
+    
+    const listEl = document.getElementById('user-exam-list');
+    const exams = (examData.exams || []).filter(e => e.questions && e.questions.length > 0);
+
+    if (!exams.length) {
+        showSection('user-exam-list-section');
+        if (listEl) listEl.innerHTML = '<p style="color: var(--text-color-muted);">Tidak ada ujian yang tersedia.</p>';
+        return;
+    }
+
+    // Order: active first, then scheduled, then others
+    const weight = (s) => (s === 'active' ? 0 : s === 'scheduled' ? 1 : s === 'stopped' ? 2 : 3);
+    exams.sort((a, b) => weight(a.status) - weight(b.status) || (b.startTime || 0) - (a.startTime || 0));
+
+    const badge = (status) => {
+        if (status === 'active') return `<span class="status-badge correct">Sedang Berjalan</span>`;
+        if (status === 'scheduled') return `<span class="status-badge info" style="background: var(--accent-color);">Belum Mulai</span>`;
+        if (status === 'stopped') return `<span class="status-badge incorrect">Dihentikan</span>`;
+        if (status === 'completed') return `<span class="status-badge info" style="background: var(--success-color);">Selesai</span>`;
+        return `<span class="status-badge info" style="background: var(--text-color-muted);">Status: ${escapeHtml(status || '-')}</span>`;
+    };
+
+    showSection('user-exam-list-section');
+    if (listEl) {
+        listEl.innerHTML = exams.map(exam => {
+            const attemptCount = getUserAttemptCount(exam);
+            const maxAttempts = exam.maxAttempts || 1;
+            const reachedMax = hasReachedMaxAttempts(exam);
+            const hasSubmitted = attemptCount > 0;
+            
+            let canJoin = false;
+            let btnText = 'Tidak Tersedia';
+            let btnOnClick = `joinExam('${exam.id}')`;
+            
+            if (reachedMax) {
+                btnText = 'Lihat Hasil';
+                btnOnClick = `viewSubmittedExam('${exam.id}')`;
+                canJoin = true;
+            } else if (hasSubmitted && maxAttempts > 1) {
+                btnText = 'Kerjakan Ulang / Lihat Hasil';
+                btnOnClick = `showRetryOrViewChoice('${exam.id}')`;
+                canJoin = exam.status === 'active' || exam.status === 'scheduled';
+            } else if (exam.status === 'active') {
+                btnText = 'Masuk Ujian';
+                canJoin = true;
+            } else if (exam.status === 'scheduled') {
+                btnText = 'Masuk Ruang Tunggu';
+                canJoin = true;
+            } else if (exam.status === 'completed') {
+                btnText = 'Lihat (Selesai)';
+                canJoin = false;
+            }
+            
+            const btnDisabled = !canJoin ? 'disabled' : '';
+            const timeInfo = exam.status === 'active' && exam.endTime ? `<p style="color: var(--text-color-muted);"><strong>Sisa Waktu:</strong> ${formatTime(Math.max(0, exam.endTime - Date.now()))}</p>` : '';
+            const submittedBadge = hasSubmitted ? `<span class="status-badge info" style="background: var(--success-color); margin-bottom: 0.5rem;">✓ ${attemptCount}/${maxAttempts} dikerjakan</span>` : '';
+            
+            return `
+                <div class="card" style="margin-bottom: 1rem;">
+                    <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:flex-start;">
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">${escapeHtml(exam.title || 'Ujian')}</h3>
+                            <p style="color: var(--text-color-muted);">${escapeHtml(exam.description || '')}</p>
+                            <p style="margin-top: 0.5rem;"><strong>Total Soal:</strong> ${exam.questions?.length || 0}</p>
+                            ${timeInfo}
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:0.75rem; align-items:flex-end;">
+                            ${badge(exam.status)}
+                            ${submittedBadge}
+                            <button class="btn" style="width:auto; padding:0.75rem 1rem;" ${btnDisabled} onclick="${btnOnClick}">${btnText}</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Auto-refresh list every 5s while viewing list
+    setTimeout(() => {
+        const content = document.getElementById('user-exam-list-section');
+        if (content && content.classList.contains('active')) {
+            showUserExamList(false);
+        }
+    }, 5000);
+}
+
+async function retryExam() {
+    if (!currentExam) return;
+    const examData = await readFile('examData', { silent: true });
+    const exam = examData?.exams?.find(e => e.id === currentExam.id);
+    if (!exam || hasReachedMaxAttempts(exam)) {
+        showToast('Tidak bisa kerjakan ulang', 'info');
+        return;
+    }
+    if (exam.status !== 'active' && exam.status !== 'scheduled') {
+        showToast('Ujian sudah berakhir', 'info');
+        return;
+    }
+    currentExam = exam;
+    if (exam.status === 'active') {
+        startExam(exam);
+    } else {
+        showWaitingRoom(exam);
+    }
+}
+
+function showRetryOrViewChoice(examId) {
+    if (!confirm('Pilih:\n\nOK = Kerjakan ulang (attempt baru)\nBatal = Lihat hasil pengerjaan sebelumnya')) {
+        viewSubmittedExam(examId);
+    } else {
+        joinExam(examId, true);
+    }
+}
+
+async function joinExam(examId, forceRetry = false) {
+    const examData = await readFile('examData');
+    if (!examData) return;
+    const exam = (examData.exams || []).find(e => e.id === examId);
+    if (!exam) {
+        showToast('Ujian tidak ditemukan', 'error');
+        return;
+    }
+    
+    if (!forceRetry && hasReachedMaxAttempts(exam)) {
+        viewSubmittedExam(examId);
+        return;
+    }
+    
+    if (exam.status === 'active') {
+        startExam(exam);
+        return;
+    }
+    if (exam.status === 'scheduled') {
+        showWaitingRoom(exam);
+        return;
+    }
+    if (exam.status === 'stopped') {
+        showExamStoppedPopup('Admin sedang menghentikan ujian. Silakan kembali nanti.');
+        return;
+    }
+    showToast('Ujian belum tersedia untuk dikerjakan.', 'info');
+}
+
+async function viewSubmittedExam(examId) {
+    const examData = await readFile('examData');
+    if (!examData) return;
+    const exam = (examData.exams || []).find(e => e.id === examId);
+    if (!exam) {
+        showToast('Ujian tidak ditemukan', 'error');
+        return;
+    }
+    
+    // Cari hasil user (ambil yang terakhir / terbaru)
+    const userResults = (exam.results || []).filter(r => r.username === currentUser.username);
+    const userResult = userResults.length > 0 ? userResults[userResults.length - 1] : null;
+    if (!userResult) {
+        showToast('Hasil ujian tidak ditemukan', 'error');
+        return;
+    }
+    
+    // Set current exam untuk showResults
+    currentExam = exam;
+    
+    // Tampilkan hasil
+    showResults(
+        userResult.answers || [],
+        userResult.actualScore || 0,
+        userResult.finalScore || 0,
+        userResult.total || exam.questions?.length || 0,
+        userResult.actualAccuracy || 0,
+        userResult.finalAccuracy || 0,
+        userResult.violationCount || 0
+    );
+}
+
+async function showWaitingRoom(exam) {
+    // Cek apakah user sudah submit ujian ini
+    const hasSubmitted = (exam.results || []).some(r => r.username === currentUser.username);
+    if (hasSubmitted) {
+        showToast('Anda sudah mengerjakan ujian ini. Silakan lihat hasil di daftar ujian.', 'info');
+        showUserExamList();
+        return;
+    }
+    
+    currentExam = exam;
+    showSection('waiting-room-section');
+    
+    document.getElementById('waiting-exam-title').textContent = exam.title;
+    document.getElementById('waiting-exam-desc').textContent = exam.description || '';
+    
+    const readyUsers = exam.readyUsers || [];
+    const isReady = readyUsers.some(u => (u.username || u) === currentUser.username);
+    
+    const btnReady = document.getElementById('btn-ready');
+    const readyStatus = document.getElementById('ready-status');
+    
+    if (isReady) {
+        btnReady.style.display = 'none';
+        readyStatus.style.display = 'block';
+    } else {
+        btnReady.style.display = 'block';
+        readyStatus.style.display = 'none';
+    }
+    
+    await addUserToWaitingRoom(exam);
+    
+    if (waitingRoomPollInterval) clearInterval(waitingRoomPollInterval);
+    waitingRoomPollInterval = setInterval(async () => {
+        const examData = await readFile('examData', { silent: true });
+        const updatedExam = examData.exams.find(e => e.id === exam.id);
+        if (!updatedExam) return;
+        
+        if (updatedExam.status === 'stopped') {
+            clearInterval(waitingRoomPollInterval);
+            waitingRoomPollInterval = null;
+            showExamStoppedPopup('Admin sedang menghentikan ujian. Silakan kembali nanti.');
+            return;
+        }
+        if (updatedExam.status === 'active') {
+            clearInterval(waitingRoomPollInterval);
+            waitingRoomPollInterval = null;
+            currentExam = updatedExam;
+            startExam(updatedExam);
+        }
+    }, 300); // Update realtime cepat
+}
+
+async function addUserToWaitingRoom(exam) {
+    const examData = await readFile('examData', { silent: true });
+    const examToUpdate = examData.exams.find(e => e.id === exam.id);
+    if (!examToUpdate) return;
+    
+    examToUpdate.joinedUsers = examToUpdate.joinedUsers || [];
+    const alreadyJoined = examToUpdate.joinedUsers.some(u => (u.username || u) === currentUser.username);
+    if (!alreadyJoined) {
+        examToUpdate.joinedUsers.push({
+            username: currentUser.username,
+            joinedAt: Date.now(),
+            joinedAtString: new Date().toLocaleString('id-ID')
+        });
+        await updateFile('examData', examData, { silent: true });
+        currentExam = examToUpdate;
+    }
+}
+
+async function markUserReady() {
+    if (!currentExam || currentExam.status !== 'scheduled') return;
+    
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === currentExam.id);
+    if (!exam) return;
+    
+    exam.readyUsers = exam.readyUsers || [];
+    const alreadyReady = exam.readyUsers.some(u => (u.username || u) === currentUser.username);
+    
+    if (!alreadyReady) {
+        exam.readyUsers.push({
+            username: currentUser.username,
+            readyAt: Date.now(),
+            readyAtString: new Date().toLocaleString('id-ID')
+        });
+        
+        exam.joinedUsers = exam.joinedUsers || [];
+        const alreadyJoined = exam.joinedUsers.some(u => (u.username || u) === currentUser.username);
+        if (!alreadyJoined) {
+            exam.joinedUsers.push({
+                username: currentUser.username,
+                joinedAt: Date.now()
+            });
+        }
+        
+        await updateFile('examData', examData, { silent: true });
+        currentExam = exam;
+    }
+    
+    document.getElementById('btn-ready').style.display = 'none';
+    document.getElementById('ready-status').style.display = 'block';
+    showToast('Anda telah menandai siap!', 'success');
+}
+
+function getUserAttemptCount(exam) {
+    return (exam.results || []).filter(r => r.username === currentUser.username).length;
+}
+function hasReachedMaxAttempts(exam) {
+    const max = exam.maxAttempts || 1;
+    return getUserAttemptCount(exam) >= max;
+}
+
+async function startExam(exam) {
+    if (hasReachedMaxAttempts(exam)) {
+        showToast('Anda sudah mencapai batas pengerjaan. Silakan lihat hasil.', 'info');
+        viewSubmittedExam(exam.id);
+        return;
+    }
+    currentExam = exam;
+    showSection('exam-section');
+    document.getElementById('exam-title-display').textContent = exam.title;
+    
+    // Reset violations
+    violations = [];
+    violationCount = 0;
+    isExamActive = true;
+    lastFocusTime = Date.now();
+    lastActivityTime = Date.now();
+    
+    // Record exam start time for this user and initialize activity tracking
+    const examData = await readFile('examData', { silent: true });
+    if (examData) {
+        const examToUpdate = examData.exams.find(e => e.id === exam.id);
+        if (examToUpdate) {
+            examToUpdate.userStartTimes = examToUpdate.userStartTimes || {};
+            examToUpdate.userStartTimes[currentUser.username] = Date.now();
+            
+            // Initialize user activity tracking
+            examToUpdate.userActivities = examToUpdate.userActivities || {};
+            examToUpdate.userActivities[currentUser.username] = [];
+            
+            await updateFile('examData', examData, { silent: true });
+            currentExam.userStartTimes = examToUpdate.userStartTimes;
+            currentExam.userActivities = examToUpdate.userActivities;
+        }
+    }
+    
+    renderQuestions(exam.questions || []);
+    startServerTimer(exam);
+    initializeAntiCheating();
+}
+
+// Track time spent per question
+let questionStartTimes = {};
+let questionTimeSpent = {};
+
+function updateProgress() {
+    if (!currentExam || !currentExam.questions) return;
+    const questions = currentExam.questions;
+    const total = questions.length;
+    let answered = 0;
+    
+    questions.forEach((q, idx) => {
+        let hasAnswer = false;
+        if (q.type === 'Checklist') {
+            const selected = Array.from(document.querySelectorAll(`input[name="question_${idx}"]:checked`));
+            hasAnswer = selected.length > 0;
+        } else if (q.type === 'Isian Singkat' || q.type === 'Esai') {
+            const answer = document.getElementById(`answer_${idx}`)?.value?.trim();
+            hasAnswer = answer && answer.length > 0;
+        } else {
+            const selected = document.querySelector(`input[name="question_${idx}"]:checked`);
+            hasAnswer = selected !== null;
+        }
+        if (hasAnswer) answered++;
+    });
+    
+    const progressEl = document.getElementById('progress-text');
+    const progressBar = document.getElementById('progress-bar');
+    if (progressEl) progressEl.textContent = `${answered}/${total} soal terjawab`;
+    if (progressBar) {
+        const percentage = total > 0 ? (answered / total * 100) : 0;
+        progressBar.style.width = `${percentage}%`;
+    }
+}
+
+function renderQuestions(questions) {
+    const container = document.getElementById('questions-container');
+    container.innerHTML = '';
+    
+    // Initialize question time tracking
+    questionStartTimes = {};
+    questionTimeSpent = {};
+    questions.forEach((q, idx) => {
+        questionStartTimes[idx] = Date.now();
+    });
+    
+    questions.forEach((q, idx) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'card question-card';
+        
+        let optionsHtml = '';
+        if (q.type === 'Pilihan Ganda') {
+            (q.options || []).forEach((opt, optIdx) => {
+                const letter = String.fromCharCode(65 + optIdx);
+                const o = coerceOptionObject(opt);
+                optionsHtml += `
+                    <div class="exam-option">
+                        <input type="radio" name="question_${idx}" value="${letter}" id="q${idx}_${optIdx}">
+                        <label for="q${idx}_${optIdx}">
+                            <div class="control"></div>
+                            <div class="option-text">
+                                <div>${escapeHtml(o.text || '')}</div>
+                                ${o.image ? `<img class="img-preview" src="${o.image}" alt="Gambar opsi">` : ''}
+                            </div>
+                        </label>
+                    </div>
+                `;
+            });
+        } else if (q.type === 'Benar/Salah') {
+            optionsHtml = `
+                <div class="exam-option">
+                    <input type="radio" name="question_${idx}" value="Benar" id="q${idx}_true">
+                    <label for="q${idx}_true">
+                        <div class="control"></div>
+                        <div class="option-text">Benar</div>
+                    </label>
+                </div>
+                <div class="exam-option">
+                    <input type="radio" name="question_${idx}" value="Salah" id="q${idx}_false">
+                    <label for="q${idx}_false">
+                        <div class="control"></div>
+                        <div class="option-text">Salah</div>
+                    </label>
+                </div>
+            `;
+        } else if (q.type === 'Checklist') {
+            (q.options || []).forEach((opt, optIdx) => {
+                const letter = String.fromCharCode(65 + optIdx);
+                const o = coerceOptionObject(opt);
+                optionsHtml += `
+                    <div class="exam-option">
+                        <input type="checkbox" name="question_${idx}" value="${letter}" id="q${idx}_${optIdx}">
+                        <label for="q${idx}_${optIdx}">
+                            <div class="control"></div>
+                            <div class="option-text">
+                                <div>${escapeHtml(o.text || '')}</div>
+                                ${o.image ? `<img class="img-preview" src="${o.image}" alt="Gambar opsi">` : ''}
+                            </div>
+                        </label>
+                    </div>
+                `;
+            });
+        } else if (q.type === 'Isian Singkat') {
+            optionsHtml = `
+                <div class="form-group" style="margin-top: 0.5rem;">
+                    <input type="text" class="form-control" id="answer_${idx}" placeholder="Tulis jawaban singkat...">
+                </div>
+            `;
+        } else if (q.type === 'Esai') {
+            optionsHtml = `
+                <div class="form-group" style="margin-top: 0.5rem;">
+                    <textarea class="form-control" id="answer_${idx}" placeholder="Tulis jawaban esai..."></textarea>
+                </div>
+            `;
+        }
+        
+        // Note: Questions can be optional (no correct answer)
+        const optionalNote = q.correctAnswer === null || q.correctAnswer === '' ? 
+            '<p style="color: var(--text-color-muted); font-size: 0.9rem; font-style: italic;">Catatan: Soal ini opsional, tidak ada jawaban yang benar.</p>' : '';
+
+        const questionImageHtml = q.image ? `<img class="img-preview" src="${q.image}" alt="Gambar soal">` : '';
+        
+        questionDiv.innerHTML = `
+            <div class="question-text">${idx + 1}. ${escapeHtml(q.question)}</div>
+            ${questionImageHtml}
+            ${optionalNote}
+            <div class="options-container">${optionsHtml}</div>
+        `;
+        container.appendChild(questionDiv);
+    });
+    
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+}
+
+function startServerTimer(exam) {
+    // Sync with server time
+    const now = Date.now();
+    const timeLeft = Math.max(0, exam.endTime - now);
+    
+    if (timeLeft <= 0) {
+        showToast('Waktu ujian telah habis', 'error');
+        submitExam(true);
+        return;
+    }
+    
+    let remaining = Math.floor(timeLeft / 1000);
+    remainingSeconds = remaining;
+    const timerElement = document.getElementById('timer');
+    const timerContainer = document.getElementById('timer-container');
+    
+    const updateTimer = () => {
+        const h = Math.floor(remaining / 3600);
+        const m = Math.floor((remaining % 3600) / 60);
+        const s = remaining % 60;
+        timerElement.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        
+        if (remaining < 60) {
+            timerContainer.classList.add('ending');
+        }
+        
+        remaining--;
+        remainingSeconds = remaining;
+        const submitBtn = document.querySelector('#quiz-form button[type="submit"]');
+        if (submitBtn) submitBtn.disabled = (remaining <= 0);
+        if (remaining < 0) {
+            clearInterval(timerInterval);
+            submitExam(true);
+        }
+    };
+    
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+    
+    // Sync with server realtime (silent) + detect stop + hot-update questions
+    serverTimeSync = setInterval(async () => {
+        const examData = await readFile('examData', { silent: true });
+        if (!examData) return;
+        const updatedExam = (examData.exams || []).find(e => e.id === exam.id);
+        if (!updatedExam) return;
+
+        if (updatedExam.status === 'stopped') {
+            clearInterval(timerInterval);
+            clearInterval(serverTimeSync);
+            showExamStoppedPopup('Admin sedang menghentikan ujian. Waktu Anda dihentikan.');
+            return;
+        }
+
+        if (updatedExam.endTime) {
+            const now = Date.now();
+            const timeLeft = Math.max(0, updatedExam.endTime - now);
+            remaining = Math.floor(timeLeft / 1000);
+            remainingSeconds = remaining;
+        }
+
+        // Auto update questions if admin edits (best-effort, preserve answers by index)
+        if (updatedExam.updatedAt && (!currentExam.updatedAt || updatedExam.updatedAt > currentExam.updatedAt)) {
+            const prevAnswers = captureAnswers(currentExam.questions || []);
+            currentExam = updatedExam;
+            renderQuestions(updatedExam.questions || []);
+            restoreAnswers(prevAnswers);
+            showToast('Soal diperbarui oleh admin. Tampilan diperbarui otomatis.', 'info');
+        }
+    }, 300); // Update realtime cepat
+}
+
+// Track user activity and update progress
+function trackUserActivity(action, questionIndex, value) {
+    if (!isExamActive || !currentExam) return;
+    
+    const activity = {
+        timestamp: Date.now(),
+        action: action, // 'answer', 'change', 'focus', 'blur'
+        questionIndex: questionIndex,
+        value: value,
+        timeSpent: questionStartTimes[questionIndex] ? Date.now() - questionStartTimes[questionIndex] : 0
+    };
+    
+    // Save to exam data
+    const examDataPromise = readFile('examData', { silent: true }).then(examData => {
+        if (!examData) return;
+        const exam = examData.exams.find(e => e.id === currentExam.id);
+        if (!exam) return;
+        
+        exam.userActivities = exam.userActivities || {};
+        exam.userActivities[currentUser.username] = exam.userActivities[currentUser.username] || [];
+        exam.userActivities[currentUser.username].push(activity);
+        
+        // Keep only last 1000 activities to avoid too much data
+        if (exam.userActivities[currentUser.username].length > 1000) {
+            exam.userActivities[currentUser.username] = exam.userActivities[currentUser.username].slice(-1000);
+}
+        
+        updateFile('examData', examData, { silent: true });
+    });
+}
+
+// Update progress when user answers questions
+document.addEventListener('change', (e) => {
+    if (isExamActive && (e.target.matches('input[type="radio"]') || e.target.matches('input[type="checkbox"]'))) {
+        const name = e.target.name;
+        const questionIndex = name ? parseInt(name.split('_')[1]) : null;
+        if (questionIndex !== null) {
+            trackUserActivity('answer', questionIndex, e.target.value);
+        }
+        updateProgress();
+    }
+});
+
+document.addEventListener('input', (e) => {
+    if (isExamActive && e.target.matches('textarea, input[type="text"]')) {
+        const id = e.target.id;
+        if (id && id.startsWith('answer_')) {
+            const questionIndex = parseInt(id.split('_')[1]);
+            trackUserActivity('answer', questionIndex, e.target.value);
+        }
+        updateProgress();
+    }
+});
+
+// Initial progress update
+setTimeout(() => {
+    if (isExamActive) updateProgress();
+}, 500);
+
+document.getElementById('quiz-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitExam(false);
+});
+// Isian Singkat: Enter jangan submit form (biar user ngetik tanpa takut ke-submit)
+document.getElementById('quiz-form').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.target.matches('input[id^="answer_"]')) {
+        e.preventDefault();
+    }
+});
+
+async function submitExam(forced = false) {
+    clearExamStateFromStorage();
+    stopAntiCheating();
+    
+    if (timerInterval) clearInterval(timerInterval);
+    if (serverTimeSync) clearInterval(serverTimeSync);
+    
+    const questions = currentExam.questions || [];
+    // Hanya soal yang bisa dinilai otomatis (bukan Esai, Isian Singkat, dan yang punya hiddenAnswer)
+    const scoredQuestions = questions.filter(q => q.type !== 'Esai' && q.type !== 'Isian Singkat' && !q.hiddenAnswer);
+    const scoredTotal = scoredQuestions.length;
+    const manualGradingQuestions = questions.filter(q => q.type === 'Esai' || q.type === 'Isian Singkat' || q.hiddenAnswer);
+    let correct = 0;
+    const results = [];
+    const userStartTime = currentExam.userStartTimes?.[currentUser.username] || Date.now();
+    const endTime = Date.now();
+    const timeSpent = Math.floor((endTime - userStartTime) / 1000); // in seconds
+    
+    // Track user activity during exam
+    const userActivity = currentExam.userActivities?.[currentUser.username] || [];
+    
+    questions.forEach((q, idx) => {
+        let userAnswer = null;
+        if (q.type === 'Checklist') {
+            const selected = Array.from(document.querySelectorAll(`input[name="question_${idx}"]:checked`));
+            userAnswer = selected.map(el => el.value);
+        } else if (q.type === 'Isian Singkat' || q.type === 'Esai') {
+            userAnswer = document.getElementById(`answer_${idx}`)?.value ?? null;
+        } else {
+            const selected = document.querySelector(`input[name="question_${idx}"]:checked`);
+            userAnswer = selected ? selected.value : null;
+        }
+        
+        // Esai, Isian Singkat, dan soal dengan hiddenAnswer tidak dinilai otomatis, menunggu penilaian admin
+        const hasHiddenAnswer = q.hiddenAnswer || false;
+        const contributesToScore = q.type !== 'Esai' && q.type !== 'Isian Singkat' && !hasHiddenAnswer;
+        const isCorrect = contributesToScore ? checkIsCorrect(q, userAnswer) : null; // null untuk manual grading
+        const needsManualGrading = q.type === 'Esai' || q.type === 'Isian Singkat' || hasHiddenAnswer;
+        
+        if (contributesToScore && isCorrect) correct++;
+        
+        results.push({
+            type: q.type,
+            question: q.question,
+            questionIndex: idx,
+            userAnswer: (Array.isArray(userAnswer) ? userAnswer.join(', ') : (userAnswer ?? '')),
+            correctAnswer: q.correctAnswer === null || q.correctAnswer === '' ? 'Tidak ada jawaban benar (opsional)' : (Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer),
+            isCorrect: isCorrect, // null untuk manual grading
+            needsManualGrading: needsManualGrading,
+            adminScore: null, // Akan diisi admin saat review
+            adminGraded: false,
+            explanation: q.explanation || '',
+            hiddenAnswer: q.hiddenAnswer || false // Kunci jawaban yang bisa dibatalkan
+        });
+    });
+    
+    // Calculate actual score and final score after violations
+    // Manual grading questions tidak masuk perhitungan awal
+    const actualScore = correct;
+    const violationPenalty = violationCount; // -1 point per violation
+    const finalScore = Math.max(0, actualScore - violationPenalty); // Can't go below 0
+    
+    const denom = scoredTotal > 0 ? scoredTotal : (questions.length || 1);
+    const actualAccuracy = (actualScore / denom * 100).toFixed(2);
+    const finalAccuracy = (finalScore / denom * 100).toFixed(2);
+    
+    // Update user data
+    const userData = await readFile('users');
+    const user = userData.users.find(u => u.username === currentUser.username);
+    if (user) {
+        user.examsTaken = user.examsTaken || [];
+        user.examsTaken.push({
+            examId: currentExam.id,
+            examTitle: currentExam.title,
+            actualScore: actualScore,
+            finalScore: finalScore,
+            violationCount: violationCount,
+            violationPenalty: violationPenalty,
+            total: denom,
+            actualAccuracy: parseFloat(actualAccuracy),
+            finalAccuracy: parseFloat(finalAccuracy),
+            timeSpent: timeSpent,
+            violations: violations,
+            answers: results,
+            timestamp: Date.now()
+        });
+        await updateFile('users', userData);
+    }
+    
+    // Update exam data with results
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === currentExam.id);
+    if (exam) {
+        exam.results = exam.results || [];
+        exam.results.push({
+            username: currentUser.username,
+            actualScore: actualScore,
+            finalScore: finalScore,
+            adminScore: null, // Total skor dari penilaian admin (akan diisi saat admin review)
+            totalAdminScore: 0, // Skor dari soal manual grading
+            violationCount: violationCount,
+            violationPenalty: violationPenalty,
+            total: denom,
+            totalWithManual: denom + manualGradingQuestions.length, // Total termasuk soal manual
+            actualAccuracy: parseFloat(actualAccuracy),
+            finalAccuracy: parseFloat(finalAccuracy),
+            timeSpent: timeSpent,
+            violations: violations,
+            answers: results,
+            userActivity: userActivity, // Aktivitas user saat ujian
+            timestamp: Date.now(),
+            adminGraded: false // Status apakah sudah direview admin
+        });
+        await updateFile('examData', examData);
+    }
+    
+    const maxAttempts = currentExam.maxAttempts || 1;
+    const attemptCount = (currentExam.results || []).filter(r => r.username === currentUser.username).length;
+    const canRetry = maxAttempts > 1 && attemptCount < maxAttempts;
+    showResults(results, actualScore, finalScore, questions.length, actualAccuracy, finalAccuracy, violationCount, canRetry);
+}
+
+function showResults(results, actualScore, finalScore, total, actualAccuracy, finalAccuracy, violationCount, canRetry = false) {
+    showSection('result-section');
+    const container = document.getElementById('results-container');
+
+    const settings = currentExam?.resultSettings || {};
+    const showCorrectness = settings.showCorrectnessToUser !== false; // default true
+    const showExplanation = settings.showExplanationToUser !== false; // default true
+    const showKey = settings.showAnswerKeyToUser === true; // default false
+
+    container.innerHTML = `
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <h3 style="margin-bottom: 0.75rem;">Ujian Selesai</h3>
+            <p style="color: var(--text-color-muted); margin-bottom: 1rem;">
+                Terima kasih telah mengerjakan ujian. Berikut review jawaban Anda.
+            </p>
+            <div style="margin-bottom: 1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+                <button class="btn btn-secondary" onclick="showUserExamList(true)" style="width:auto; padding:0.75rem 1rem;">Kembali ke Daftar Ujian</button>
+                ${canRetry ? `<button class="btn" onclick="retryExam()" style="width:auto; padding:0.75rem 1rem;">🔄 Kerjakan Ulang</button>` : ''}
+            </div>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <div class="analysis-card" style="margin-bottom:0; flex:1; min-width:220px;">
+                    <div style="font-weight:800; color: var(--primary-color); font-size: 1.1rem; margin-bottom:0.25rem;">Skor</div>
+                    <div><strong>Skor otomatis:</strong> ${actualScore}/${total} (${actualAccuracy}%)</div>
+                    <div><strong>Skor final (sementara):</strong> ${finalScore}/${total} (${finalAccuracy}%)</div>
+                    ${results.filter(r => r.needsManualGrading).length > 0 ? `
+                        <div style="margin-top: 0.5rem; padding: 0.5rem; background: #fff5f5; border-radius: var(--border-radius-md); border-left: 3px solid var(--warning-color);">
+                            <strong>⏳ ${results.filter(r => r.needsManualGrading).length} soal menunggu review admin</strong>
+                            <div style="font-size: 0.9rem; color: var(--text-color-muted); margin-top: 0.25rem;">
+                                Skor final akan diupdate setelah admin selesai review
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="analysis-card" style="margin-bottom:0; flex:1; min-width:220px; border-left-color: var(--error-color);">
+                    <div style="font-weight:800; color: var(--error-color); font-size: 1.1rem; margin-bottom:0.25rem;">Pelanggaran</div>
+                    <div><strong>Total:</strong> ${violationCount}</div>
+                    <div style="color: var(--text-color-muted); font-size:0.95rem;">Penalty: -${violationCount} poin</div>
+                </div>
+            </div>
+            ${showKey ? `
+                <div style="margin-top: 0.9rem; padding: 0.9rem; border-radius: var(--border-radius-md); background: #fff5f5; border: 1px solid var(--border-color);">
+                    <strong>Mode Admin:</strong> Kunci jawaban sedang ditampilkan ke peserta.
+                </div>
+            ` : ``}
+        </div>
+
+        <h3 style="margin-top: 1rem; margin-bottom: 1rem;">Detail Jawaban</h3>
+        ${results.map((r, idx) => {
+            const isManualGrading = r.needsManualGrading;
+            const hasAdminScore = r.adminScore !== null;
+            return `
+            <div class="card result-card ${showCorrectness && !isManualGrading ? (r.isCorrect ? 'correct' : 'incorrect') : ''}" style="${isManualGrading ? 'border-left: 4px solid var(--warning-color);' : ''}">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                    <div class="question-text" style="font-size: 1rem; margin-bottom:0.5rem;">${idx + 1}. ${r.question}</div>
+                    ${isManualGrading ? 
+                        `<span class="status-badge" style="background: var(--warning-color);">⏳ Menunggu Review Admin</span>` :
+                        showCorrectness && r.isCorrect !== null ? `<span class="status-badge ${r.isCorrect ? 'correct' : 'incorrect'}">${r.isCorrect ? 'Benar' : 'Salah'}</span>` : ''
+                    }
+                </div>
+                <p><strong>Jawaban Anda:</strong> ${r.userAnswer || 'Tidak dijawab'}</p>
+                ${hasAdminScore ? `<p style="color: var(--success-color);"><strong>✓ Nilai dari Admin:</strong> ${r.adminScore}</p>` : ''}
+                ${showKey ? `<p><strong>Kunci Jawaban:</strong> ${r.correctAnswer || '-'}</p>` : ''}
+                ${showExplanation && r.explanation ? `
+                    <div class="pembahasan">
+                        <strong>Pembahasan:</strong><br>${r.explanation}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+        }).join('')}
+    `;
+    
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+}
+
+// Monitor View for Admin
+async function loadMonitorView() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'monitor') return;
+    if (reconcileExamStatuses(examData)) {
+        await updateFile('examData', examData, { silent: true });
+    }
+    
+    const activeExams = (examData.exams || []).filter(e => e.status === 'active');
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;"><span class="real-time-indicator"></span>Monitor Real-time</h2>
+        <div id="monitor-content">
+            ${activeExams.map(exam => {
+                const now = Date.now();
+                const timeLeft = Math.max(0, exam.endTime - now);
+                const results = exam.results || [];
+                const violations = exam.violations || [];
+                const recentViolations = violations.filter(v => Date.now() - v.timestamp < 60000).slice(-5); // Last 5 violations in last minute
+                
+                return `
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <h3>${exam.title}</h3>
+                        <p><strong>Sisa Waktu:</strong> ${formatTime(timeLeft)}</p>
+                        <p><strong>Total Peserta:</strong> ${results.length}</p>
+                        ${recentViolations.length > 0 ? `
+                            <div style="margin-top: 1rem; padding: 1rem; background: #fff5f5; border-radius: var(--border-radius-md); border-left: 4px solid var(--error-color);">
+                                <h4 style="color: var(--error-color); margin-bottom: 0.5rem;">⚠️ Pelanggaran Terbaru:</h4>
+                                ${recentViolations.map(v => `
+                                    <div class="violation-log-item">
+                                        <strong>${v.username}</strong>: ${v.description}
+                                        <div class="time">${v.timeString}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                        <h4 style="margin-top: 1rem;">Peserta yang Sedang Mengerjakan:</h4>
+                        ${results.map(r => {
+                            const userActivity = exam.userActivities?.[r.username] || [];
+                            const recentActivity = userActivity.slice(-5); // 5 aktivitas terakhir
+                            const answeredCount = r.answers ? r.answers.filter(a => a.userAnswer && a.userAnswer.trim()).length : 0;
+                            return `
+                            <div class="card" style="margin-bottom: 1rem; border-left: 4px solid ${r.violationCount > 0 ? 'var(--error-color)' : 'var(--success-color)'};">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                                    <div>
+                                        <strong>${r.username}</strong>
+                                        <div style="color: var(--text-color-muted); font-size: 0.9rem; margin-top: 0.25rem;">
+                                            Progress: ${answeredCount}/${exam.questions?.length || 0} soal terjawab
+                                    ${r.timeSpent ? ` | Waktu: ${formatTime(r.timeSpent * 1000)}` : ''}
+                                </div>
+                            </div>
+                                    <button class="btn btn-secondary" onclick="viewUserActivity('${exam.id}', '${r.username}')" style="width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                        📊 Aktivitas
+                                    </button>
+                                </div>
+                                ${r.violationCount > 0 ? `
+                                    <div style="padding: 0.5rem; background: #fff5f5; border-radius: var(--border-radius-md); margin-top: 0.5rem;">
+                                        <strong style="color: var(--error-color);">⚠️ Pelanggaran: ${r.violationCount}</strong>
+                                    </div>
+                                ` : ''}
+                                ${recentActivity.length > 0 ? `
+                                    <details style="margin-top: 0.5rem;">
+                                        <summary style="cursor: pointer; color: var(--primary-color); font-size: 0.9rem;">Lihat Aktivitas Terbaru</summary>
+                                        <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+                                            ${recentActivity.map(act => {
+                                                const time = new Date(act.timestamp).toLocaleTimeString('id-ID');
+                                                return `
+                                                    <div style="padding: 0.25rem 0.5rem; background: var(--accent-color-light); border-radius: var(--border-radius-md); font-size: 0.85rem;">
+                                                        ${time} - ${act.action} - Soal ${act.questionIndex + 1}
+                                                    </div>
+                                                `;
+                                            }).join('')}
+                                        </div>
+                                    </details>
+                                ` : ''}
+                            </div>
+                        `;
+                        }).join('')}
+                    </div>
+                `;
+            }).join('')}
+        </div>
+        <button class="btn" onclick="loadMonitorView()" style="margin-top: 1rem;">Refresh</button>
+    `;
+    
+    const id = setInterval(() => {
+        if (currentAdminView === 'monitor') loadMonitorView();
+        else { clearInterval(id); adminPollIntervals = adminPollIntervals.filter(x => x !== id); }
+    }, 300);
+    adminPollIntervals.push(id);
+}
+
+async function loadStartControlView() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'start-control') return;
+    if (reconcileExamStatuses(examData)) {
+        await updateFile('examData', examData, { silent: true });
+    }
+    
+    const activeExams = (examData.exams || []).filter(e => e.status === 'active');
+    const scheduledExams = (examData.exams || []).filter(e => e.status === 'scheduled' && e.questions && e.questions.length > 0);
+    const completedExams = (examData.exams || []).filter(e => (e.status === 'completed' || e.status === 'stopped'));
+    
+    if (scheduledExams.length === 0 && activeExams.length === 0) {
+        content.innerHTML = `
+            <h2 style="margin-bottom: 2rem;">Kontrol Mulai Ujian</h2>
+            <div class="card">
+                <p>Tidak ada ujian yang menunggu untuk dimulai.</p>
+                <p style="margin-top: 1rem; color: var(--text-color-muted);">Buat ujian dan tambahkan soal terlebih dahulu. Ujian dengan status "Terjadwal" akan muncul di sini.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;">Kontrol Mulai Ujian Serentak</h2>
+        <p style="color: var(--text-color-muted); margin-bottom: 2rem;">Lihat peserta yang sudah siap, lalu mulai ujian serentak untuk semua.</p>
+        <div class="card" style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 0.75rem;">Aksi Cepat</h3>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                <button class="btn btn-secondary" style="width:auto; padding:0.75rem 1rem;" onclick="loadStartControlView()">Refresh</button>
+                <button class="btn btn-danger" style="width:auto; padding:0.75rem 1rem;" onclick="resetAllExams()">Reset Semua Ujian</button>
+                <button class="btn btn-danger" style="width:auto; padding:0.75rem 1rem;" onclick="deleteAllExams()">Hapus Semua Ujian</button>
+            </div>
+            <p style="color: var(--text-color-muted); margin-top: 0.75rem; font-size:0.9rem;">
+                Reset: mengosongkan hasil/pelanggaran & mengembalikan status ke "Terjadwal". Hapus: menghapus ujian dari daftar.
+            </p>
+        </div>
+        ${activeExams.length > 0 ? `
+            <div class="card" style="margin-bottom: 2rem; border-left: 4px solid var(--warning-color);">
+                <h3 style="margin-bottom: 0.75rem;">Ujian Sedang Berjalan</h3>
+                ${activeExams.map(exam => {
+                    const now = Date.now();
+                    const timeLeft = exam.endTime ? Math.max(0, exam.endTime - now) : 0;
+                    return `
+                        <div class="card" style="margin-bottom: 1rem; box-shadow:none; border:1px solid var(--border-color);">
+                            <h4>${exam.title}</h4>
+                            <p><strong>Sisa Waktu:</strong> ${formatTime(timeLeft)}</p>
+                            <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top: 0.75rem;">
+                                <button class="btn btn-danger" style="width:auto; padding:0.75rem 1rem;" onclick="stopExamForAll('${exam.id}')">■ Hentikan Ujian</button>
+                                <button class="btn btn-secondary" style="width:auto; padding:0.75rem 1rem;" onclick="resetExam('${exam.id}')">Reset Ujian</button>
+                                <button class="btn btn-danger" style="width:auto; padding:0.75rem 1rem;" onclick="deleteExam('${exam.id}')">Hapus Ujian</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        ` : ''}
+        ${scheduledExams.map(exam => {
+            const readyUsers = exam.readyUsers || [];
+            const joinedUsers = exam.joinedUsers || [];
+            const getUsername = (u) => typeof u === 'string' ? u : (u.username || '');
+            const allInRoom = [...new Set([...readyUsers.map(getUsername), ...joinedUsers.map(getUsername)].filter(Boolean))];
+            
+            return `
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h3>${exam.title}</h3>
+                    <p><strong>Durasi:</strong> ${Math.floor(exam.duration / 3600)}j ${Math.floor((exam.duration % 3600) / 60)}m</p>
+                    <p><strong>Total Soal:</strong> ${exam.questions?.length || 0}</p>
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Peserta di Ruang Tunggu: ${allInRoom.length}</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                            ${allInRoom.length > 0 ? allInRoom.map(username => {
+                                const isReady = readyUsers.some(u => (u.username || u) === username);
+                                return `
+                                    <span style="padding: 0.5rem 1rem; border-radius: var(--border-radius-md); 
+                                        background: ${isReady ? 'var(--success-color)' : 'var(--border-color)'}; 
+                                        color: ${isReady ? 'white' : 'var(--text-color)'}; font-weight: 500;">
+                                        ${username} ${isReady ? '✓ Siap' : ''}
+                                    </span>
+                                `;
+                            }).join('') : '<p style="color: var(--text-color-muted);">Belum ada peserta bergabung</p>'}
+                        </div>
+                        <h4 style="margin-top: 1rem;">Peserta Siap: ${readyUsers.length}</h4>
+                        <p style="color: var(--text-color-muted); font-size: 0.9rem;">${readyUsers.map(u => getUsername(u)).join(', ') || 'Belum ada'}</p>
+                    </div>
+                    <button class="btn" onclick="startExamForAll('${exam.id}')" style="margin-top: 1.5rem;">
+                        ▶ Mulai Ujian Serentak
+                    </button>
+                </div>
+            `;
+        }).join('')}
+        ${completedExams.length > 0 ? `
+            <div class="card" style="margin-top: 2rem; border-left: 4px solid var(--success-color);">
+                <h3 style="margin-bottom: 0.75rem;">Ujian Selesai / Dihentikan</h3>
+                ${completedExams.map(exam => `
+                    <div class="user-list-item">
+                        <div class="user-info">
+                            <strong>${exam.title}</strong> - Status: ${exam.status}
+                        </div>
+                        <div class="user-actions">
+                            <button class="btn btn-secondary" style="width:auto; padding:0.5rem 0.75rem;" onclick="resetExam('${exam.id}')">Reset</button>
+                            <button class="btn btn-danger" style="width:auto; padding:0.5rem 0.75rem;" onclick="deleteExam('${exam.id}')">Hapus</button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        ` : ''}
+    `;
+    
+    const id = setInterval(() => {
+        if (currentAdminView === 'start-control') loadStartControlView();
+        else { clearInterval(id); adminPollIntervals = adminPollIntervals.filter(x => x !== id); }
+    }, 300);
+    adminPollIntervals.push(id);
+}
+
+async function startExamForAll(examId) {
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam) {
+        showToast('Ujian tidak ditemukan', 'error');
+        return;
+    }
+    
+    if (exam.status !== 'scheduled') {
+        showToast('Ujian sudah dimulai atau selesai', 'error');
+        return;
+    }
+    
+    const startTime = Date.now();
+    const endTime = startTime + (exam.duration * 1000);
+    
+    exam.status = 'active';
+    exam.startTime = startTime;
+    exam.endTime = endTime;
+    
+    await updateFile('examData', examData);
+    showToast('Ujian telah dimulai serentak untuk semua peserta!', 'success');
+    loadStartControlView();
+}
+
+async function stopExamForAll(examId) {
+    if (!confirm('Yakin ingin menghentikan ujian sekarang? Semua peserta akan berhenti.')) return;
+    const examData = await readFile('examData');
+    if (!examData) return;
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam) {
+        showToast('Ujian tidak ditemukan', 'error');
+        return;
+    }
+    if (exam.status !== 'active') {
+        showToast('Ujian tidak sedang berjalan', 'info');
+        return;
+    }
+    exam.status = 'stopped';
+    exam.stoppedAt = Date.now();
+    exam.endTime = Date.now();
+    await updateFile('examData', examData);
+    showToast('Ujian dihentikan. Peserta akan otomatis berhenti.', 'success');
+    loadStartControlView();
+}
+
+async function resetExam(examId) {
+    if (!confirm('Reset ujian ini? Hasil/pelanggaran akan dikosongkan dan ujian kembali ke status Terjadwal.')) return;
+    const examData = await readFile('examData');
+    if (!examData) return;
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam) {
+        showToast('Ujian tidak ditemukan', 'error');
+        return;
+    }
+    exam.status = 'scheduled';
+    exam.startTime = null;
+    exam.endTime = null;
+    exam.stoppedAt = null;
+    exam.completedAt = null;
+    exam.readyUsers = [];
+    exam.joinedUsers = [];
+    exam.results = [];
+    exam.violations = [];
+    exam.userViolations = {};
+    exam.userStartTimes = {};
+    exam.updatedAt = Date.now();
+    await updateFile('examData', examData);
+    showToast('Ujian berhasil di-reset.', 'success');
+    loadStartControlView();
+}
+
+async function deleteExam(examId) {
+    if (!confirm('Hapus ujian ini? Data ujian akan hilang dari sistem.')) return;
+    const examData = await readFile('examData');
+    if (!examData) return;
+    const before = (examData.exams || []).length;
+    examData.exams = (examData.exams || []).filter(e => e.id !== examId);
+    if (examData.exams.length === before) {
+        showToast('Ujian tidak ditemukan', 'error');
+        return;
+    }
+    await updateFile('examData', examData);
+    showToast('Ujian dihapus.', 'success');
+    loadStartControlView();
+}
+
+async function resetAllExams() {
+    if (!confirm('Reset SEMUA ujian? (mengosongkan hasil/pelanggaran, status kembali Terjadwal)')) return;
+    const examData = await readFile('examData');
+    if (!examData) return;
+    (examData.exams || []).forEach(exam => {
+        exam.status = 'scheduled';
+        exam.startTime = null;
+        exam.endTime = null;
+        exam.stoppedAt = null;
+        exam.completedAt = null;
+        exam.readyUsers = [];
+        exam.joinedUsers = [];
+        exam.results = [];
+        exam.violations = [];
+        exam.userViolations = {};
+        exam.userStartTimes = {};
+        exam.updatedAt = Date.now();
+    });
+    await updateFile('examData', examData);
+    showToast('Semua ujian berhasil di-reset.', 'success');
+    loadStartControlView();
+}
+
+async function deleteAllExams() {
+    if (!confirm('Hapus SEMUA ujian? Semua ujian akan dihapus dari sistem.')) return;
+    const examData = await readFile('examData');
+    if (!examData) return;
+    examData.exams = [];
+    await updateFile('examData', examData);
+    showToast('Semua ujian dihapus.', 'success');
+    loadStartControlView();
+}
+
+function formatTime(ms) {
+    const seconds = Math.floor(ms / 1000);
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
+async function loadResultsView() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'view-results') return;
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;">Hasil Ujian</h2>
+        <div class="card" style="margin-bottom: 1.25rem;">
+            <h3 style="margin-bottom: 0.75rem;">Export Sekali Klik</h3>
+            <button class="btn excel-export-btn" onclick="exportAllResultsToExcel()" style="width:auto; padding:0.75rem 1rem;">📥 Export Semua Nilai (All)</button>
+            <p style="color: var(--text-color-muted); margin-top: 0.75rem; font-size:0.9rem;">Menggabungkan semua hasil dari semua ujian ke 1 file Excel.</p>
+        </div>
+        ${(examData.exams || []).map(exam => {
+            const results = exam.results || [];
+            if (results.length === 0) return '';
+            
+            const avgActualAccuracy = results.reduce((sum, r) => sum + (r.actualAccuracy || r.accuracy || 0), 0) / results.length;
+            const avgFinalAccuracy = results.reduce((sum, r) => sum + (r.finalAccuracy || r.accuracy || 0), 0) / results.length;
+            
+            return `
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h3>${exam.title}</h3>
+                    <p><strong>Rata-rata Akurasi Sesungguhnya:</strong> ${avgActualAccuracy.toFixed(2)}%</p>
+                    <p><strong>Rata-rata Akurasi Final:</strong> ${avgFinalAccuracy.toFixed(2)}%</p>
+                    <h4 style="margin-top: 1rem;">Detail Hasil:</h4>
+                    ${results.map(r => `
+                        <div class="user-list-item">
+                            <div class="user-info">
+                                <strong>${r.username}</strong> - 
+                                Skor Sesungguhnya: ${r.actualScore || r.score}/${r.total} (${r.actualAccuracy || r.accuracy}%) | 
+                                Skor Final: ${r.finalScore || r.score}/${r.total} (${r.finalAccuracy || r.accuracy}%)
+                                ${r.violationCount > 0 ? ` | <span style="color: var(--error-color);">Pelanggaran: ${r.violationCount}</span>` : ''}
+                                ${Array.isArray(r.answers) && r.answers.length > 0 ? `
+                                    <details style="margin-top: 0.75rem;">
+                                        <summary style="cursor:pointer; font-weight:600; color: var(--primary-color);">Lihat Semua Soal & Jawaban User</summary>
+                                        <div style="margin-top: 0.75rem;">
+                                            ${r.answers.map((a, i) => `
+                                                <div class="analysis-card" style="margin-bottom: 0.75rem;">
+                                                    <div style="font-weight:700; margin-bottom: 0.35rem;">${i + 1}. ${escapeHtml(a.question || '')} <span style="color:var(--text-color-muted); font-size:0.9rem;">(${a.type})</span></div>
+                                                    <div style="white-space: pre-wrap;"><strong>Jawaban User:</strong> ${escapeHtml(a.userAnswer || 'Tidak dijawab')}</div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </details>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                    <button class="btn excel-export-btn" onclick="exportExamToExcel('${exam.id}')" style="margin-top: 1rem;">📥 Export ke Excel</button>
+                </div>
+            `;
+        }).join('')}
+    `;
+    
+    const id = setInterval(() => {
+        if (currentAdminView === 'view-results') loadResultsView();
+        else { clearInterval(id); adminPollIntervals = adminPollIntervals.filter(x => x !== id); }
+    }, 300);
+    adminPollIntervals.push(id);
+}
+
+function exportAllResultsToExcel() {
+    readFile('examData').then(examData => {
+        if (!examData) return;
+        const exams = examData.exams || [];
+        const rows = [
+            ['Exam ID', 'Judul Ujian', 'Username', 'Skor Sesungguhnya', 'Skor Final', 'Total Soal', 'Akurasi Sesungguhnya (%)', 'Akurasi Final (%)', 'Pelanggaran', 'Pengurangan Poin', 'Waktu Pengerjaan (detik)', 'Timestamp']
+        ];
+
+        exams.forEach(exam => {
+            const results = exam.results || [];
+            results.forEach(r => {
+                rows.push([
+                    exam.id,
+                    exam.title,
+                    r.username,
+                    r.actualScore || r.score || 0,
+                    r.finalScore || r.score || 0,
+                    r.total || 0,
+                    r.actualAccuracy || r.accuracy || 0,
+                    r.finalAccuracy || r.accuracy || 0,
+                    r.violationCount || 0,
+                    r.violationPenalty || 0,
+                    r.timeSpent || 0,
+                    new Date(r.timestamp).toLocaleString('id-ID')
+                ]);
+            });
+        });
+
+        if (rows.length === 1) {
+            showToast('Tidak ada data hasil ujian untuk diekspor', 'info');
+            return;
+        }
+
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet(rows);
+        ws['!cols'] = [
+            { wch: 18 }, // examId
+            { wch: 30 }, // title
+            { wch: 20 }, // username
+            { wch: 18 },
+            { wch: 12 },
+            { wch: 10 },
+            { wch: 20 },
+            { wch: 18 },
+            { wch: 12 },
+            { wch: 18 },
+            { wch: 22 },
+            { wch: 25 }
+        ];
+        XLSX.utils.book_append_sheet(wb, ws, 'All Results');
+
+        // Essay answers across all exams (if stored)
+        const essayRows = [
+            ['Exam ID', 'Judul Ujian', 'Username', 'No', 'Pertanyaan', 'Jawaban', 'Timestamp']
+        ];
+        exams.forEach(exam => {
+            const results = exam.results || [];
+            results.forEach(r => {
+                const answers = r.answers || [];
+                const essayAnswers = Array.isArray(answers) ? answers.filter(a => a.type === 'Esai') : [];
+                if (essayAnswers.length === 0) return;
+                essayAnswers.forEach((a, idx) => {
+                    essayRows.push([
+                        exam.id,
+                        exam.title,
+                        r.username,
+                        idx + 1,
+                        a.question || '',
+                        a.userAnswer || '',
+                        new Date(r.timestamp).toLocaleString('id-ID')
+                    ]);
+                });
+            });
+        });
+        if (essayRows.length > 1) {
+            const essayWs = XLSX.utils.aoa_to_sheet(essayRows);
+            essayWs['!cols'] = [
+                { wch: 18 },
+                { wch: 30 },
+                { wch: 20 },
+                { wch: 6 },
+                { wch: 50 },
+                { wch: 60 },
+                { wch: 25 }
+            ];
+            XLSX.utils.book_append_sheet(wb, essayWs, 'All Essay Answers');
+        }
+
+        const fileName = `All_Exam_Results_${new Date().toISOString().split('T')[0]}.xlsx`;
+        XLSX.writeFile(wb, fileName);
+        showToast('Export semua nilai berhasil', 'success');
+    });
+}
+
+async function loadDashboardView() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'dashboard') return;
+    
+    const exams = examData.exams || [];
+    const allResults = [];
+    const allViolations = [];
+    
+    exams.forEach(exam => {
+        if (exam.results) allResults.push(...exam.results);
+        if (exam.violations) allViolations.push(...exam.violations);
+    });
+    
+    // Calculate statistics
+    const totalExams = exams.length;
+    const activeExams = exams.filter(e => e.status === 'active').length;
+    const completedExams = exams.filter(e => e.status === 'completed').length;
+    const totalParticipants = allResults.length;
+    const totalViolations = allViolations.length;
+    const warningViolations = allViolations.filter(v => v.isWarning).length;
+    const realViolations = totalViolations - warningViolations;
+    
+    // Average scores
+    const avgActualScore = totalParticipants > 0 
+        ? (allResults.reduce((sum, r) => sum + (r.actualScore || 0), 0) / totalParticipants).toFixed(2)
+        : 0;
+    const avgFinalScore = totalParticipants > 0
+        ? (allResults.reduce((sum, r) => sum + (r.finalScore || 0), 0) / totalParticipants).toFixed(2)
+        : 0;
+    const avgAccuracy = totalParticipants > 0
+        ? (allResults.reduce((sum, r) => sum + (r.actualAccuracy || 0), 0) / totalParticipants).toFixed(2)
+        : 0;
+    
+    // Violation types breakdown
+    const violationTypes = {};
+    allViolations.forEach(v => {
+        if (!v.isWarning) {
+            violationTypes[v.type] = (violationTypes[v.type] || 0) + 1;
+        }
+    });
+    
+    // Top violators
+    const userViolations = {};
+    allViolations.forEach(v => {
+        if (!v.isWarning) {
+            userViolations[v.username] = (userViolations[v.username] || 0) + 1;
+        }
+    });
+    const topViolators = Object.entries(userViolations)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;">📊 Dashboard Analisis</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+            <div class="card" style="border-left: 4px solid var(--primary-color);">
+                <h3 style="margin-bottom: 0.5rem; color: var(--primary-color);">Total Ujian</h3>
+                <div style="font-size: 2rem; font-weight: bold;">${totalExams}</div>
+                <div style="color: var(--text-color-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                    ${activeExams} aktif, ${completedExams} selesai
+                </div>
+            </div>
+            
+            <div class="card" style="border-left: 4px solid var(--success-color);">
+                <h3 style="margin-bottom: 0.5rem; color: var(--success-color);">Total Peserta</h3>
+                <div style="font-size: 2rem; font-weight: bold;">${totalParticipants}</div>
+                <div style="color: var(--text-color-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                    ${exams.filter(e => e.results && e.results.length > 0).length} ujian dengan hasil
+                </div>
+            </div>
+            
+            <div class="card" style="border-left: 4px solid var(--error-color);">
+                <h3 style="margin-bottom: 0.5rem; color: var(--error-color);">Total Pelanggaran</h3>
+                <div style="font-size: 2rem; font-weight: bold;">${realViolations}</div>
+                <div style="color: var(--text-color-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                    ${warningViolations} peringatan, ${realViolations} pelanggaran
+                </div>
+            </div>
+            
+            <div class="card" style="border-left: 4px solid var(--accent-color);">
+                <h3 style="margin-bottom: 0.5rem; color: var(--accent-color);">Rata-rata Skor</h3>
+                <div style="font-size: 2rem; font-weight: bold;">${avgFinalScore}</div>
+                <div style="color: var(--text-color-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Skor sesungguhnya: ${avgActualScore} | Akurasi: ${avgAccuracy}%
+                </div>
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">Jenis Pelanggaran</h3>
+                ${Object.keys(violationTypes).length > 0 ? `
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        ${Object.entries(violationTypes)
+                            .sort((a, b) => b[1] - a[1])
+                            .map(([type, count]) => `
+                                <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--accent-color-light); border-radius: var(--border-radius-md);">
+                                    <span><strong>${type}:</strong></span>
+                                    <span style="color: var(--error-color); font-weight: bold;">${count}</span>
+                                </div>
+                            `).join('')}
+                    </div>
+                ` : '<p style="color: var(--text-color-muted);">Tidak ada pelanggaran</p>'}
+            </div>
+            
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">Top 5 Pelanggar</h3>
+                ${topViolators.length > 0 ? `
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        ${topViolators.map(([username, count], idx) => `
+                            <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: ${idx === 0 ? '#fff5f5' : 'var(--accent-color-light)'}; border-radius: var(--border-radius-md); border-left: 4px solid ${idx === 0 ? 'var(--error-color)' : 'var(--border-color)'};">
+                                <span><strong>${idx + 1}. ${username}:</strong></span>
+                                <span style="color: var(--error-color); font-weight: bold;">${count} pelanggaran</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : '<p style="color: var(--text-color-muted);">Tidak ada data</p>'}
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">Statistik Ujian</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                ${exams.filter(e => e.results && e.results.length > 0).map(exam => {
+                    const results = exam.results || [];
+                    const avgScore = results.length > 0 
+                        ? (results.reduce((sum, r) => sum + (r.finalScore || 0), 0) / results.length).toFixed(2)
+                        : 0;
+                    const violations = exam.violations || [];
+                    const examViolations = violations.filter(v => !v.isWarning).length;
+                    
+                    return `
+                        <div style="padding: 1rem; background: var(--accent-color-light); border-radius: var(--border-radius-md);">
+                            <strong>${exam.title}</strong>
+                            <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+                                <div>Peserta: ${results.length}</div>
+                                <div>Rata-rata: ${avgScore}</div>
+                                <div style="color: ${examViolations > 0 ? 'var(--error-color)' : 'var(--success-color)'};">
+                                    Pelanggaran: ${examViolations}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+        
+        <button class="btn" onclick="loadDashboardView()" style="margin-top: 1.5rem;">Refresh Dashboard</button>
+    `;
+    
+    const id = setInterval(() => {
+        if (currentAdminView === 'dashboard') loadDashboardView();
+        else { clearInterval(id); adminPollIntervals = adminPollIntervals.filter(x => x !== id); }
+    }, 3000);
+    adminPollIntervals.push(id);
+}
+
+async function loadReviewAnswersView() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'review-answers') return;
+    
+    const exams = (examData.exams || []).filter(e => e.results && e.results.length > 0);
+    
+    if (exams.length === 0) {
+        content.innerHTML = `
+            <h2 style="margin-bottom: 2rem;">Review Jawaban</h2>
+            <div class="card">
+                <p>Tidak ada ujian dengan hasil untuk direview.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;">📝 Review Jawaban & Penilaian Manual</h2>
+        <p style="color: var(--text-color-muted); margin-bottom: 2rem;">
+            Review jawaban peserta, khususnya Esai dan Isian Singkat. Berikan nilai manual untuk soal yang memerlukan penilaian admin.
+        </p>
+        
+        <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="label">Pilih Ujian</label>
+            <select id="review-exam-select" class="form-control" onchange="loadReviewForExam()">
+                <option value="">-- Pilih Ujian --</option>
+                ${exams.map(e => `<option value="${e.id}">${e.title} (${e.results?.length || 0} peserta)</option>`).join('')}
+            </select>
+        </div>
+        
+        <div id="review-content"></div>
+    `;
+}
+
+async function loadReviewForExam() {
+    const examId = document.getElementById('review-exam-select').value;
+    if (!examId) {
+        document.getElementById('review-content').innerHTML = '';
+        return;
+    }
+    
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam || !exam.results) return;
+    
+    const content = document.getElementById('review-content');
+    const results = exam.results || [];
+    
+    content.innerHTML = `
+        <h3 style="margin-bottom: 1.5rem;">${exam.title}</h3>
+        <div style="display: grid; gap: 1.5rem;">
+            ${results.map((result, resultIdx) => {
+                const userActivity = result.userActivity || [];
+                const manualGradingAnswers = result.answers.filter(a => a.needsManualGrading);
+                const autoGradedAnswers = result.answers.filter(a => !a.needsManualGrading);
+                const totalManualScore = result.answers
+                    .filter(a => a.needsManualGrading && a.adminScore !== null)
+                    .reduce((sum, a) => sum + (a.adminScore || 0), 0);
+                const totalAutoScore = result.actualScore || 0;
+                const totalScore = totalAutoScore + totalManualScore;
+                const totalQuestions = exam.questions?.length || 0;
+                const finalScore = Math.max(0, totalScore - (result.violationPenalty || 0));
+                
+                return `
+                    <div class="card" style="border-left: 4px solid ${result.adminGraded ? 'var(--success-color)' : 'var(--warning-color)'};">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div>
+                                <h4>${result.username}</h4>
+                                <div style="color: var(--text-color-muted); font-size: 0.9rem;">
+                                    Skor Otomatis: ${totalAutoScore} | Skor Manual: ${totalManualScore} | Total: ${totalScore}/${totalQuestions} | Final: ${finalScore}/${totalQuestions}
+                                    ${result.adminGraded ? ' | ✓ Sudah Direview' : ' | ⏳ Belum Direview'}
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="viewUserActivity('${examId}', '${result.username}')" style="width: auto; padding: 0.5rem 1rem;">
+                                📊 Lihat Aktivitas
+                            </button>
+                        </div>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--error-color);">⚠️ Perlu Penilaian Manual (${manualGradingAnswers.length} soal)</h5>
+                            ${manualGradingAnswers.map((answer, idx) => {
+                                const question = exam.questions?.[answer.questionIndex];
+                                return `
+                                    <div class="card" style="margin-bottom: 1rem; background: #fff5f5; border-left: 4px solid var(--warning-color);">
+                                        <div style="margin-bottom: 0.5rem;">
+                                            <strong>Soal ${answer.questionIndex + 1} (${answer.type}):</strong>
+                                        </div>
+                                        <div style="margin-bottom: 0.75rem; padding: 0.75rem; background: white; border-radius: var(--border-radius-md);">
+                                            <div style="margin-bottom: 0.5rem;"><strong>Pertanyaan:</strong> ${escapeHtml(answer.question)}</div>
+                                            <div style="margin-bottom: 0.5rem;"><strong>Jawaban User:</strong></div>
+                                            <div style="padding: 0.75rem; background: var(--accent-color-light); border-radius: var(--border-radius-md); white-space: pre-wrap;">${escapeHtml(answer.userAnswer || 'Tidak dijawab')}</div>
+                                            ${question?.correctAnswer ? `
+                                                <div style="margin-top: 0.5rem; padding: 0.5rem; background: #f0f9ff; border-radius: var(--border-radius-md);">
+                                                    <strong>Kunci Jawaban:</strong> ${escapeHtml(question.correctAnswer)}
+                                                    ${question.hiddenAnswer ? ' <span style="color: var(--warning-color);">(Hidden - bisa dibatalkan)</span>' : ''}
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                        <div style="display: flex; gap: 1rem; align-items: center;">
+                                            <div class="form-group" style="margin: 0; flex: 1;">
+                                                <label class="label">Nilai (0-1):</label>
+                                                <input type="number" 
+                                                    id="admin-score-${examId}-${result.username}-${answer.questionIndex}" 
+                                                    class="form-control" 
+                                                    min="0" 
+                                                    max="1" 
+                                                    step="0.1"
+                                                    value="${answer.adminScore !== null ? answer.adminScore : ''}"
+                                                    placeholder="0.0 - 1.0">
+                                            </div>
+                                            <button class="btn" onclick="saveAdminScore('${examId}', '${result.username}', ${answer.questionIndex})" style="width: auto; padding: 0.75rem 1.5rem;">
+                                                Simpan Nilai
+                                            </button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        
+                        <details style="margin-top: 1rem;">
+                            <summary style="cursor: pointer; font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">
+                                Lihat Semua Jawaban (${autoGradedAnswers.length} otomatis + ${manualGradingAnswers.length} manual)
+                            </summary>
+                            <div style="margin-top: 1rem;">
+                                ${result.answers.map((answer, idx) => {
+                                    const question = exam.questions?.[answer.questionIndex];
+                                    const isManual = answer.needsManualGrading;
+                                    return `
+                                        <div class="card" style="margin-bottom: 0.75rem; ${isManual ? 'background: #fff5f5;' : ''}">
+                                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                                                <strong>Soal ${answer.questionIndex + 1} (${answer.type})</strong>
+                                                ${answer.adminScore !== null ? `<span style="color: var(--success-color);">Nilai: ${answer.adminScore}</span>` : 
+                                                  answer.isCorrect !== null ? `<span style="color: ${answer.isCorrect ? 'var(--success-color)' : 'var(--error-color)'};">
+                                                    ${answer.isCorrect ? '✓ Benar' : '✗ Salah'}
+                                                  </span>` : '<span style="color: var(--warning-color);">⏳ Menunggu Review</span>'}
+                                            </div>
+                                            <div style="margin-bottom: 0.5rem;"><strong>Pertanyaan:</strong> ${escapeHtml(answer.question)}</div>
+                                            <div style="margin-bottom: 0.5rem;"><strong>Jawaban User:</strong> ${escapeHtml(answer.userAnswer || 'Tidak dijawab')}</div>
+                                            ${question?.correctAnswer ? `
+                                                <div style="padding: 0.5rem; background: #f0f9ff; border-radius: var(--border-radius-md);">
+                                                    <strong>Kunci:</strong> ${escapeHtml(question.correctAnswer)}
+                                                    ${question.hiddenAnswer ? ' <span style="color: var(--warning-color);">(Hidden)</span>' : ''}
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </details>
+                        
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                            <button class="btn" onclick="finalizeReview('${examId}', '${result.username}')" style="width: auto; padding: 0.75rem 1.5rem;">
+                                ${result.adminGraded ? '✓ Review Selesai' : '✓ Finalisasi Review'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    `;
+}
+
+async function saveAdminScore(examId, username, questionIndex) {
+    const scoreInput = document.getElementById(`admin-score-${examId}-${username}-${questionIndex}`);
+    const score = parseFloat(scoreInput.value);
+    
+    if (isNaN(score) || score < 0 || score > 1) {
+        showToast('Nilai harus antara 0 dan 1', 'error');
+        return;
+    }
+    
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam) return;
+    
+    const result = exam.results.find(r => r.username === username);
+    if (!result) return;
+    
+    const answer = result.answers.find(a => a.questionIndex === questionIndex);
+    if (!answer) return;
+    
+    answer.adminScore = score;
+    answer.adminGraded = true;
+    
+    await updateFile('examData', examData);
+    showToast('Nilai berhasil disimpan', 'success');
+    
+    // Reload review
+    loadReviewForExam();
+}
+
+async function finalizeReview(examId, username) {
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam) return;
+    
+    const result = exam.results.find(r => r.username === username);
+    if (!result) return;
+    
+    // Calculate total admin score
+    const totalAdminScore = result.answers
+        .filter(a => a.needsManualGrading && a.adminScore !== null)
+        .reduce((sum, a) => sum + (a.adminScore || 0), 0);
+    
+    result.totalAdminScore = totalAdminScore;
+    result.adminScore = (result.actualScore || 0) + totalAdminScore;
+    result.adminGraded = true;
+    
+    // Recalculate final score
+    const totalScore = result.adminScore;
+    const finalScore = Math.max(0, totalScore - (result.violationPenalty || 0));
+    result.finalScore = finalScore;
+    
+    // Recalculate accuracy
+    const totalQuestions = exam.questions?.length || 0;
+    result.actualAccuracy = totalQuestions > 0 ? ((totalScore / totalQuestions) * 100).toFixed(2) : 0;
+    result.finalAccuracy = totalQuestions > 0 ? ((finalScore / totalQuestions) * 100).toFixed(2) : 0;
+    
+    await updateFile('examData', examData);
+    showToast('Review berhasil difinalisasi', 'success');
+    
+    loadReviewForExam();
+}
+
+async function viewUserActivity(examId, username) {
+    const examData = await readFile('examData');
+    const exam = examData.exams.find(e => e.id === examId);
+    if (!exam) return;
+    
+    // Get activities from exam.userActivities or result.userActivity
+    const activities = exam.userActivities?.[username] || [];
+    const result = exam.results?.find(r => r.username === username);
+    const resultActivities = result?.userActivity || [];
+    const allActivities = [...activities, ...resultActivities].sort((a, b) => a.timestamp - b.timestamp);
+    
+    const modal = document.createElement('div');
+    modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 2rem;';
+    modal.innerHTML = `
+        <div class="card" style="max-width: 800px; max-height: 80vh; overflow-y: auto; position: relative;">
+            <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" style="position: absolute; top: 1rem; right: 1rem; background: var(--error-color); color: white; border: none; border-radius: 50%; width: 2rem; height: 2rem; cursor: pointer; font-size: 1.2rem;">×</button>
+            <h3 style="margin-bottom: 1rem;">Aktivitas User: ${username}</h3>
+            <p style="color: var(--text-color-muted); margin-bottom: 1rem;">Total aktivitas: ${allActivities.length}</p>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 60vh; overflow-y: auto;">
+                ${allActivities.length > 0 ? allActivities.slice(-200).map(activity => {
+                    const time = new Date(activity.timestamp).toLocaleString('id-ID');
+                    return `
+                        <div style="padding: 0.75rem; background: var(--accent-color-light); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><strong>${activity.action}</strong> - Soal ${activity.questionIndex + 1}</span>
+                                <span style="color: var(--text-color-muted); font-size: 0.9rem;">${time}</span>
+                            </div>
+                            ${activity.value ? `<div style="margin-top: 0.25rem; color: var(--text-color-muted);">Nilai: ${escapeHtml(String(activity.value))}</div>` : ''}
+                            ${activity.timeSpent ? `<div style="margin-top: 0.25rem; color: var(--text-color-muted);">Waktu: ${Math.floor(activity.timeSpent / 1000)}s</div>` : ''}
+                        </div>
+                    `;
+                }).join('') : '<p style="color: var(--text-color-muted);">Tidak ada aktivitas yang tercatat</p>'}
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+async function loadViolationsView() {
+    const content = document.getElementById('admin-content');
+    const examData = await readFile('examData', { silent: true });
+    if (!examData) return;
+    if (currentAdminView !== 'violations') return;
+    
+    const allViolations = [];
+    (examData.exams || []).forEach(exam => {
+        if (exam.violations && exam.violations.length > 0) {
+            exam.violations.forEach(v => {
+                allViolations.push({
+                    ...v,
+                    examTitle: exam.title,
+                    examId: exam.id
+                });
+            });
+        }
+    });
+    
+    // Group violations by user
+    const violationsByUser = {};
+    allViolations.forEach(v => {
+        if (!violationsByUser[v.username]) {
+            violationsByUser[v.username] = [];
+        }
+        violationsByUser[v.username].push(v);
+    });
+    
+    content.innerHTML = `
+        <h2 style="margin-bottom: 2rem;">Log Pelanggaran</h2>
+        <div class="analysis-card">
+            <h3>Analisis Pelanggaran</h3>
+            <p><strong>Total Pelanggaran:</strong> ${allViolations.length}</p>
+            <p><strong>Total User yang Melakukan Pelanggaran:</strong> ${Object.keys(violationsByUser).length}</p>
+        </div>
+        ${Object.keys(violationsByUser).map(username => {
+            const userViolations = violationsByUser[username];
+            const violationTypes = {};
+            userViolations.forEach(v => {
+                violationTypes[v.type] = (violationTypes[v.type] || 0) + 1;
+            });
+            
+            return `
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h3>User: ${username}</h3>
+                    <p><strong>Total Pelanggaran:</strong> ${userViolations.length}</p>
+                    <p><strong>Jenis Pelanggaran:</strong></p>
+                    <ul>
+                        ${Object.keys(violationTypes).map(type => `<li>${type}: ${violationTypes[type]}x</li>`).join('')}
+                    </ul>
+                    <h4 style="margin-top: 1rem;">Detail Pelanggaran:</h4>
+                    ${userViolations.map(v => `
+                        <div class="violation-log-item">
+                            <strong>${v.description}</strong>
+                            <div class="time">${v.timeString} - ${v.examTitle}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }).join('')}
+    `;
+}
+
+// Removed AI assistant functions
+
+function exportExamToExcel(examId) {
+    const examDataPromise = readFile('examData').then(examData => {
+        if (!examData) return;
+        const exam = examData.exams.find(e => e.id === examId);
+        if (!exam) return;
+        
+        const results = exam.results || [];
+        if (results.length === 0) {
+            showToast('Tidak ada data untuk diekspor', 'info');
+            return;
+        }
+        
+        // Prepare data for Excel
+        const wsData = [
+            ['Username', 'Skor Sesungguhnya', 'Skor Final', 'Total Soal', 'Akurasi Sesungguhnya (%)', 'Akurasi Final (%)', 'Pelanggaran', 'Pengurangan Poin', 'Waktu Pengerjaan (detik)', 'Timestamp']
+        ];
+        
+        results.forEach(r => {
+            wsData.push([
+                r.username,
+                r.actualScore || r.score || 0,
+                r.finalScore || r.score || 0,
+                r.total || 0,
+                r.actualAccuracy || r.accuracy || 0,
+                r.finalAccuracy || r.accuracy || 0,
+                r.violationCount || 0,
+                r.violationPenalty || 0,
+                r.timeSpent || 0,
+                new Date(r.timestamp).toLocaleString('id-ID')
+            ]);
+        });
+        
+        // Create workbook and worksheet
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet(wsData);
+        
+        // Set column widths
+        ws['!cols'] = [
+            { wch: 20 }, // Username
+            { wch: 18 }, // Skor Sesungguhnya
+            { wch: 12 }, // Skor Final
+            { wch: 12 }, // Total Soal
+            { wch: 20 }, // Akurasi Sesungguhnya
+            { wch: 15 }, // Akurasi Final
+            { wch: 12 }, // Pelanggaran
+            { wch: 18 }, // Pengurangan Poin
+            { wch: 22 }, // Waktu Pengerjaan
+            { wch: 25 }  // Timestamp
+        ];
+        
+        XLSX.utils.book_append_sheet(wb, ws, 'Hasil Ujian');
+
+        // Add essay answers sheet if exists
+        const essayRows = [
+            ['Username', 'No', 'Pertanyaan', 'Jawaban', 'Timestamp']
+        ];
+        results.forEach(r => {
+            const answers = r.answers || [];
+            const essayAnswers = Array.isArray(answers) ? answers.filter(a => a.type === 'Esai') : [];
+            if (essayAnswers.length === 0) return;
+            essayAnswers.forEach((a, idx) => {
+                essayRows.push([
+                    r.username,
+                    idx + 1,
+                    a.question || '',
+                    a.userAnswer || '',
+                    new Date(r.timestamp).toLocaleString('id-ID')
+                ]);
+            });
+        });
+        if (essayRows.length > 1) {
+            const essayWs = XLSX.utils.aoa_to_sheet(essayRows);
+            essayWs['!cols'] = [
+                { wch: 20 },
+                { wch: 6 },
+                { wch: 50 },
+                { wch: 60 },
+                { wch: 25 }
+            ];
+            XLSX.utils.book_append_sheet(wb, essayWs, 'Jawaban Esai');
+        }
+        
+        // Add violations sheet if exists
+        if (exam.violations && exam.violations.length > 0) {
+            const violationsData = [
+                ['Username', 'Jenis Pelanggaran', 'Deskripsi', 'Waktu']
+            ];
+            exam.violations.forEach(v => {
+                violationsData.push([
+                    v.username,
+                    v.type,
+                    v.description,
+                    v.timeString
+                ]);
+            });
+            const violationsWs = XLSX.utils.aoa_to_sheet(violationsData);
+            violationsWs['!cols'] = [
+                { wch: 20 },
+                { wch: 25 },
+                { wch: 40 },
+                { wch: 25 }
+            ];
+            XLSX.utils.book_append_sheet(wb, violationsWs, 'Pelanggaran');
+        }
+        
+        // Export to file
+        const fileName = `${exam.title.replace(/[^a-z0-9]/gi, '_')}_${new Date().toISOString().split('T')[0]}.xlsx`;
+        XLSX.writeFile(wb, fileName);
+        showToast('Data berhasil diekspor ke Excel', 'success');
+    });
+}
+
+function logout() {
+    stopAntiCheating();
+    if (waitingRoomPollInterval) {
+        clearInterval(waitingRoomPollInterval);
+        waitingRoomPollInterval = null;
+    }
+    currentUser = null;
+    currentExam = null;
+    violations = [];
+    violationCount = 0;
+    localStorage.removeItem('currentUser');
+    if (timerInterval) clearInterval(timerInterval);
+    if (serverTimeSync) clearInterval(serverTimeSync);
+    showSection('login-section');
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', async () => {
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        if (currentUser.role === 'admin') {
+            showAdminPanel();
+        } else {
+            const savedState = restoreExamStateFromStorage();
+            if (savedState && savedState.username === currentUser.username) {
+                const examData = await readFile('examData', { silent: true });
+                const exam = examData?.exams?.find(e => e.id === savedState.examId);
+                if (exam && exam.status === 'active' && confirm('Anda keluar dari ujian. Lanjutkan sekarang? (Waktu tetap berjalan)')) {
+                    clearExamStateFromStorage();
+                    currentExam = exam;
+                    isExamActive = true;
+                    violations = []; violationCount = 0;
+                    lastFocusTime = Date.now(); lastActivityTime = Date.now();
+                    renderQuestions(exam.questions || []);
+                    if (savedState.answers && savedState.answers.length) restoreAnswers(savedState.answers);
+                    startServerTimer(exam);
+                    showSection('exam-section');
+                    document.getElementById('exam-title-display').textContent = exam.title;
+                    initializeAntiCheating();
+                    return;
+                }
+            }
+            showUserExamList();
+        }
+    }
+});
+</script>
+</body>
+</html>
