@@ -2886,6 +2886,13 @@
             "questionIndex": 2,
             "value": "B",
             "timeSpent": 18923
+          },
+          {
+            "timestamp": 1771745999876,
+            "action": "answer",
+            "questionIndex": 5,
+            "value": "A",
+            "timeSpent": 37504
           }
         ]
       }
