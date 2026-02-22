@@ -2639,7 +2639,34 @@
       "maxAttempts": 1,
       "startTime": null,
       "endTime": null,
-      "questions": [],
+      "questions": [
+        {
+          "type": "Pilihan Ganda",
+          "question": "Apa Hero fav atmin",
+          "image": null,
+          "options": [
+            {
+              "text": "Bane",
+              "image": null
+            },
+            {
+              "text": "Alpha",
+              "image": null
+            },
+            {
+              "text": "Nolan",
+              "image": null
+            },
+            {
+              "text": "Leomord",
+              "image": null
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "",
+          "hiddenAnswer": false
+        }
+      ],
       "status": "scheduled",
       "readyUsers": [],
       "joinedUsers": [],
@@ -2647,7 +2674,8 @@
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
-      }
+      },
+      "updatedAt": 1771745357085
     }
   ]
 }
