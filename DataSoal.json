@@ -2665,6 +2665,15 @@
           "correctAnswer": "A",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Isian Singkat",
+          "question": "Apa nama Aldous sebelum di ubah?",
+          "image": null,
+          "options": [],
+          "correctAnswer": "Aulrad",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2675,7 +2684,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745357085
+      "updatedAt": 1771745408657
     }
   ]
 }
