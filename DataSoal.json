@@ -2928,6 +2928,13 @@
             "questionIndex": 9,
             "value": "Apip, alfa, c",
             "timeSpent": 154052
+          },
+          {
+            "timestamp": 1771746116760,
+            "action": "answer",
+            "questionIndex": 9,
+            "value": "Apip, alfa, cal",
+            "timeSpent": 154388
           }
         ]
       }
