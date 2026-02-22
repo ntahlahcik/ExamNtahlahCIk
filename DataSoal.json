@@ -2709,6 +2709,32 @@
           "correctAnswer": "D",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Kaesang suka pake Hero apa",
+          "image": null,
+          "options": [
+            {
+              "text": "Kimmy",
+              "image": null
+            },
+            {
+              "text": "Aldous",
+              "image": null
+            },
+            {
+              "text": "Jonshon",
+              "image": null
+            },
+            {
+              "text": "Argus",
+              "image": null
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2719,7 +2745,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745472085
+      "updatedAt": 1771745506734
     }
   ]
 }
