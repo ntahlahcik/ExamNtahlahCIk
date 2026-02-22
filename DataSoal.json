@@ -2813,6 +2813,15 @@
           "correctAnswer": "D",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Benar/Salah",
+          "question": "Apakah benar atmin lebih suka pake leomord ketimbang Nolan?",
+          "image": null,
+          "options": [],
+          "correctAnswer": "Salah",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2823,7 +2832,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745627310
+      "updatedAt": 1771745658435
     }
   ]
 }
