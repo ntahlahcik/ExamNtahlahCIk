@@ -2822,6 +2822,15 @@
           "correctAnswer": "Salah",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Isian Singkat",
+          "question": "Siapa aja user tank di grup ini, sebutkan minimal 3",
+          "image": null,
+          "options": [],
+          "correctAnswer": null,
+          "explanation": "",
+          "hiddenAnswer": true
         }
       ],
       "status": "scheduled",
@@ -2832,7 +2841,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745658435
+      "updatedAt": 1771745681457
     }
   ]
 }
