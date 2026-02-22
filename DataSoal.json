@@ -2683,6 +2683,32 @@
           "correctAnswer": "Helcurt",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Siapa orang paling jago di gc",
+          "image": null,
+          "options": [
+            {
+              "text": "Farhan",
+              "image": null
+            },
+            {
+              "text": "Apip",
+              "image": null
+            },
+            {
+              "text": "Fufufafa",
+              "image": null
+            },
+            {
+              "text": "Xaviero",
+              "image": null
+            }
+          ],
+          "correctAnswer": "D",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2693,7 +2719,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745438664
+      "updatedAt": 1771745472085
     }
   ]
 }
