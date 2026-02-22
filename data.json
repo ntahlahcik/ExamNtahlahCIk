@@ -7,5 +7,15 @@
       "role": "admin",
       "avatar": null
     }
+  ],
+  "activityLog": [
+    {
+      "userId": "user_1771749007116",
+      "username": "tesadmin",
+      "role": "admin",
+      "action": "login",
+      "detail": "Masuk ke sistem",
+      "at": 1771749020103
+    }
   ]
 }
