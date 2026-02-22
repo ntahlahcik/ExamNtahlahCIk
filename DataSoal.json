@@ -2853,7 +2853,13 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745681457
+      "updatedAt": 1771745681457,
+      "userStartTimes": {
+        "Apip 76 apel": 1771745882502
+      },
+      "userActivities": {
+        "Apip 76 apel": []
+      }
     }
   ]
 }
