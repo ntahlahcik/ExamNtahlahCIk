@@ -2637,8 +2637,8 @@
       "totalQuestions": 10,
       "duration": 1800,
       "maxAttempts": 1,
-      "startTime": null,
-      "endTime": null,
+      "startTime": 1771745841113,
+      "endTime": 1771747641113,
       "questions": [
         {
           "type": "Pilihan Ganda",
@@ -2833,7 +2833,7 @@
           "hiddenAnswer": true
         }
       ],
-      "status": "scheduled",
+      "status": "active",
       "readyUsers": [
         {
           "username": "Apip 76 apel",
