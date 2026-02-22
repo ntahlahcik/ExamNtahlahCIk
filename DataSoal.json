@@ -2674,6 +2674,15 @@
           "correctAnswer": "Aulrad",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Isian Singkat",
+          "question": "Apa char paling hitam di mlbb",
+          "image": null,
+          "options": [],
+          "correctAnswer": "Helcurt",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2684,7 +2693,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745408657
+      "updatedAt": 1771745438664
     }
   ]
 }
