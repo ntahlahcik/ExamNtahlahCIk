@@ -2761,6 +2761,32 @@
           "correctAnswer": "B",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Siapa member yg paling beban waktu main ml?",
+          "image": null,
+          "options": [
+            {
+              "text": "Farhan",
+              "image": null
+            },
+            {
+              "text": "Zidan",
+              "image": null
+            },
+            {
+              "text": "Riku",
+              "image": null
+            },
+            {
+              "text": "Savero",
+              "image": null
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2771,7 +2797,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745539900
+      "updatedAt": 1771745577958
     }
   ]
 }
