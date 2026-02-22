@@ -2858,7 +2858,15 @@
         "Apip 76 apel": 1771745882502
       },
       "userActivities": {
-        "Apip 76 apel": []
+        "Apip 76 apel": [
+          {
+            "timestamp": 1771745964609,
+            "action": "answer",
+            "questionIndex": 0,
+            "value": "B",
+            "timeSpent": 2237
+          }
+        ]
       }
     }
   ]
