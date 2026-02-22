@@ -2787,6 +2787,32 @@
           "correctAnswer": "B",
           "explanation": "",
           "hiddenAnswer": false
+        },
+        {
+          "type": "Pilihan Ganda",
+          "question": "Bukan sulap bukan sihir, Hero yg suka cipok orang",
+          "image": null,
+          "options": [
+            {
+              "text": "Floryn",
+              "image": null
+            },
+            {
+              "text": "Angela",
+              "image": null
+            },
+            {
+              "text": "Digidaw",
+              "image": null
+            },
+            {
+              "text": "Brody",
+              "image": null
+            }
+          ],
+          "correctAnswer": "D",
+          "explanation": "",
+          "hiddenAnswer": false
         }
       ],
       "status": "scheduled",
@@ -2797,7 +2823,7 @@
         "showExplanationToUser": true,
         "showAnswerKeyToUser": false
       },
-      "updatedAt": 1771745577958
+      "updatedAt": 1771745627310
     }
   ]
 }
