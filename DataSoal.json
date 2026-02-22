@@ -2914,6 +2914,13 @@
             "questionIndex": 9,
             "value": "Api",
             "timeSpent": 141862
+          },
+          {
+            "timestamp": 1771746105570,
+            "action": "answer",
+            "questionIndex": 9,
+            "value": "Apip,",
+            "timeSpent": 143198
           }
         ]
       }
