@@ -2835,7 +2835,13 @@
       ],
       "status": "scheduled",
       "readyUsers": [],
-      "joinedUsers": [],
+      "joinedUsers": [
+        {
+          "username": "Apip 76 apel",
+          "joinedAt": 1771745760133,
+          "joinedAtString": "22/2/2026, 14.36.00"
+        }
+      ],
       "resultSettings": {
         "showCorrectnessToUser": true,
         "showExplanationToUser": true,
