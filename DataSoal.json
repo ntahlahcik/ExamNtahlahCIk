@@ -2834,7 +2834,13 @@
         }
       ],
       "status": "scheduled",
-      "readyUsers": [],
+      "readyUsers": [
+        {
+          "username": "Apip 76 apel",
+          "readyAt": 1771745781708,
+          "readyAtString": "22/2/2026, 14.36.21"
+        }
+      ],
       "joinedUsers": [
         {
           "username": "Apip 76 apel",
