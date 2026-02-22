@@ -1,14 +1,2 @@
 {
-  "admins": [
-    {
-      "username": "tesadmin",
-      "password": "tesadmin",
-      "role": "admin"
-    },
-    {
-      "username": "Atminhebat",
-      "password": "fufufafa123#",
-      "role": "admin"
-    }
-  ]
 }
