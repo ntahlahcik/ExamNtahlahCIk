@@ -1,18 +1,2 @@
 {
-  "data_user": [
-    {
-      "id": "user_1771693570046",
-      "username": "tesuser",
-      "password": "tesuser",
-      "role": "user",
-      "avatar": null
-    },
-    {
-      "id": "user_1771693724819",
-      "username": "tesop",
-      "password": "tesop",
-      "role": "operator",
-      "avatar": null
-    }
-  ]
 }
